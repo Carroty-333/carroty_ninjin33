@@ -619,12 +619,6 @@ main { padding-top: var(--header-h); }
 .contact-form-embed:empty { display: none; }
 .contact-form-embed { margin-top: 18px; }
 .contact-form-embed iframe { display: block; width: 100%; border: 0; }
-.contact-form-embed-desktop { display: none; }
-.contact-form-mobile-cta { margin-top: 18px; text-align: center; }
-@media (min-width: 900px) {
-  .contact-form-embed-desktop { display: block; }
-  .contact-form-mobile-cta { display: none; }
-}
 
 /* ==========================================================================
    Footer
