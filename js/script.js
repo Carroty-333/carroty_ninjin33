@@ -31,7 +31,7 @@
     if (scrollTop) window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
     triggerFadeUps();
     if (tabId === "gallery") loadGallery();
-    if (tabId === "commission" || tabId === "contact") loadFormEmbeds(tabId);
+    if (tabId === "contact") loadFormEmbeds(tabId);
     document.title = tabId === "home"
       ? "きゃろってぃー Official Site | 喫茶Carrol"
       : `${document.querySelector(`[data-tab-link="${tabId}"]`)?.textContent.trim() || ""} | きゃろってぃー`;
@@ -180,7 +180,7 @@
       const iframe = document.createElement("iframe");
       iframe.src = el.dataset.formSrc;
       iframe.width = "100%";
-      iframe.height = "600";
+      iframe.height = "1050";
       iframe.frameBorder = "0";
       iframe.title = el.dataset.formTitle || "";
       el.appendChild(iframe);
