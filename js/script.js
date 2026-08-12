@@ -194,7 +194,6 @@
   }, { passive: true });
 
   /* ---------------- Init ---------------- */
-  document.getElementById("footerYear").textContent = new Date().getFullYear();
   initFadeObserver();
   showTab(currentTabFromHash(), { scrollTop: false });
 })();

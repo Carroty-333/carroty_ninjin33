@@ -629,7 +629,7 @@ main { padding-top: var(--header-h); }
   background: var(--coffee-900);
   color: var(--camel-light);
 }
-.footer-logo { height: 34px; margin: 0 auto 1em; opacity: .85; }
+.footer-logo { height: 72px; margin: 0 auto 1em; opacity: .85; }
 .site-footer p { font-size: .8rem; margin: 0; }
 
 /* ==========================================================================
