@@ -631,11 +631,11 @@ main { padding-top: var(--header-h); }
    ========================================================================== */
 .site-footer {
   text-align: center;
-  padding: 48px 20px 40px;
+  padding: 18px 20px;
   background: var(--coffee-900);
   color: var(--camel-light);
 }
-.footer-logo { height: 72px; margin: 0 auto 1em; opacity: .85; }
+.footer-logo { height: 100px; margin: 0 auto .4em; opacity: .85; }
 .site-footer p { font-size: .8rem; margin: 0; }
 
 /* ==========================================================================
