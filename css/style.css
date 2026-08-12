@@ -455,6 +455,7 @@ main { padding-top: var(--header-h); }
   font-size: .78rem;
   white-space: nowrap;
   gap: .3em;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
 }
 .hero-actions .btn:hover,
 .hero-actions .btn:focus-visible {
@@ -624,31 +625,48 @@ main { padding-top: var(--header-h); }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video-label {
   display: block;
-  width: fit-content;
-  margin: 14px auto 12px;
-  background: var(--coffee-800);
-  color: var(--ivory);
-  font-size: .85rem;
+  margin: 16px 0 10px;
+  color: var(--coffee-800);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: .04em;
+  letter-spacing: .06em;
   text-align: center;
-  padding: .5em 1.1em;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
-/* Auto-sliding video pair (drinking / game streams) */
-.video-slideshow { }
-.video-slide-track {
-  position: absolute;
-  inset: 0;
+/* Auto-sliding video strip (drinking / game streams), full viewport width */
+.video-strip {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  padding-bottom: 48px;
+  background: var(--coffee-900);
+  overflow: hidden;
+}
+.video-strip-label {
+  position: relative;
+  z-index: 2;
+  margin: 22px 0 14px;
+  color: var(--ivory);
+}
+.video-strip-track {
+  position: relative;
   display: flex;
-  width: 300%;
-  height: 100%;
+  width: 300vw;
   transition: transform .7s cubic-bezier(.45, 0, .2, 1);
 }
-.video-slide { position: relative; width: 33.3333%; height: 100%; flex: 0 0 33.3333%; }
-.video-slide iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-strip-slide {
+  position: relative;
+  width: 100vw;
+  flex: 0 0 100vw;
+  aspect-ratio: 16 / 9;
+}
+.video-strip-slide iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (min-width: 900px) {
+  .video-strip-slide { aspect-ratio: 30 / 9; }
+}
 
 /* ==========================================================================
    PROFILE
