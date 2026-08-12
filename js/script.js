@@ -197,7 +197,7 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       siteIntro.remove();
     } else {
-      window.setTimeout(() => siteIntro.remove(), 1750);
+      window.setTimeout(() => siteIntro.remove(), 2700);
     }
   }
 
@@ -209,7 +209,7 @@
     let slideIndex = 0;
     window.setInterval(() => {
       slideIndex += 1;
-      slideTrack.style.transition = "transform .8s cubic-bezier(.34, 1.56, .64, 1)";
+      slideTrack.style.transition = "transform .7s cubic-bezier(.45, 0, .2, 1)";
       slideTrack.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
       slideLabel.textContent = labels[slideIndex % 2];
       if (slideIndex === 2) {
@@ -217,7 +217,7 @@
           slideTrack.style.transition = "none";
           slideTrack.style.transform = "translateX(0%)";
           slideIndex = 0;
-        }, 820);
+        }, 720);
       }
     }, 5000);
   }

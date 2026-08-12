@@ -17,16 +17,9 @@
   <div class="site-intro-panel site-intro-panel-l"></div>
   <div class="site-intro-panel site-intro-panel-r"></div>
   <div class="site-intro-brand">
-    <span class="site-intro-cup">
-      <svg viewBox="0 0 64 52" aria-hidden="true">
-        <path d="M10 14h38v18a14 14 0 0 1-14 14H24a14 14 0 0 1-14-14V14Z" fill="none" stroke="currentColor" stroke-width="3"/>
-        <path d="M48 18h4a7 7 0 0 1 0 14h-4" fill="none" stroke="currentColor" stroke-width="3"/>
-        <path d="M6 44h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <span class="site-intro-steam"></span>
-      <span class="site-intro-steam s2"></span>
-    </span>
-    <span class="site-intro-text">喫茶Carrol</span>
+    <img src="assets/images/logo-carrol-white.png" alt="喫茶Carrol" class="site-intro-logo">
+    <span class="site-intro-steam"></span>
+    <span class="site-intro-steam s2"></span>
   </div>
 </div>
 
@@ -88,7 +81,7 @@
           </p>
           <p class="hero-lead hero-lead-sub">今日も「おかえりなさい」って言わせてくださいね。</p>
           <div class="hero-actions">
-            <a href="#profile" class="btn btn-primary" data-tab-link="profile">もっと詳しく <span aria-hidden="true">▶</span></a>
+            <a href="#profile" class="btn btn-secondary" data-tab-link="profile">もっと詳しく <span aria-hidden="true">▶</span></a>
             <a href="https://www.youtube.com/@Carroty_Ninjin33" target="_blank" rel="noopener" class="btn btn-secondary">
               喫茶店をのぞく
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
@@ -108,6 +101,8 @@
           <span class="steam s5" aria-hidden="true"></span>
           <span class="steam s6" aria-hidden="true"></span>
           <span class="steam s7" aria-hidden="true"></span>
+          <span class="steam s8" aria-hidden="true"></span>
+          <span class="steam s9" aria-hidden="true"></span>
         </div>
       </div>
     </div>
@@ -120,10 +115,12 @@
         </div>
         <ul class="board-list">
           <li><span class="day">月</span><span class="desc">フリー枠(雑談・ゲーム・コラボなど)</span><span class="time">21:00〜</span></li>
+          <li class="board-list-closed"><span class="day">火</span><span class="desc">定休日</span><span class="time">CLOSED</span></li>
+          <li class="board-list-closed"><span class="day">水</span><span class="desc">定休日</span><span class="time">CLOSED</span></li>
           <li><span class="day">木</span><span class="desc">謎解き・脱出ゲーム</span><span class="time">21:00〜</span></li>
           <li><span class="day">金</span><span class="desc">飲酒雑談</span><span class="time">21:00〜</span></li>
+          <li class="board-list-closed"><span class="day">土</span><span class="desc">定休日(不定期営業あり)</span><span class="time">CLOSED</span></li>
           <li><span class="day">日</span><span class="desc">フリー枠(雑談・ゲーム・コラボなど)</span><span class="time">21:00〜</span></li>
-          <li class="board-list-closed"><span class="day">火水土</span><span class="desc">定休日(不定期営業あり)</span><span class="time">CLOSED</span></li>
         </ul>
       </div>
     </div>
@@ -132,24 +129,25 @@
       <h2 class="section-title fade-up">おすすめメニュー</h2>
       <div class="video-grid">
         <div class="video-card fade-up">
+          <span class="video-label">最新メニュー</span>
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUN2iB4YG-fs0em8Ix0PHiwA" title="最新メニュー(最新の配信アーカイブ)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <span class="video-label">最新メニュー</span>
           </div>
         </div>
         <div class="video-card fade-up delay-1">
+          <span class="video-label">ティザーPV</span>
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/qi2khwC3--g" title="ティザーPV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <span class="video-label">ティザーPV</span>
           </div>
         </div>
         <div class="video-card fade-up delay-2">
+          <span class="video-label">新モデルお披露目</span>
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/zcJuMTKm4tA" title="新モデルお披露目" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <span class="video-label">新モデルお披露目</span>
           </div>
         </div>
         <div class="video-card video-card-slideshow fade-up delay-3" id="videoSlideshow">
+          <span class="video-label" id="videoSlideLabel">酒飲み配信</span>
           <div class="video-embed video-slideshow">
             <div class="video-slide-track" id="videoSlideTrack">
               <div class="video-slide">
@@ -162,7 +160,6 @@
                 <iframe src="https://www.youtube-nocookie.com/embed/R8Rv4BaRSTk" title="" tabindex="-1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
             </div>
-            <span class="video-label" id="videoSlideLabel">酒飲み配信</span>
           </div>
         </div>
       </div>
