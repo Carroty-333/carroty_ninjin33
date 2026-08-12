@@ -570,6 +570,7 @@ main { padding-top: var(--header-h); }
 }
 @media (min-width: 700px) { .guide-fa-grid { grid-template-columns: repeat(3, 1fr); } }
 .guide-fa-grid h4 { font-size: .85rem; color: var(--carrot-dark); margin-bottom: .5em; }
+.guide-fa > h4 { font-size: .95rem; color: var(--carrot-dark); margin: 1.6em 0 .6em; }
 .guide-fa-grid p { font-size: .9rem; line-height: 1.8; margin: 0; }
 .guide-fa-rules { display: grid; gap: 8px; margin-bottom: 1em; }
 .guide-fa-rules li { font-size: .88rem; line-height: 1.8; padding-left: 1.4em; position: relative; }
