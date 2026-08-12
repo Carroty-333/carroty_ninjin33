@@ -24,4 +24,4 @@ assets/gallery/    FA Gallery表示用画像(ここに画像を追加するだ�
 
 ## Contactフォームについて
 
-Contactタブのフォームは、Tally.so等の外部フォームサービスをNotion「お問い合わせ」データベースに連携する形で今後埋め込み予定です。埋め込みコードが発行され次第 `index.html` の `#contactFormEmbed` 部分に追加してください。
+ContactタブにはTallyフォーム（`https://tally.so/r/PdQEad`）を埋め込んでいます。フォーム本体の項目・通知・Notion連携はTally側で管理します。

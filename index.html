@@ -307,12 +307,19 @@
       <div class="contact-grid fade-up">
         <div class="contact-card">
           <h3>お問い合わせフォーム</h3>
-          <p class="contact-form-note">
-            フォームは準備中です。公開まではX DMまたはメールをご利用ください。<br>
-            <!-- Tally埋め込み予定地: 本人がTally.soアカウント作成 + Notion「お問い合わせ」DB連携後、
-                 以下に <iframe data-tally-src="..."></iframe> 形式で埋め込みます -->
-          </p>
-          <div id="contactFormEmbed" class="contact-form-embed"></div>
+          <p class="contact-form-note">下記フォームに必要事項をご入力ください。</p>
+          <div id="contactFormEmbed" class="contact-form-embed">
+            <iframe
+              data-tally-src="https://tally.so/embed/PdQEad?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="520"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="きゃろってぃー お問い合わせフォーム">
+            </iframe>
+          </div>
         </div>
 
         <div class="contact-card">
@@ -346,6 +353,7 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
+<script src="https://tally.so/widgets/embed.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
