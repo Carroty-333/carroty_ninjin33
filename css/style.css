@@ -327,12 +327,12 @@ main { padding-top: var(--header-h); }
 
 .hero-figure {
   position: relative;
-  max-width: 460px;
-  width: 86%;
+  width: calc(100% + 40px);
+  margin: 0 -20px;
 }
 .hero-img {
-  border-radius: var(--radius-lg);
-  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+  display: block;
+  width: 100%;
 }
 .steam {
   position: absolute;
@@ -360,7 +360,8 @@ main { padding-top: var(--header-h); }
   .hero-inner { flex-direction: row; justify-content: space-between; padding: 60px 40px; }
   .hero-copy { text-align: left; max-width: 520px; }
   .hero-eyebrow, .hero-actions { justify-content: flex-start; }
-  .hero-figure { width: 48%; max-width: 640px; }
+  .hero-figure { width: 48%; max-width: 640px; margin: 0; }
+  .hero-img { border-radius: var(--radius-lg); box-shadow: 0 24px 50px rgba(0,0,0,0.35); }
 }
 
 /* Blackboard schedule card */
