@@ -24,4 +24,4 @@ assets/gallery/    FA Gallery表示用画像(ここに画像を追加するだ�
 
 ## Contactフォームについて
 
-ContactタブにはTallyフォーム（`https://tally.so/r/PdQEad`）を埋め込んでいます。フォーム本体の項目・通知・Notion連携はTally側で管理します。
+CommissionタブとContactタブには、共通のTallyフォーム（`https://tally.so/r/PdQEad`）を埋め込んでいます。フォーム本体の項目・通知・Notion連携はTally側で管理し、Tally側の更新は両方の埋め込みへ反映されます。
