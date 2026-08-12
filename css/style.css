@@ -144,8 +144,7 @@ li { list-style: none; }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--header-h);
-  background: rgba(253, 248, 240, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(253, 248, 240, 0.98);
   z-index: 100;
   border-bottom: 1px solid var(--camel-light);
 }

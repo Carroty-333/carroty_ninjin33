@@ -176,8 +176,23 @@
     header.classList.toggle("is-scrolled", window.scrollY > 20);
   }, { passive: true });
 
+  /* ---------------- Contact/Commission form embeds (desktop only) ---------------- */
+  function initFormEmbeds() {
+    if (!window.matchMedia("(min-width: 900px)").matches) return;
+    document.querySelectorAll(".contact-form-embed-desktop[data-form-src]").forEach((el) => {
+      const iframe = document.createElement("iframe");
+      iframe.src = el.dataset.formSrc;
+      iframe.width = "100%";
+      iframe.height = "600";
+      iframe.frameBorder = "0";
+      iframe.title = el.dataset.formTitle || "";
+      el.appendChild(iframe);
+    });
+  }
+
   /* ---------------- Init ---------------- */
   document.getElementById("footerYear").textContent = new Date().getFullYear();
   initFadeObserver();
+  initFormEmbeds();
   showTab(currentTabFromHash(), { scrollTop: false });
 })();
