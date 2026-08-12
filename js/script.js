@@ -45,6 +45,9 @@
     const linkRect = activeLink.getBoundingClientRect();
     tabIndicator.style.left = `${linkRect.left - navRect.left}px`;
     tabIndicator.style.width = `${linkRect.width}px`;
+    tabIndicator.classList.remove("is-landing");
+    void tabIndicator.offsetWidth;
+    tabIndicator.classList.add("is-landing");
   }
 
   tabLinks.forEach((link) => {
