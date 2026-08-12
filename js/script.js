@@ -31,6 +31,7 @@
     if (scrollTop) window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
     triggerFadeUps();
     if (tabId === "gallery") loadGallery();
+    if (tabId === "commission" || tabId === "contact") loadFormEmbeds(tabId);
     document.title = tabId === "home"
       ? "きゃろってぃー Official Site | 喫茶Carrol"
       : `${document.querySelector(`[data-tab-link="${tabId}"]`)?.textContent.trim() || ""} | きゃろってぃー`;
@@ -169,6 +170,23 @@
   lightboxClose.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+
+  /* ---------------- Contact/Commission form embed (desktop, loaded on tab open) ---------------- */
+  function loadFormEmbeds(tabId) {
+    if (!window.matchMedia("(min-width: 900px)").matches) return;
+    const panel = document.querySelector(`.tab-panel[data-panel="${tabId}"]`);
+    if (!panel) return;
+    panel.querySelectorAll(".contact-form-embed-desktop[data-form-src]").forEach((el) => {
+      const iframe = document.createElement("iframe");
+      iframe.src = el.dataset.formSrc;
+      iframe.width = "100%";
+      iframe.height = "600";
+      iframe.frameBorder = "0";
+      iframe.title = el.dataset.formTitle || "";
+      el.appendChild(iframe);
+      el.removeAttribute("data-form-src");
+    });
+  }
 
   /* ---------------- Header shrink on scroll ---------------- */
   const header = document.getElementById("siteHeader");
