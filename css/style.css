@@ -227,6 +227,7 @@ li { list-style: none; }
   border-bottom: 1px solid var(--camel-light);
 }
 .header-inner {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
@@ -358,6 +359,8 @@ li { list-style: none; }
 @media (min-width: 900px) {
   .tab-nav { display: block; }
   .hamburger, .mobile-nav, .mobile-nav-overlay { display: none; }
+  .header-inner { justify-content: center; }
+  .brand { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
 }
 
 /* ==========================================================================
