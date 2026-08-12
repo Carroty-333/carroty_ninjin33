@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きゃろってぃー Official Site | 喫茶Carrol</title>
+<meta name="description" content="VTuber「きゃろってぃー」の公式サイト。喫茶Carrol専属バリスタ。プロフィール・ファンアート・配信ガイドライン・デザイン依頼受付・お問い合わせ。">
+<link rel="icon" href="assets/images/logo-carrol-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#home" data-tab-link="home">
+      <img src="assets/images/logo-main.png" alt="きゃろってぃー ロゴ" class="brand-logo">
+    </a>
+
+    <nav class="tab-nav" id="tabNav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="#home" data-tab-link="home">HOME</a></li>
+        <li><a href="#profile" data-tab-link="profile">Profile</a></li>
+        <li><a href="#gallery" data-tab-link="gallery">FA Gallery</a></li>
+        <li><a href="#guideline" data-tab-link="guideline">Guideline</a></li>
+        <li><a href="#commission" data-tab-link="commission">Commission</a></li>
+        <li><a href="#contact" data-tab-link="contact">Contact</a></li>
+      </ul>
+      <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
+    </nav>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
+    <ul>
+      <li><a href="#home" data-tab-link="home">HOME</a></li>
+      <li><a href="#profile" data-tab-link="profile">Profile</a></li>
+      <li><a href="#gallery" data-tab-link="gallery">FA Gallery</a></li>
+      <li><a href="#guideline" data-tab-link="guideline">Guideline</a></li>
+      <li><a href="#commission" data-tab-link="commission">Commission</a></li>
+      <li><a href="#contact" data-tab-link="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<main id="main">
+
+  <!-- ============ HOME ============ -->
+  <section class="tab-panel" id="home" data-panel="home">
+    <div class="hero">
+      <div class="hero-bg" style="background-image:url('assets/images/bg-counter.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <div class="hero-copy fade-up">
+          <p class="hero-eyebrow">Cafe &amp; VTuber</p>
+          <h1 class="hero-title">「ただいま」と<br>言える居場所。</h1>
+          <p class="hero-lead">
+            ここは、喫茶Carrol(きゃろる)。<br>
+            疲れた人が少し休み、帰るときに少し元気になれる、<br class="only-pc">
+            バーチャルな喫茶店です。
+          </p>
+          <div class="hero-actions">
+            <a href="#profile" class="btn btn-primary" data-tab-link="profile">バリスタを知る</a>
+            <a href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener" class="btn btn-outline">
+              <span class="steam-icon" aria-hidden="true">☕</span> 配信をのぞく
+            </a>
+          </div>
+        </div>
+        <div class="hero-figure fade-up delay-1">
+          <img src="assets/images/hero-miya.jpg" alt="コーヒーを淹れるきゃろってぃー(バリスタ姿)" class="hero-img">
+          <span class="steam s1" aria-hidden="true"></span>
+          <span class="steam s2" aria-hidden="true"></span>
+          <span class="steam s3" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="board-card fade-up">
+        <div class="board-card-head">
+          <span class="board-chalk">Opening Hours</span>
+          <h2>営業時間(配信スケジュール)</h2>
+        </div>
+        <ul class="board-list">
+          <li><span class="day">月</span><span class="desc">雑談営業</span><span class="time">21:00〜</span></li>
+          <li><span class="day">木</span><span class="desc">謎解き・脱出ゲーム</span><span class="time">21:00〜</span></li>
+          <li><span class="day">金</span><span class="desc">飲酒雑談</span><span class="time">21:00〜</span></li>
+          <li><span class="day">日</span><span class="desc">フリー枠(コラボ・ゲーム等)</span><span class="time">21:00〜</span></li>
+        </ul>
+        <p class="board-note">定休日:火・水・土(不定期営業あり) / 本業・フリーランス優先のため急遽お休みする場合があります。</p>
+      </div>
+    </div>
+
+    <div class="section-block menu-teasers">
+      <h2 class="section-title fade-up">今日のメニュー</h2>
+      <div class="teaser-grid">
+        <a href="#profile" class="teaser-card fade-up" data-tab-link="profile">
+          <span class="teaser-icon">☕</span>
+          <h3>雑談</h3>
+          <p>常連さんとの関係を育てる、喫茶Carrolの核となる時間。</p>
+        </a>
+        <a href="#profile" class="teaser-card fade-up delay-1" data-tab-link="profile">
+          <span class="teaser-icon">🔍</span>
+          <h3>謎解き・脱出ゲーム</h3>
+          <p>木曜定期枠。初めての方も入りやすい配信の目玉です。</p>
+        </a>
+        <a href="#profile" class="teaser-card fade-up delay-2" data-tab-link="profile">
+          <span class="teaser-icon">🍶</span>
+          <h3>金曜 飲酒雑談</h3>
+          <p>昼はしゃんとしたバリスタ、夜はラフな酒飲み相手に。</p>
+        </a>
+        <a href="#commission" class="teaser-card fade-up delay-3" data-tab-link="commission">
+          <span class="teaser-icon">🎨</span>
+          <h3>デザイン依頼</h3>
+          <p>VTuberさん向けにサムネイル・ヘッダー等を制作しています。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROFILE ============ -->
+  <section class="tab-panel" id="profile" data-panel="profile">
+    <div class="section-block">
+      <h2 class="section-title fade-up">Profile</h2>
+      <div class="profile-layout">
+        <div class="profile-portrait fade-up">
+          <img src="assets/images/profile-main.png" alt="きゃろってぃー 全身立ち絵">
+        </div>
+
+        <div class="profile-card fade-up delay-1">
+          <h3 class="menu-card-title">きゃろってぃー / Carroty</h3>
+          <p class="profile-role">喫茶Carrol(きゃろる)専属バリスタ</p>
+
+          <dl class="profile-list">
+            <div><dt>あだ名</dt><dd>きゃろ・きゃろさん・てぃーさん・にんじん</dd></div>
+            <div><dt>挨拶</dt><dd>ただいま・おはきゃろ・こんきゃろ・また来るね・おつきゃろ</dd></div>
+            <div><dt>営業時間</dt><dd>月/木/金/日 21:00〜(定休日:火/水/土、不定期営業あり)</dd></div>
+            <div><dt>好き</dt><dd>謎解き/脱出・FPS・RPG・MOBA・鬼畜ゲーム、にんじん・コーヒー・お酒(日本酒)・辛いもの・デザイン・お勉強・筋トレ</dd></div>
+            <div><dt>苦手</dt><dd>ホラー・甘いもの(チョコはいける)・じっとすること</dd></div>
+          </dl>
+
+          <div class="tag-row">
+            <span class="tag">#きゃろってぃー</span>
+            <span class="tag">#きゃろラテあーと</span>
+            <span class="tag">#きゃろる営業中</span>
+            <span class="tag">#きゃろる営業日</span>
+          </div>
+
+          <div class="profile-people">
+            <h4>関係者</h4>
+            <ul>
+              <li>ママ:<a href="https://x.com/_32miya107" target="_blank" rel="noopener">@_32miya107</a></li>
+              <li>パパ:<a href="https://x.com/mngn___" target="_blank" rel="noopener">@mngn___</a></li>
+              <li>キャラデザ元祖:<a href="https://x.com/mo_chiru8" target="_blank" rel="noopener">@mo_chiru8</a></li>
+            </ul>
+          </div>
+
+          <div class="link-buttons">
+            <a href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener" class="btn btn-outline btn-sm">X (Twitter)</a>
+            <a href="https://lit.link/en/carrotyninjin33" target="_blank" rel="noopener" class="btn btn-outline btn-sm">lit.link</a>
+            <a href="https://carrotninjin33.booth.pm/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">BOOTH</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FA GALLERY ============ -->
+  <section class="tab-panel" id="gallery" data-panel="gallery">
+    <div class="section-block">
+      <h2 class="section-title fade-up">FA Gallery</h2>
+      <p class="section-lead fade-up">
+        いただいたファンアートを飾らせていただくコーナーです。いつもありがとうございます……!<br>
+        投稿の際は <span class="tag-inline">#きゃろラテあーと</span> をつけていただけると見つけやすいです。掲載のご相談・削除希望はX DMまでご連絡ください。
+      </p>
+
+      <details class="fa-reference fade-up">
+        <summary>キャラクターデザイン参考資料を見る(FA依頼を検討中の方へ)</summary>
+        <img src="assets/images/fa-reference-sheet.jpg" alt="きゃろってぃー キャラクターデザイン参考資料" class="fa-reference-img">
+      </details>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <p class="gallery-status" id="galleryStatus">読み込み中です…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDELINE ============ -->
+  <section class="tab-panel" id="guideline" data-panel="guideline">
+    <div class="section-block">
+      <h2 class="section-title fade-up">Guideline</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card guide-good fade-up">
+          <h3>推奨(嬉しいこと)</h3>
+          <ul>
+            <li>人に優しく思いやりのある発言</li>
+            <li>初見さんに優しい雰囲気づくり</li>
+            <li>ROM・挨拶だけ・途中退出もOK</li>
+            <li>切り抜きは基本自由(歌枠は著作権上NG)</li>
+            <li>ご自身の生活を大切にすること</li>
+            <li>Twitter投稿時のタグ付け</li>
+          </ul>
+        </div>
+        <div class="guide-card guide-ng fade-up delay-1">
+          <h3>NG(お控えください)</h3>
+          <ul>
+            <li>炎上・暴露・過激な話題</li>
+            <li>エロ・下ネタによる集客的言動</li>
+            <li>人を傷つける・馬鹿にする表現</li>
+            <li>リスナーへの責任の押し付け</li>
+            <li>感謝を欠く振る舞い</li>
+            <li>他配信者の場で脈絡なく名前を出すこと</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-fa fade-up">
+        <h3>ファンアート(FA)についてのガイドライン</h3>
+        <p>リスナーさんがSkeb・つなぐ等でFAをご依頼することは<strong>許可</strong>しております!</p>
+
+        <div class="guide-fa-grid">
+          <div>
+            <h4>絶対入れてほしい要素</h4>
+            <p>まろ眉・にんじん要素</p>
+          </div>
+          <div>
+            <h4>できれば入れてほしい要素(自由にアレンジOK)</h4>
+            <p>肩のうさぎ・ポンパの髪型・髪色、丸メガネ・ネイル(人差し指:オレンジ / その他:黄緑)・にんじんの瞳孔</p>
+          </div>
+          <div>
+            <h4>自由にしていい要素</h4>
+            <p>帽子・服装(コスプレ等)・カメラ・アクセサリー・性別/年齢・ケモ化など</p>
+          </div>
+        </div>
+
+        <ul class="guide-fa-rules">
+          <li>R18絵もOKですが、FAタグの使用はお控えください。</li>
+          <li>イラストのAI学習への読み込みは全面禁止です。AI使用イラストはFAタグの使用禁止・AI使用の明記をお願いします。</li>
+        </ul>
+        <p class="guide-note">詳しいデザイン参考資料は <a href="#gallery" data-tab-link="gallery">FA Galleryページ</a> でご覧いただけます。心配な点はいつでもお気軽にご連絡ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMISSION ============ -->
+  <section class="tab-panel" id="commission" data-panel="commission">
+    <div class="section-block">
+      <h2 class="section-title fade-up">Commission</h2>
+      <p class="section-lead fade-up">
+        「きゃろってぃー」のデザインにご興味を持ってくださりありがとうございます!<br>
+        VTuberさん向けに、サムネイルやプロフィール画像などのデザイン制作依頼を承っています。
+      </p>
+
+      <div class="commission-types fade-up">
+        <span class="tag">通常サムネイル</span>
+        <span class="tag">企画系/記念配信用サムネイル</span>
+        <span class="tag">プロフィール画像</span>
+        <span class="tag">ヘッダー</span>
+        <span class="tag">配信スケジュール表</span>
+        <span class="tag">その他</span>
+      </div>
+
+      <div class="commission-grid">
+        <div class="commission-card fade-up">
+          <h3>ご依頼の流れ</h3>
+          <ol>
+            <li>ご依頼用フォームより必要事項をご入力</li>
+            <li>3営業日以内に、ご希望の連絡ツールにてご返信</li>
+            <li>内容のすり合わせ後、制作スタート</li>
+            <li>確認・修正を経て納品</li>
+          </ol>
+        </div>
+        <div class="commission-card fade-up delay-1">
+          <h3>お支払い・実績公開について</h3>
+          <ul>
+            <li>お支払い方法:銀行振込(請求書発行)/ ココナラ(手数料+約10%)</li>
+            <li>実績公開:基本的に可(SNS・ポートフォリオ等で紹介させていただきます) / 非公開ご希望の場合は+10%</li>
+            <li>連絡ツール:Discord(おすすめ)/ X・TwitterのDM / メール</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="commission-cta fade-up">
+        <a href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener" class="btn btn-primary">X DMでご相談</a>
+        <a href="mailto:yama.carroty33@gmail.com" class="btn btn-outline">仕事用メールで問い合わせる</a>
+      </div>
+      <p class="commission-note">※ご依頼専用フォームは現在Notionで運用中のため、一般公開リンクの整備が完了し次第こちらに掲載します。それまではX DMまたはメールにてお気軽にご相談ください。</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="tab-panel" id="contact" data-panel="contact">
+    <div class="section-block">
+      <h2 class="section-title fade-up">Contact</h2>
+      <p class="section-lead fade-up">お問い合わせは、以下いずれの方法でも受け付けています。</p>
+
+      <div class="contact-grid fade-up">
+        <div class="contact-card">
+          <h3>お問い合わせフォーム</h3>
+          <p class="contact-form-note">
+            フォームは準備中です。公開まではX DMまたはメールをご利用ください。<br>
+            <!-- Tally埋め込み予定地: 本人がTally.soアカウント作成 + Notion「お問い合わせ」DB連携後、
+                 以下に <iframe data-tally-src="..."></iframe> 形式で埋め込みます -->
+          </p>
+          <div id="contactFormEmbed" class="contact-form-embed"></div>
+        </div>
+
+        <div class="contact-card">
+          <h3>その他の連絡先</h3>
+          <ul class="contact-links">
+            <li>
+              <span class="contact-icon" aria-hidden="true">✉️</span>
+              <a href="mailto:carrotninjin0423@gmail.com">carrotninjin0423@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact-icon" aria-hidden="true">🐦</span>
+              <a href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener">X DM (@NinjinCarrot_33)</a>
+            </li>
+          </ul>
+          <p class="guide-note">デザイン依頼に関するお問い合わせは <a href="#commission" data-tab-link="commission">Commissionページ</a> もご参照ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <img src="assets/images/logo-carrol-white.png" alt="喫茶Carrol ロゴ" class="footer-logo">
+  <p>&copy; <span id="footerYear"></span> きゃろってぃー / 喫茶Carrol</p>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
