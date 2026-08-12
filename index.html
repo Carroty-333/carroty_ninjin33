@@ -13,6 +13,23 @@
 </head>
 <body>
 
+<div class="site-intro" id="siteIntro" aria-hidden="true">
+  <div class="site-intro-panel site-intro-panel-l"></div>
+  <div class="site-intro-panel site-intro-panel-r"></div>
+  <div class="site-intro-brand">
+    <span class="site-intro-cup">
+      <svg viewBox="0 0 64 52" aria-hidden="true">
+        <path d="M10 14h38v18a14 14 0 0 1-14 14H24a14 14 0 0 1-14-14V14Z" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M48 18h4a7 7 0 0 1 0 14h-4" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M6 44h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="site-intro-steam"></span>
+      <span class="site-intro-steam s2"></span>
+    </span>
+    <span class="site-intro-text">喫茶Carrol</span>
+  </div>
+</div>
+
 <a class="skip-link" href="#main">本文へスキップ</a>
 
 <header class="site-header" id="siteHeader">
@@ -106,8 +123,8 @@
           <li><span class="day">木</span><span class="desc">謎解き・脱出ゲーム</span><span class="time">21:00〜</span></li>
           <li><span class="day">金</span><span class="desc">飲酒雑談</span><span class="time">21:00〜</span></li>
           <li><span class="day">日</span><span class="desc">フリー枠(雑談・ゲーム・コラボなど)</span><span class="time">21:00〜</span></li>
+          <li class="board-list-closed"><span class="day">火水土</span><span class="desc">定休日(不定期営業あり)</span><span class="time">CLOSED</span></li>
         </ul>
-        <p class="board-note">定休日:火・水・土(不定期営業あり)</p>
       </div>
     </div>
 
@@ -117,33 +134,36 @@
         <div class="video-card fade-up">
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUN2iB4YG-fs0em8Ix0PHiwA" title="最新メニュー(最新の配信アーカイブ)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <span class="video-label">最新メニュー</span>
           </div>
-          <h3>最新メニュー</h3>
-          <p>いちばん新しい配信アーカイブを自動でお届けします。</p>
         </div>
         <div class="video-card fade-up delay-1">
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/qi2khwC3--g" title="ティザーPV" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <span class="video-label">ティザーPV</span>
           </div>
-          <h3>ティザーPV</h3>
         </div>
         <div class="video-card fade-up delay-2">
           <div class="video-embed">
             <iframe src="https://www.youtube-nocookie.com/embed/zcJuMTKm4tA" title="新モデルお披露目" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <span class="video-label">新モデルお披露目</span>
           </div>
-          <h3>新モデルお披露目</h3>
         </div>
-        <div class="video-card fade-up delay-3">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/R8Rv4BaRSTk" title="酒飲み配信" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="video-card video-card-slideshow fade-up delay-3" id="videoSlideshow">
+          <div class="video-embed video-slideshow">
+            <div class="video-slide-track" id="videoSlideTrack">
+              <div class="video-slide">
+                <iframe src="https://www.youtube-nocookie.com/embed/R8Rv4BaRSTk" title="酒飲み配信" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide">
+                <iframe src="https://www.youtube-nocookie.com/embed/oDv5Kx6GVd0" title="ゲーム配信" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" aria-hidden="true">
+                <iframe src="https://www.youtube-nocookie.com/embed/R8Rv4BaRSTk" title="" tabindex="-1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+            <span class="video-label" id="videoSlideLabel">酒飲み配信</span>
           </div>
-          <h3>酒飲み配信</h3>
-        </div>
-        <div class="video-card fade-up delay-4">
-          <div class="video-embed">
-            <iframe src="https://www.youtube-nocookie.com/embed/oDv5Kx6GVd0" title="ゲーム配信" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-          <h3>ゲーム配信</h3>
         </div>
       </div>
     </div>

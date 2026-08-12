@@ -188,6 +188,37 @@
     });
   }
 
+  /* ---------------- First-load intro ---------------- */
+  const siteIntro = document.getElementById("siteIntro");
+  if (siteIntro) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      siteIntro.remove();
+    } else {
+      window.setTimeout(() => siteIntro.remove(), 1750);
+    }
+  }
+
+  /* ---------------- Auto-sliding video pair (drinking / game streams) ---------------- */
+  const slideTrack = document.getElementById("videoSlideTrack");
+  const slideLabel = document.getElementById("videoSlideLabel");
+  if (slideTrack) {
+    const labels = ["酒飲み配信", "ゲーム配信"];
+    let slideIndex = 0;
+    window.setInterval(() => {
+      slideIndex += 1;
+      slideTrack.style.transition = "transform .8s cubic-bezier(.34, 1.56, .64, 1)";
+      slideTrack.style.transform = `translateX(-${slideIndex * (100 / 3)}%)`;
+      slideLabel.textContent = labels[slideIndex % 2];
+      if (slideIndex === 2) {
+        window.setTimeout(() => {
+          slideTrack.style.transition = "none";
+          slideTrack.style.transform = "translateX(0%)";
+          slideIndex = 0;
+        }, 820);
+      }
+    }, 5000);
+  }
+
   /* ---------------- Header shrink on scroll ---------------- */
   const header = document.getElementById("siteHeader");
   window.addEventListener("scroll", () => {
