@@ -634,6 +634,11 @@ main { padding-top: var(--header-h); }
 }
 .footer-logo { height: 100px; margin: 0 auto .4em; opacity: .85; }
 .site-footer p { font-size: .8rem; margin: 0; }
+@media (max-width: 899px) {
+  .site-footer { padding: 9px 20px; }
+  .footer-logo { height: 50px; margin: 0 auto .2em; }
+  .site-footer p { font-size: .7rem; }
+}
 
 /* ==========================================================================
    Lightbox
