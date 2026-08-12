@@ -34,7 +34,7 @@
     if (tabId === "contact") loadFormEmbeds(tabId);
     document.title = tabId === "home"
       ? "きゃろってぃー Official Site | 喫茶Carrol"
-      : `${document.querySelector(`[data-tab-link="${tabId}"]`)?.textContent.trim() || ""} | きゃろってぃー`;
+      : `${document.querySelector(`[data-tab-link="${tabId}"] rt`)?.textContent.trim() || ""} | きゃろってぃー`;
   }
 
   function moveIndicator(tabId) {
