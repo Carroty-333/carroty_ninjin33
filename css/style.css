@@ -106,14 +106,16 @@ li { list-style: none; }
 .intro-panel {
   position: absolute;
   bottom: -2px;
-  width: 50%;
+  width: 55%;
   height: calc(100% + 4px);
   background: var(--coffee-900);
   overflow: visible;
   z-index: 2;
 }
-.intro-panel-l { left: 0; clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); animation: introPanelLeft 2.45s forwards; }
-.intro-panel-r { right: 0; clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%); animation: introPanelRight 2.45s forwards; }
+/* Panels are wider than 50% and overlap past center; the slanted inner edge
+   still meets its twin with margin to spare, so no gap opens at the seam. */
+.intro-panel-l { left: 0; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); animation: introPanelLeft 2.45s forwards; }
+.intro-panel-r { right: 0; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%); animation: introPanelRight 2.45s forwards; }
 
 /* Rise: 0%-65% (~1.6s), ease-in. Hold: 65%-71% (~0.15s). Curtain-open:
    71%-100% (~0.7s), slow-fast-slow ease-in-out. */
