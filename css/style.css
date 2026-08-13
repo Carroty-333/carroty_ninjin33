@@ -74,33 +74,85 @@ li { list-style: none; }
 }
 .skip-link:focus { left: 0; }
 
-/* ---------- First-load intro (coffee pours and rises, then parts) ---------- */
+/* ---------- First-load intro (coffee pours from above, rises as a wave, then parts) ---------- */
 .site-intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; }
+
+/* Thin stream pouring in from the top before the liquid rises to meet it */
+.site-intro-pour {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 8px;
+  height: 0;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--coffee-700), var(--coffee-900));
+  border-radius: 0 0 6px 6px;
+  filter: blur(.3px);
+  animation: introPour 5.2s ease-in forwards;
+}
+@keyframes introPour {
+  0%   { height: 0; opacity: 1; }
+  9%   { height: 24vh; opacity: 1; }
+  20%  { height: 30vh; opacity: 1; }
+  32%  { height: 24vh; opacity: 0; }
+  100% { height: 24vh; opacity: 0; }
+}
+
 .site-intro-panel {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   width: 50%;
-  height: 100%;
+  height: calc(100% + 4px);
   background: linear-gradient(160deg, var(--coffee-800), var(--coffee-900) 75%);
-  clip-path: polygon(
-    0% 6%, 4% 3%, 8% 7%, 12% 2%, 16% 6%, 20% 1%, 24% 5%, 28% 8%, 32% 3%, 36% 6%,
-    40% 1%, 44% 5%, 48% 8%, 52% 3%, 56% 6%, 60% 1%, 64% 5%, 68% 8%, 72% 3%, 76% 6%,
-    80% 1%, 84% 5%, 88% 8%, 92% 2%, 96% 6%, 100% 3%,
-    100% 100%, 0% 100%
-  );
+  overflow: visible;
 }
-.site-intro-panel-l { left: 0; animation: introPanelLeft 2.6s var(--ease-cute) forwards; }
-.site-intro-panel-r { right: 0; animation: introPanelRight 2.6s var(--ease-cute) forwards; }
+.site-intro-panel-l { left: 0; animation: introPanelLeft 5.2s forwards; }
+.site-intro-panel-r { right: 0; animation: introPanelRight 5.2s forwards; }
+
+/* Layered waves riding the top edge of each panel, like a rising tide */
+.site-intro-wave-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 12vh;
+  min-height: 70px;
+  max-height: 130px;
+  overflow: hidden;
+}
+.site-intro-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: block;
+}
+.site-intro-wave.wave-a {
+  fill: var(--coffee-900);
+  animation: waveScroll 3.6s linear infinite;
+}
+.site-intro-wave.wave-b {
+  fill: var(--coffee-700);
+  opacity: .55;
+  animation: waveScroll 5.2s linear infinite reverse;
+}
+@keyframes waveScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+/* Rise (0%-58%) uses a smooth ease-out so the liquid settles flush with no
+   overshoot; the parting (77%-100%) borrows the cuter bounce easing. */
 @keyframes introPanelLeft {
-  0%   { transform: translate(0, 100%); }
-  35%  { transform: translate(0, 0%); }
-  68%  { transform: translate(0, 0%); }
+  0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
+  58%  { transform: translate(0, 0%); }
+  77%  { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
   100% { transform: translate(-100%, 0%); }
 }
 @keyframes introPanelRight {
-  0%   { transform: translate(0, 100%); }
-  35%  { transform: translate(0, 0%); }
-  68%  { transform: translate(0, 0%); }
+  0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
+  58%  { transform: translate(0, 0%); }
+  77%  { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
   100% { transform: translate(100%, 0%); }
 }
 
@@ -111,14 +163,14 @@ li { list-style: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: introBrand 2.6s ease forwards;
+  animation: introBrand 5.2s ease forwards;
 }
 @keyframes introBrand {
   0%   { opacity: 0; transform: scale(.7); }
-  35%  { opacity: 0; transform: scale(.7); }
-  46%  { opacity: 1; transform: scale(1); }
-  62%  { opacity: 1; transform: scale(1); }
-  78%  { opacity: 0; transform: scale(1.05); }
+  56%  { opacity: 0; transform: scale(.7); }
+  64%  { opacity: 1; transform: scale(1); }
+  73%  { opacity: 1; transform: scale(1); }
+  82%  { opacity: 0; transform: scale(1.05); }
   100% { opacity: 0; }
 }
 .site-intro-logo {
@@ -137,9 +189,9 @@ li { list-style: none; }
   border-radius: 50%;
   filter: blur(.5px);
   opacity: 0;
-  animation: introSteam 1.1s ease-in-out 1.1s forwards;
+  animation: introSteam 2.2s ease-in-out 2.2s forwards;
 }
-.site-intro-steam.s2 { left: 56%; animation-delay: 1.25s; }
+.site-intro-steam.s2 { left: 56%; animation-delay: 2.5s; }
 @keyframes introSteam {
   0% { opacity: 0; transform: translateY(0); }
   20% { opacity: .8; }

@@ -197,7 +197,7 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       siteIntro.remove();
     } else {
-      window.setTimeout(() => siteIntro.remove(), 2700);
+      window.setTimeout(() => siteIntro.remove(), 5400);
     }
   }
 
