@@ -15,6 +15,13 @@
   --sage: #8A9A7E;
   --sage-dark: #5F715A;
 
+  --tag-notice-bg: #FBEADB;
+  --tag-notice-fg: #C9601A;
+  --tag-activity-bg: #E7EEE1;
+  --tag-activity-fg: #5F715A;
+  --tag-event-bg: #EFE6D8;
+  --tag-event-fg: #4A3221;
+
   --font-heading: "Shippori Mincho", "Cormorant Garamond", serif;
   --font-body: "Zen Maru Gothic", sans-serif;
   --font-chalk: "Yomogi", "Zen Maru Gothic", sans-serif;
@@ -77,7 +84,7 @@ li { list-style: none; }
 /* ---------- First-load intro (coffee pours from above, rises as a wave, then parts) ---------- */
 .site-intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; background: #fff; }
 
-/* Thin stream pouring in from the top before the liquid rises to meet it */
+/* Thin stream pouring in forcefully from the top (~1s), then the liquid rises to meet it */
 .site-intro-pour {
   position: absolute;
   top: 0;
@@ -88,14 +95,13 @@ li { list-style: none; }
   background: linear-gradient(to bottom, var(--coffee-700), var(--coffee-900));
   border-radius: 0 0 6px 6px;
   filter: blur(.3px);
-  animation: introPour 5.2s ease-in forwards;
+  animation: introPour 1.05s cubic-bezier(.2, .85, .3, 1.15) forwards;
 }
 @keyframes introPour {
   0%   { height: 0; opacity: 1; }
-  9%   { height: 24vh; opacity: 1; }
-  20%  { height: 30vh; opacity: 1; }
-  32%  { height: 24vh; opacity: 0; }
-  100% { height: 24vh; opacity: 0; }
+  55%  { height: 32vh; opacity: 1; }
+  75%  { height: 26vh; opacity: 1; }
+  100% { height: 26vh; opacity: 0; }
 }
 
 .site-intro-panel {
@@ -106,8 +112,8 @@ li { list-style: none; }
   background: linear-gradient(160deg, var(--coffee-800), var(--coffee-900) 75%);
   overflow: visible;
 }
-.site-intro-panel-l { left: 0; animation: introPanelLeft 5.2s forwards; }
-.site-intro-panel-r { right: 0; animation: introPanelRight 5.2s forwards; }
+.site-intro-panel-l { left: 0; animation: introPanelLeft 2.9s .9s forwards; }
+.site-intro-panel-r { right: 0; animation: introPanelRight 2.9s .9s forwards; }
 
 /* Layered waves riding the top edge of each panel, like a rising tide */
 .site-intro-wave-wrap {
@@ -115,10 +121,11 @@ li { list-style: none; }
   left: 0;
   right: 0;
   bottom: calc(100% - 3px);
-  height: 12vh;
-  min-height: 70px;
-  max-height: 130px;
+  height: 14vh;
+  min-height: 80px;
+  max-height: 150px;
   overflow: hidden;
+  animation: waveBob 2.6s ease-in-out infinite;
 }
 .site-intro-wave {
   position: absolute;
@@ -130,29 +137,35 @@ li { list-style: none; }
 }
 .site-intro-wave.wave-a {
   fill: var(--coffee-900);
-  animation: waveScroll 3.6s linear infinite;
+  animation: waveScroll 4.4s linear infinite;
 }
 .site-intro-wave.wave-b {
   fill: var(--coffee-700);
   opacity: .55;
-  animation: waveScroll 5.2s linear infinite reverse;
+  animation: waveScroll 6.2s linear infinite reverse;
 }
 @keyframes waveScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-/* Rise (0%-58%) uses a smooth ease-out so the liquid settles flush with no
-   overshoot; the parting (77%-100%) borrows the cuter bounce easing. */
+@keyframes waveBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+/* Rise (0%-66% of this animation, i.e. ~1.9s after the .9s delay) uses a smooth
+   ease-out so the liquid settles flush with no overshoot; the moment it's fully
+   risen it immediately begins parting (66%-100%) with a cuter bounce easing —
+   no static hold in between. */
 @keyframes introPanelLeft {
   0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
-  58%  { transform: translate(0, 0%); }
-  77%  { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
+  66%  { transform: translate(0, 0%); }
+  66.01% { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
   100% { transform: translate(-100%, 0%); }
 }
 @keyframes introPanelRight {
   0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
-  58%  { transform: translate(0, 0%); }
-  77%  { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
+  66%  { transform: translate(0, 0%); }
+  66.01% { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
   100% { transform: translate(100%, 0%); }
 }
 
@@ -163,15 +176,14 @@ li { list-style: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: introBrand 5.2s ease forwards;
+  opacity: 0;
+  animation: introBrand 1.1s ease 2.5s forwards;
 }
 @keyframes introBrand {
   0%   { opacity: 0; transform: scale(.7); }
-  56%  { opacity: 0; transform: scale(.7); }
-  64%  { opacity: 1; transform: scale(1); }
-  73%  { opacity: 1; transform: scale(1); }
-  82%  { opacity: 0; transform: scale(1.05); }
-  100% { opacity: 0; }
+  30%  { opacity: 1; transform: scale(1); }
+  60%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
 }
 .site-intro-logo {
   position: relative;
@@ -189,9 +201,9 @@ li { list-style: none; }
   border-radius: 50%;
   filter: blur(.5px);
   opacity: 0;
-  animation: introSteam 2.2s ease-in-out 2.2s forwards;
+  animation: introSteam 1s ease-in-out 2.9s forwards;
 }
-.site-intro-steam.s2 { left: 56%; animation-delay: 2.5s; }
+.site-intro-steam.s2 { left: 56%; animation-delay: 3.1s; }
 @keyframes introSteam {
   0% { opacity: 0; transform: translateY(0); }
   20% { opacity: .8; }
@@ -525,7 +537,7 @@ main { padding-top: var(--header-h); }
   .hero-actions .btn { padding: .85em 1.4em; font-size: .88rem; gap: .4em; }
 }
 @media (min-width: 800px) {
-  .hero-actions { justify-content: flex-start; gap: 10px; width: auto; }
+  .hero-actions { justify-content: flex-start; gap: 22px; width: auto; }
   .hero-actions .btn { flex: 0 0 auto; font-size: .85rem; padding: .75em 1.3em; }
 }
 
@@ -600,19 +612,23 @@ main { padding-top: var(--header-h); }
 /* Each recommended video sits on a little cushion (zabuton) */
 .video-column { display: flex; flex-direction: column; align-items: center; }
 .video-cushion {
-  position: relative;
-  z-index: 1;
-  width: 62%;
-  height: 32px;
-  margin-bottom: -10px;
-  background: linear-gradient(160deg, var(--carrot), var(--carrot-dark));
-  border-radius: 50% 50% 42% 42% / 100% 100% 55% 55%;
-  box-shadow: 0 3px 0 rgba(74, 50, 33, .18);
+  display: inline-block;
+  width: fit-content;
+  margin: 0 auto 14px;
+  padding: .55em 1.5em;
+  background: var(--coffee-700);
+  color: var(--ivory);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-align: center;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 rgba(74, 50, 33, .25);
 }
 
 .video-card {
   position: relative;
-  z-index: 0;
   width: 100%;
   background: var(--ivory);
   border: 2px solid var(--camel-light);
@@ -627,16 +643,6 @@ main { padding-top: var(--header-h); }
 }
 .video-embed { position: relative; padding-top: 56.25%; height: 0; background: var(--coffee-900); overflow: hidden; }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-label {
-  display: block;
-  margin: 16px 0 10px;
-  color: var(--coffee-800);
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-align: center;
-}
 
 /* Endlessly scrolling ribbon of stream-archive thumbnails, full viewport width */
 .video-marquee {
@@ -685,14 +691,14 @@ main { padding-top: var(--header-h); }
 .news-list { display: grid; gap: 12px; }
 .news-list li,
 .news-list a {
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 14px;
+  padding: 14px 18px;
   background: var(--ivory);
-  border: 1px solid var(--camel-light);
-  border-radius: var(--radius-md);
+  border: 1.5px solid var(--camel-light);
+  border-radius: 999px;
   font-size: .92rem;
   color: var(--coffee-900);
   transition: transform .2s var(--ease-cute), border-color .2s ease;
@@ -707,21 +713,52 @@ main { padding-top: var(--header-h); }
 .news-tag {
   display: inline-flex;
   align-items: center;
-  gap: .4em;
-  padding: .25em .8em;
+  padding: .35em 1em;
   border-radius: 999px;
   font-size: .78rem;
   font-weight: 700;
   white-space: nowrap;
-  color: var(--ivory);
 }
-.news-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.news-tag-notice { background: var(--carrot); }
-.news-tag-activity { background: var(--sage); }
-.news-tag-event { background: var(--coffee-700); }
-.news-title { line-height: 1.5; }
+.news-tag-notice { background: var(--tag-notice-bg); color: var(--tag-notice-fg); }
+.news-tag-activity { background: var(--tag-activity-bg); color: var(--tag-activity-fg); }
+.news-tag-event { background: var(--tag-event-bg); color: var(--tag-event-fg); }
+.news-title { line-height: 1.5; flex: 1 1 200px; }
 .news-more { display: block; width: fit-content; margin: 20px auto 0; }
 .news-list-full { max-width: 720px; margin: 0 auto; }
+
+/* News tab: filter pills + sort */
+.news-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto 1.6em;
+}
+.news-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.news-filter-btn {
+  padding: .5em 1.1em;
+  border-radius: 999px;
+  border: 1.5px solid var(--camel-light);
+  background: var(--ivory);
+  color: var(--coffee-800);
+  font-size: .85rem;
+  font-weight: 700;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.news-filter-btn:hover { border-color: var(--carrot); }
+.news-filter-btn.is-active { background: var(--coffee-800); border-color: var(--coffee-800); color: var(--ivory); }
+.news-sort { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--coffee-700); }
+.news-sort select {
+  padding: .4em .8em;
+  border-radius: 999px;
+  border: 1.5px solid var(--camel-light);
+  background: var(--ivory);
+  color: var(--coffee-900);
+  font-family: inherit;
+  font-size: .85rem;
+}
 
 /* Link grid */
 .link-grid {

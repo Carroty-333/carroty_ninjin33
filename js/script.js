@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const TABS = ["home", "news", "profile", "gallery", "guideline", "commission", "contact"];
+  const TABS = ["home", "profile", "gallery", "news", "guideline", "commission", "contact"];
   const GALLERY_REPO = "Carroty-333/carroty_ninjin33";
   const GALLERY_PATH = "assets/gallery";
 
@@ -205,7 +205,7 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       siteIntro.remove();
     } else {
-      window.setTimeout(() => siteIntro.remove(), 5400);
+      window.setTimeout(() => siteIntro.remove(), 4100);
     }
   }
 
@@ -227,9 +227,10 @@
     const middleBtn = heroActions.children[1];
     if (!middleBtn) return;
     heroActions.style.transform = "none";
+    const EXTRA_LEFT_SHIFT = 56; // nudge further left than dead-center under the heading
     const titleRect = heroTitle.getBoundingClientRect();
     const btnRect = middleBtn.getBoundingClientRect();
-    const shift = (titleRect.left + titleRect.width / 2) - (btnRect.left + btnRect.width / 2);
+    const shift = (titleRect.left + titleRect.width / 2) - (btnRect.left + btnRect.width / 2) - EXTRA_LEFT_SHIFT;
     heroActions.style.transform = `translateX(${shift}px)`;
   }
   window.addEventListener("resize", alignHeroActions);
@@ -245,19 +246,45 @@
       : item.category === "event" ? "news-tag-event"
       : "news-tag-activity";
     li.innerHTML = `
-      <span class="news-date">${item.date}</span>
       <span class="news-tag ${tagClass}">${NEWS_CATEGORY_LABELS[item.category] || item.category}</span>
+      <span class="news-date">${item.date}</span>
       <span class="news-title">${item.title}</span>
     `;
     return li;
   }
-  const newsPreviewList = document.getElementById("newsPreviewList");
-  const newsFullList = document.getElementById("newsFullList");
-  if (newsPreviewList) {
-    NEWS_ITEMS.slice(0, 5).forEach((item) => newsPreviewList.appendChild(renderNewsItem(item)));
+  function sortedNews(order) {
+    const sorted = NEWS_ITEMS.slice().sort((a, b) => a.date.localeCompare(b.date));
+    return order === "asc" ? sorted : sorted.reverse();
   }
+  const newsPreviewList = document.getElementById("newsPreviewList");
+  if (newsPreviewList) {
+    sortedNews("desc").slice(0, 5).forEach((item) => newsPreviewList.appendChild(renderNewsItem(item)));
+  }
+
+  const newsFullList = document.getElementById("newsFullList");
+  const newsFilter = document.getElementById("newsFilter");
+  const newsSort = document.getElementById("newsSort");
   if (newsFullList) {
-    NEWS_ITEMS.forEach((item) => newsFullList.appendChild(renderNewsItem(item)));
+    let activeCategory = "all";
+    function renderFullNews() {
+      newsFullList.innerHTML = "";
+      sortedNews(newsSort ? newsSort.value : "desc")
+        .filter((item) => activeCategory === "all" || item.category === activeCategory)
+        .forEach((item) => newsFullList.appendChild(renderNewsItem(item)));
+    }
+    if (newsFilter) {
+      newsFilter.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-news-filter]");
+        if (!btn) return;
+        activeCategory = btn.dataset.newsFilter;
+        newsFilter.querySelectorAll(".news-filter-btn").forEach((b) => b.classList.toggle("is-active", b === btn));
+        renderFullNews();
+      });
+    }
+    if (newsSort) {
+      newsSort.addEventListener("change", renderFullNews);
+    }
+    renderFullNews();
   }
 
   /* ---------------- Video marquee: steps one item to the left every 5s, looping seamlessly ---------------- */
