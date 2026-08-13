@@ -81,75 +81,338 @@ li { list-style: none; }
 }
 .skip-link:focus { left: 0; }
 
-/* ---------- First-load intro (coffee pours from above, rises as a wave, then parts) ---------- */
-.site-intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; background: #fff; }
+/* ==========================================================================
+   First-load intro
+   White → center pour → dual wave rise → logo → curtain open
+   ========================================================================== */
 
-/* A center line drops in first (0.1s-0.45s), then a double wave rises from
-   the bottom (from ~0.3s) to fully cover the screen by ~1.6s, holds briefly,
-   then the two halves part like a curtain with slightly angled inner edges. */
+.site-intro {
+  --intro-wave-height: clamp(90px, 15vh, 160px);
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+
+  /*
+   * カーテンが開いたときに背後のHPを見せるため、
+   * .site-intro自体には白背景を設定しない。
+   */
+  background: transparent;
+  isolation: isolate;
+}
+
+/* イントロ開始時に表示する白背景 */
+.intro-white-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: #fff;
+  opacity: 1;
+
+  /*
+   * カーテンが全面を覆った直後に非表示にする。
+   * これにより、カーテンの隙間から実際のHPが見える。
+   */
+  animation:
+    introWhiteHide .01s steps(1, end) 2.45s forwards;
+}
+
+@keyframes introWhiteHide {
+  to {
+    opacity: 0;
+  }
+}
+
+/* 0.10〜0.45秒：画面中央の線が上から下へ伸びる */
 .intro-line {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 30px;
+  z-index: 4;
+
+  width: clamp(12px, 1.55vw, 30px);
   height: 0;
+
   transform: translateX(-50%);
   background: var(--coffee-900);
-  z-index: 5;
-  opacity: 1;
-  animation: introLineGrow .35s ease-out .1s forwards,
-             introLineFade .12s ease 1.55s forwards;
-}
-@keyframes introLineGrow { to { height: 100%; } }
-@keyframes introLineFade { to { opacity: 0; } }
 
-.intro-panel {
-  position: absolute;
-  bottom: -2px;
-  width: 55%;
-  height: calc(100% + 4px);
-  background: var(--coffee-900);
-  overflow: visible;
-  z-index: 2;
-}
-/* Panels are wider than 50% and overlap past center; the slanted inner edge
-   still meets its twin with margin to spare, so no gap opens at the seam. */
-.intro-panel-l { left: 0; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); animation: introPanelLeft 2.45s forwards; }
-.intro-panel-r { right: 0; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%); animation: introPanelRight 2.45s forwards; }
-
-/* Rise: 0%-65% (~1.6s), ease-in. Hold: 65%-71% (~0.15s). Curtain-open:
-   71%-100% (~0.7s), slow-fast-slow ease-in-out. */
-@keyframes introPanelLeft {
-  0%   { transform: translate(0, 100%); animation-timing-function: ease-in; }
-  65%  { transform: translate(0, 0%); }
-  71%  { transform: translate(0, 0%); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
-  100% { transform: translate(-100%, 0%); }
-}
-@keyframes introPanelRight {
-  0%   { transform: translate(0, 100%); animation-timing-function: ease-in; }
-  65%  { transform: translate(0, 0%); }
-  71%  { transform: translate(0, 0%); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
-  100% { transform: translate(100%, 0%); }
+  animation:
+    introLineGrow .35s ease-out .10s forwards,
+    introLineHide .01s steps(1, end) 1.66s forwards;
 }
 
-/* Layered waves riding the panel's leading edge while it rises; once the
-   panel settles at translateY(0) they sit above the viewport, out of view. */
-.intro-wave-wrap {
+@keyframes introLineGrow {
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes introLineHide {
+  to {
+    opacity: 0;
+  }
+}
+
+/*
+ * 画面全幅で上昇する液体。
+ *
+ * ビューポート高＋波の高さを持つ1枚のレイヤーとして実装する。
+ * 左右に分割しないこと。
+ *
+ * 開始時は要素自身の全高ぶん下へ移動して完全に画面外へ配置する。
+ * 最終位置では波部分が画面上へ抜け、
+ * intro-liquid-bodyが画面全体を覆う。
+ */
+.intro-liquid {
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  height: 13vh;
-  min-height: 75px;
-  max-height: 140px;
-  overflow: hidden;
+  bottom: 0;
+  z-index: 3;
+
+  width: 100%;
+  height: calc(100% + var(--intro-wave-height));
+
+  transform: translateY(100%);
+  opacity: 1;
+
+  animation:
+    introLiquidRise 1.35s cubic-bezier(.35, 0, .18, 1) .30s forwards,
+    introLiquidHide .01s steps(1, end) 2.45s forwards;
+
+  will-change: transform;
 }
-.intro-wave { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; }
-.intro-wave.wave-a { fill: var(--coffee-700); }
-.intro-wave.wave-b { fill: var(--coffee-900); }
+
+@keyframes introLiquidRise {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes introLiquidHide {
+  to {
+    opacity: 0;
+  }
+}
+
+/*
+ * 波SVGは画面全幅に対して1組だけ配置する。
+ * 左右カーテン内に複製しないこと。
+ */
+.intro-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: var(--intro-wave-height);
+
+  display: block;
+}
+
+.intro-wave-back {
+  z-index: 1;
+  fill: var(--coffee-700);
+  transform: translateY(-10%);
+}
+
+.intro-wave-front {
+  z-index: 2;
+  fill: var(--coffee-900);
+  transform: translateY(10%);
+}
+
+/* 波の下側を埋める濃いコーヒー色 */
+.intro-liquid-body {
+  position: absolute;
+  z-index: 2;
+
+  left: 0;
+  right: 0;
+  top: calc(var(--intro-wave-height) - 2px);
+  bottom: 0;
+
+  background: var(--coffee-900);
+}
+
+/*
+ * 液体が全面を覆った後に使用する左右カーテン。
+ *
+ * 液体上昇用要素とは分離すること。
+ * カーテンは2.44秒で液体の上へ表示し、
+ * その直後に白背景と液体を非表示へ切り替える。
+ */
+.intro-curtains {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.intro-curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  /*
+   * 50%ぴったりではなく56%幅にして中央を重ねる。
+   * 斜め辺を使用しても、閉じた状態で隙間ができないようにする。
+   */
+  width: 56%;
+
+  background: var(--coffee-900);
+  opacity: 0;
+
+  will-change: transform;
+}
+
+.intro-curtain-l {
+  left: 0;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    90% 100%,
+    0 100%
+  );
+
+  animation:
+    introCurtainShow .01s steps(1, end) 2.44s forwards,
+    introCurtainLeft .80s cubic-bezier(.45, 0, .20, 1) 2.45s forwards;
+}
+
+.intro-curtain-r {
+  right: 0;
+
+  clip-path: polygon(
+    10% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  animation:
+    introCurtainShow .01s steps(1, end) 2.44s forwards,
+    introCurtainRight .80s cubic-bezier(.45, 0, .20, 1) 2.45s forwards;
+}
+
+@keyframes introCurtainShow {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes introCurtainLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-110%);
+  }
+}
+
+@keyframes introCurtainRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(110%);
+  }
+}
+
+/*
+ * 液体が画面上端へ到達した直後に白ロゴを表示する。
+ *
+ * 透明余白が大きい画像なので、
+ * CSS上の画像幅は少し大きめに設定する。
+ */
+.intro-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+
+  width: min(82vw, 560px);
+  max-height: 70vh;
+  object-fit: contain;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.90);
+
+  animation:
+    introLogoIn .25s cubic-bezier(.22, 1, .36, 1) 1.68s forwards,
+    introLogoOut .18s ease-in 2.25s forwards;
+
+  will-change: opacity, transform;
+}
+
+@keyframes introLogoIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.90);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes introLogoOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-intro {
+    --intro-wave-height: clamp(75px, 13vh, 115px);
+  }
+
+  .intro-logo {
+    width: min(88vw, 430px);
+  }
+
+  /*
+   * スマホではカーテン中央辺の傾斜を弱くする。
+   * 画面が狭いときに巨大な斜め面が見えるのを防ぐ。
+   */
+  .intro-curtain-l {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      94% 100%,
+      0 100%
+    );
+  }
+
+  .intro-curtain-r {
+    clip-path: polygon(
+      6% 0,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .site-intro { display: none; }
+  .site-intro {
+    display: none;
+  }
 }
 
 /* ---------- layout helpers ---------- */

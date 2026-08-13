@@ -9,32 +9,76 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 </head>
 <body>
 
 <div class="site-intro" id="siteIntro" aria-hidden="true">
+  <!-- アニメーション開始時の白背景 -->
+  <div class="intro-white-screen"></div>
+
+  <!-- 上から伸びる中央線 -->
   <div class="intro-line"></div>
-  <div class="intro-panel intro-panel-l">
-    <div class="intro-wave-wrap">
-      <svg class="intro-wave wave-a" viewBox="0 0 400 120" preserveAspectRatio="none">
-        <path d="M0,58 C33,20 67,20 100,58 C133,96 167,96 200,58 C233,20 267,20 300,58 C333,96 367,96 400,58 L400,120 L0,120 Z"/>
-      </svg>
-      <svg class="intro-wave wave-b" viewBox="0 0 400 120" preserveAspectRatio="none">
-        <path d="M0,45 C33,83 67,83 100,45 C133,7 167,7 200,45 C233,83 267,83 300,45 C333,7 367,7 400,45 L400,120 L0,120 Z"/>
-      </svg>
-    </div>
+
+  <!-- 画面全幅で上昇する液体 -->
+  <div class="intro-liquid">
+    <svg
+      class="intro-wave intro-wave-back"
+      viewBox="0 0 1200 160"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d="
+        M0,80
+        C100,20 100,20 200,80
+        S300,140 400,80
+        S500,20 600,80
+        S700,140 800,80
+        S900,20 1000,80
+        S1100,140 1200,80
+        L1200,160
+        L0,160
+        Z
+      " />
+    </svg>
+
+    <svg
+      class="intro-wave intro-wave-front"
+      viewBox="0 0 1200 160"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d="
+        M0,62
+        C100,122 100,122 200,62
+        S300,2 400,62
+        S500,122 600,62
+        S700,2 800,62
+        S900,122 1000,62
+        S1100,2 1200,62
+        L1200,160
+        L0,160
+        Z
+      " />
+    </svg>
+
+    <div class="intro-liquid-body"></div>
   </div>
-  <div class="intro-panel intro-panel-r">
-    <div class="intro-wave-wrap">
-      <svg class="intro-wave wave-a" viewBox="0 0 400 120" preserveAspectRatio="none">
-        <path d="M0,58 C33,20 67,20 100,58 C133,96 167,96 200,58 C233,20 267,20 300,58 C333,96 367,96 400,58 L400,120 L0,120 Z"/>
-      </svg>
-      <svg class="intro-wave wave-b" viewBox="0 0 400 120" preserveAspectRatio="none">
-        <path d="M0,45 C33,83 67,83 100,45 C133,7 167,7 200,45 C233,83 267,83 300,45 C333,7 367,7 400,45 L400,120 L0,120 Z"/>
-      </svg>
-    </div>
+
+  <!-- 液体が全面を覆った後に表示する左右カーテン -->
+  <div class="intro-curtains">
+    <div class="intro-curtain intro-curtain-l"></div>
+    <div class="intro-curtain intro-curtain-r"></div>
   </div>
+
+  <!-- 液体が上端へ到達してから表示するロゴ -->
+  <img
+    class="intro-logo"
+    src="assets/images/logo-carrol-intro-white.png"
+    alt=""
+    fetchpriority="high"
+  >
 </div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
@@ -492,6 +536,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=3"></script>
+<script src="js/script.js?v=4"></script>
 </body>
 </html>

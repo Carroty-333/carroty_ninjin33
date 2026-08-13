@@ -201,11 +201,36 @@
 
   /* ---------------- First-load intro ---------------- */
   const siteIntro = document.getElementById("siteIntro");
+
   if (siteIntro) {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) {
       siteIntro.remove();
     } else {
-      window.setTimeout(() => siteIntro.remove(), 2550);
+      const leftCurtain = siteIntro.querySelector(".intro-curtain-l");
+      let introRemoved = false;
+
+      function removeIntro() {
+        if (introRemoved) return;
+
+        introRemoved = true;
+        siteIntro.remove();
+      }
+
+      leftCurtain?.addEventListener("animationend", (event) => {
+        if (event.animationName === "introCurtainLeft") {
+          removeIntro();
+        }
+      });
+
+      /*
+       * animationendが発火しなかった場合の保険。
+       * 通常は約3.25秒でanimationendから削除される。
+       */
+      window.setTimeout(removeIntro, 3600);
     }
   }
 
