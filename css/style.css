@@ -661,7 +661,23 @@ main { padding-top: var(--header-h); }
 @media (min-width: 640px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
 
+/* Each recommended video sits on a little cushion (zabuton) */
+.video-column { display: flex; flex-direction: column; align-items: center; }
+.video-cushion {
+  position: relative;
+  z-index: 1;
+  width: 62%;
+  height: 32px;
+  margin-bottom: -10px;
+  background: linear-gradient(160deg, var(--carrot), var(--carrot-dark));
+  border-radius: 50% 50% 42% 42% / 100% 100% 55% 55%;
+  box-shadow: 0 3px 0 rgba(74, 50, 33, .18);
+}
+
 .video-card {
+  position: relative;
+  z-index: 0;
+  width: 100%;
   background: var(--ivory);
   border: 2px solid var(--camel-light);
   border-radius: var(--radius-lg);
@@ -686,38 +702,49 @@ main { padding-top: var(--header-h); }
   text-align: center;
 }
 
-/* Auto-sliding video strip (drinking / game streams), full viewport width */
-.video-strip {
+/* Endlessly scrolling ribbon of stream-archive thumbnails, full viewport width */
+.video-marquee {
   position: relative;
   width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 12px;
-  padding-bottom: 48px;
+  margin-top: 36px;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 22px 0;
   background: var(--coffee-900);
   overflow: hidden;
 }
-.video-strip-label {
-  position: relative;
-  z-index: 2;
-  margin: 22px 0 14px;
-  color: var(--ivory);
-}
-.video-strip-track {
-  position: relative;
+.video-marquee-track {
   display: flex;
-  width: 300vw;
-  transition: transform .7s cubic-bezier(.45, 0, .2, 1);
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  padding-inline: 16px;
+  animation: marqueeScroll 42s linear infinite;
 }
-.video-strip-slide {
+.video-marquee-track + .video-marquee-track {
+  position: absolute;
+  top: 22px;
+  left: 100%;
+}
+.video-marquee:hover .video-marquee-track { animation-play-state: paused; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+.video-marquee-item {
   position: relative;
-  width: 100vw;
-  flex: 0 0 100vw;
+  flex: 0 0 auto;
+  width: 220px;
   aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--coffee-700);
+  transition: transform .25s var(--ease-cute), border-color .25s ease;
 }
-.video-strip-slide iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-marquee-item:hover { transform: translateY(-4px) scale(1.03); border-color: var(--carrot); }
+.video-marquee-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (min-width: 900px) {
-  .video-strip-slide { aspect-ratio: 30 / 9; }
+  .video-marquee-item { width: 280px; }
 }
 
 /* ==========================================================================
