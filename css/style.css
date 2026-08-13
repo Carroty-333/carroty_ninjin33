@@ -84,68 +84,67 @@ li { list-style: none; }
 /* ---------- First-load intro (coffee pours from above, rises as a wave, then parts) ---------- */
 .site-intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; background: #fff; }
 
-/* Phase 1 (0.2s-1.2s): a double wave rises from the bottom, sweeps up through
-   the screen, and exits off the top, revealing white behind it. */
-.site-intro-wavewipe {
+/* A center line drops in first (0.1s-0.45s), then a double wave rises from
+   the bottom (from ~0.3s) to fully cover the screen by ~1.6s, holds briefly,
+   then the two halves part like a curtain with slightly angled inner edges. */
+.intro-line {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  width: 30px;
+  height: 0;
+  transform: translateX(-50%);
+  background: var(--coffee-900);
+  z-index: 5;
+  opacity: 1;
+  animation: introLineGrow .35s ease-out .1s forwards,
+             introLineFade .12s ease 1.55s forwards;
+}
+@keyframes introLineGrow { to { height: 100%; } }
+@keyframes introLineFade { to { opacity: 0; } }
+
+.intro-panel {
+  position: absolute;
+  bottom: -2px;
+  width: 50%;
+  height: calc(100% + 4px);
+  background: var(--coffee-900);
   overflow: visible;
+  z-index: 2;
 }
-.wavewipe-svg {
-  position: absolute;
-  left: -10%;
-  width: 120%;
-  height: 100vh;
-  transform: translateY(100%);
-  animation: waveWipeMove 1s .2s cubic-bezier(.5, 0, .5, 1) forwards;
+.intro-panel-l { left: 0; clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%); animation: introPanelLeft 2.45s forwards; }
+.intro-panel-r { right: 0; clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%); animation: introPanelRight 2.45s forwards; }
+
+/* Rise: 0%-65% (~1.6s), ease-in. Hold: 65%-71% (~0.15s). Curtain-open:
+   71%-100% (~0.7s), slow-fast-slow ease-in-out. */
+@keyframes introPanelLeft {
+  0%   { transform: translate(0, 100%); animation-timing-function: ease-in; }
+  65%  { transform: translate(0, 0%); }
+  71%  { transform: translate(0, 0%); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
+  100% { transform: translate(-100%, 0%); }
 }
-.wavewipe-back { fill: var(--coffee-700); animation-name: waveWipeMoveBack; }
-.wavewipe-front { fill: var(--coffee-900); }
-@keyframes waveWipeMove {
-  0%   { transform: translateY(100%) translateX(0); }
-  30%  { transform: translateY(20%) translateX(1.5%); }
-  65%  { transform: translateY(-60%) translateX(-1.5%); }
-  100% { transform: translateY(-140%) translateX(0); }
-}
-@keyframes waveWipeMoveBack {
-  0%   { transform: translateY(112%) translateX(0); }
-  30%  { transform: translateY(32%) translateX(-1.8%); }
-  65%  { transform: translateY(-48%) translateX(1.8%); }
-  100% { transform: translateY(-128%) translateX(0); }
+@keyframes introPanelRight {
+  0%   { transform: translate(0, 100%); animation-timing-function: ease-in; }
+  65%  { transform: translate(0, 0%); }
+  71%  { transform: translate(0, 0%); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
+  100% { transform: translate(100%, 0%); }
 }
 
-/* Phase 2 (1.2s-2.0s): ten vertical stripes snap in and fully cover the
-   screen. Phase 3 (2.0s-3.0s): they slide out up/down alternately, staggered
-   from the center outward, revealing the page underneath. */
-.site-intro-stripes {
+/* Layered waves riding the panel's leading edge while it rises; once the
+   panel settles at translateY(0) they sit above the viewport, out of view. */
+.intro-wave-wrap {
   position: absolute;
-  inset: 0;
-  display: flex;
-  opacity: 0;
-  animation: introStripesShow .01s 1.2s forwards;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 2px);
+  height: 13vh;
+  min-height: 75px;
+  max-height: 140px;
+  overflow: hidden;
 }
-.intro-stripe {
-  flex: 1 1 10%;
-  height: 100%;
-  transform: translateY(0);
-  transition: none;
-  animation: none;
-}
-.intro-stripe:nth-child(odd)  { background: var(--coffee-900); }
-.intro-stripe:nth-child(even) { background: var(--coffee-700); }
-.intro-stripe:nth-child(1) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
-.intro-stripe:nth-child(2) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
-.intro-stripe:nth-child(3) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
-.intro-stripe:nth-child(4) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
-.intro-stripe:nth-child(5) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.10s forwards; }
-.intro-stripe:nth-child(6) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.10s forwards; }
-.intro-stripe:nth-child(7) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
-.intro-stripe:nth-child(8) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
-.intro-stripe:nth-child(9) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
-.intro-stripe:nth-child(10){ animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
-@keyframes introStripesShow { to { opacity: 1; } }
-@keyframes introStripeUp   { from { transform: translateY(0); } to { transform: translateY(-100%); } }
-@keyframes introStripeDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
+.intro-wave { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; }
+.intro-wave.wave-a { fill: var(--coffee-700); }
+.intro-wave.wave-b { fill: var(--coffee-900); }
 
 @media (prefers-reduced-motion: reduce) {
   .site-intro { display: none; }
