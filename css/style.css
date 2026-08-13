@@ -84,133 +84,69 @@ li { list-style: none; }
 /* ---------- First-load intro (coffee pours from above, rises as a wave, then parts) ---------- */
 .site-intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; overflow: hidden; background: #fff; }
 
-/* Thin stream pouring in forcefully from the top (~1s), then the liquid rises to meet it */
-.site-intro-pour {
+/* Phase 1 (0.2s-1.2s): a double wave rises from the bottom, sweeps up through
+   the screen, and exits off the top, revealing white behind it. */
+.site-intro-wavewipe {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 8px;
-  height: 0;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom, var(--coffee-700), var(--coffee-900));
-  border-radius: 0 0 6px 6px;
-  filter: blur(.3px);
-  animation: introPour 1.05s cubic-bezier(.2, .85, .3, 1.15) forwards;
-}
-@keyframes introPour {
-  0%   { height: 0; opacity: 1; }
-  55%  { height: 32vh; opacity: 1; }
-  75%  { height: 26vh; opacity: 1; }
-  100% { height: 26vh; opacity: 0; }
-}
-
-.site-intro-panel {
-  position: absolute;
-  bottom: -2px;
-  width: 50%;
-  height: calc(100% + 4px);
-  background: linear-gradient(160deg, var(--coffee-800), var(--coffee-900) 75%);
+  inset: 0;
   overflow: visible;
 }
-.site-intro-panel-l { left: 0; animation: introPanelLeft 2.9s .9s forwards; }
-.site-intro-panel-r { right: 0; animation: introPanelRight 2.9s .9s forwards; }
-
-/* Layered waves riding the top edge of each panel, like a rising tide */
-.site-intro-wave-wrap {
+.wavewipe-svg {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 3px);
-  height: 14vh;
-  min-height: 80px;
-  max-height: 150px;
-  overflow: hidden;
-  animation: waveBob 2.6s ease-in-out infinite;
+  left: -10%;
+  width: 120%;
+  height: 100vh;
+  transform: translateY(100%);
+  animation: waveWipeMove 1s .2s cubic-bezier(.5, 0, .5, 1) forwards;
 }
-.site-intro-wave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  display: block;
+.wavewipe-back { fill: var(--coffee-700); animation-name: waveWipeMoveBack; }
+.wavewipe-front { fill: var(--coffee-900); }
+@keyframes waveWipeMove {
+  0%   { transform: translateY(100%) translateX(0); }
+  30%  { transform: translateY(20%) translateX(1.5%); }
+  65%  { transform: translateY(-60%) translateX(-1.5%); }
+  100% { transform: translateY(-140%) translateX(0); }
 }
-.site-intro-wave.wave-a {
-  fill: var(--coffee-900);
-  animation: waveScroll 4.4s linear infinite;
-}
-.site-intro-wave.wave-b {
-  fill: var(--coffee-700);
-  opacity: .55;
-  animation: waveScroll 6.2s linear infinite reverse;
-}
-@keyframes waveScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@keyframes waveBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-/* Rise (0%-66% of this animation, i.e. ~1.9s after the .9s delay) uses a smooth
-   ease-out so the liquid settles flush with no overshoot; the moment it's fully
-   risen it immediately begins parting (66%-100%) with a cuter bounce easing —
-   no static hold in between. */
-@keyframes introPanelLeft {
-  0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
-  66%  { transform: translate(0, 0%); }
-  66.01% { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
-  100% { transform: translate(-100%, 0%); }
-}
-@keyframes introPanelRight {
-  0%   { transform: translate(0, 100%); animation-timing-function: cubic-bezier(.22, .61, .36, 1); }
-  66%  { transform: translate(0, 0%); }
-  66.01% { transform: translate(0, 0%); animation-timing-function: var(--ease-cute); }
-  100% { transform: translate(100%, 0%); }
+@keyframes waveWipeMoveBack {
+  0%   { transform: translateY(112%) translateX(0); }
+  30%  { transform: translateY(32%) translateX(-1.8%); }
+  65%  { transform: translateY(-48%) translateX(1.8%); }
+  100% { transform: translateY(-128%) translateX(0); }
 }
 
-.site-intro-brand {
+/* Phase 2 (1.2s-2.0s): ten vertical stripes snap in and fully cover the
+   screen. Phase 3 (2.0s-3.0s): they slide out up/down alternately, staggered
+   from the center outward, revealing the page underneath. */
+.site-intro-stripes {
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
-  animation: introBrand 1.1s ease 2.5s forwards;
+  animation: introStripesShow .01s 1.2s forwards;
 }
-@keyframes introBrand {
-  0%   { opacity: 0; transform: scale(.7); }
-  30%  { opacity: 1; transform: scale(1); }
-  60%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.05); }
+.intro-stripe {
+  flex: 1 1 10%;
+  height: 100%;
+  transform: translateY(0);
+  transition: none;
+  animation: none;
 }
-.site-intro-logo {
-  position: relative;
-  width: 110px;
-  height: auto;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.4));
-}
-.site-intro-steam {
-  position: absolute;
-  left: 42%;
-  top: 8%;
-  width: 5px;
-  height: 18px;
-  background: linear-gradient(to top, rgba(255,255,255,.75), rgba(255,255,255,0));
-  border-radius: 50%;
-  filter: blur(.5px);
-  opacity: 0;
-  animation: introSteam 1s ease-in-out 2.9s forwards;
-}
-.site-intro-steam.s2 { left: 56%; animation-delay: 3.1s; }
-@keyframes introSteam {
-  0% { opacity: 0; transform: translateY(0); }
-  20% { opacity: .8; }
-  50% { opacity: .5; transform: translateY(-14px); }
-  72% { opacity: 0; transform: translateY(-24px); }
-  100% { opacity: 0; }
-}
+.intro-stripe:nth-child(odd)  { background: var(--coffee-900); }
+.intro-stripe:nth-child(even) { background: var(--coffee-700); }
+.intro-stripe:nth-child(1) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
+.intro-stripe:nth-child(2) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
+.intro-stripe:nth-child(3) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
+.intro-stripe:nth-child(4) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
+.intro-stripe:nth-child(5) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.10s forwards; }
+.intro-stripe:nth-child(6) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.10s forwards; }
+.intro-stripe:nth-child(7) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
+.intro-stripe:nth-child(8) { animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.15s forwards; }
+.intro-stripe:nth-child(9) { animation: introStripeUp   .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
+.intro-stripe:nth-child(10){ animation: introStripeDown .7s cubic-bezier(.77,0,.175,1) 2.20s forwards; }
+@keyframes introStripesShow { to { opacity: 1; } }
+@keyframes introStripeUp   { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+@keyframes introStripeDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
 @media (prefers-reduced-motion: reduce) {
   .site-intro { display: none; }
 }
