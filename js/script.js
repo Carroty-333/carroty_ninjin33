@@ -1,9 +1,17 @@
 (() => {
   "use strict";
 
-  const TABS = ["home", "profile", "gallery", "guideline", "commission", "contact"];
+  const TABS = ["home", "news", "profile", "gallery", "guideline", "commission", "contact"];
   const GALLERY_REPO = "Carroty-333/carroty_ninjin33";
   const GALLERY_PATH = "assets/gallery";
+
+  /* ---------------- News items (edit this list to add/remove news) ---------------- */
+  const NEWS_CATEGORY_LABELS = { notice: "お知らせ", activity: "活動情報", event: "イベント情報" };
+  const NEWS_ITEMS = [
+    { date: "2026.07.05", category: "activity", title: "新モデル初配信" },
+    { date: "2026.07.04", category: "activity", title: "新モデルとしてReデビュー" },
+    { date: "2022.04.23", category: "notice", title: "VTuberデビュー" },
+  ];
 
   const panels = document.querySelectorAll(".tab-panel");
   const tabLinks = document.querySelectorAll("[data-tab-link]");
@@ -207,7 +215,90 @@
     header.classList.toggle("is-scrolled", window.scrollY > 20);
   }, { passive: true });
 
+  /* ---------------- Align hero buttons so "喫茶店をのぞく" centers under the heading ---------------- */
+  const heroTitle = document.querySelector(".hero-title");
+  const heroActions = document.querySelector(".hero-actions");
+  function alignHeroActions() {
+    if (!heroTitle || !heroActions) return;
+    if (!window.matchMedia("(min-width: 800px)").matches) {
+      heroActions.style.transform = "none";
+      return;
+    }
+    const middleBtn = heroActions.children[1];
+    if (!middleBtn) return;
+    heroActions.style.transform = "none";
+    const titleRect = heroTitle.getBoundingClientRect();
+    const btnRect = middleBtn.getBoundingClientRect();
+    const shift = (titleRect.left + titleRect.width / 2) - (btnRect.left + btnRect.width / 2);
+    heroActions.style.transform = `translateX(${shift}px)`;
+  }
+  window.addEventListener("resize", alignHeroActions);
+  window.addEventListener("load", alignHeroActions);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(alignHeroActions);
+  }
+
+  /* ---------------- News lists (home preview + full News tab) ---------------- */
+  function renderNewsItem(item) {
+    const li = document.createElement("li");
+    const tagClass = item.category === "notice" ? "news-tag-notice"
+      : item.category === "event" ? "news-tag-event"
+      : "news-tag-activity";
+    li.innerHTML = `
+      <span class="news-date">${item.date}</span>
+      <span class="news-tag ${tagClass}">${NEWS_CATEGORY_LABELS[item.category] || item.category}</span>
+      <span class="news-title">${item.title}</span>
+    `;
+    return li;
+  }
+  const newsPreviewList = document.getElementById("newsPreviewList");
+  const newsFullList = document.getElementById("newsFullList");
+  if (newsPreviewList) {
+    NEWS_ITEMS.slice(0, 5).forEach((item) => newsPreviewList.appendChild(renderNewsItem(item)));
+  }
+  if (newsFullList) {
+    NEWS_ITEMS.forEach((item) => newsFullList.appendChild(renderNewsItem(item)));
+  }
+
+  /* ---------------- Video marquee: steps one item to the left every 5s, looping seamlessly ---------------- */
+  const marquee = document.getElementById("videoMarquee");
+  const marqueeTrack = document.getElementById("videoMarqueeTrack");
+  if (marquee && marqueeTrack) {
+    const originalItems = Array.from(marqueeTrack.children);
+    originalItems.forEach((item) => marqueeTrack.appendChild(item.cloneNode(true)));
+    let step = 0;
+    let timer = null;
+    function stepMarquee() {
+      step += 1;
+      const item = marqueeTrack.children[0];
+      const itemWidth = item.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(marqueeTrack).columnGap || getComputedStyle(marqueeTrack).gap || 0);
+      marqueeTrack.style.transition = "transform .8s cubic-bezier(.45, 0, .2, 1)";
+      marqueeTrack.style.transform = `translateX(-${step * (itemWidth + gap)}px)`;
+      if (step === originalItems.length) {
+        window.setTimeout(() => {
+          marqueeTrack.style.transition = "none";
+          marqueeTrack.style.transform = "translateX(0)";
+          step = 0;
+        }, 820);
+      }
+    }
+    function startMarquee() { timer = window.setInterval(stepMarquee, 5000); }
+    function stopMarquee() { window.clearInterval(timer); }
+    startMarquee();
+    marquee.addEventListener("mouseenter", stopMarquee);
+    marquee.addEventListener("mouseleave", startMarquee);
+  }
+
+  /* ---------------- Twitter share button ---------------- */
+  const shareBtn = document.getElementById("shareTwitterBtn");
+  if (shareBtn) {
+    const shareText = "きゃろってぃー公式サイト";
+    shareBtn.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(location.origin + location.pathname)}&text=${encodeURIComponent(shareText)}`;
+  }
+
   /* ---------------- Init ---------------- */
   initFadeObserver();
   showTab(currentTabFromHash(), { scrollTop: false });
+  alignHeroActions();
 })();

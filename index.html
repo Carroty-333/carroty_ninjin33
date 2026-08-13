@@ -53,6 +53,7 @@
     <nav class="tab-nav" id="tabNav" aria-label="メインナビゲーション">
       <ul>
         <li><a href="#home" data-tab-link="home"><ruby>HOME<rt>ホーム</rt></ruby></a></li>
+        <li><a href="#news" data-tab-link="news"><ruby>News<rt>お知らせ</rt></ruby></a></li>
         <li><a href="#profile" data-tab-link="profile"><ruby>Profile<rt>プロフィール</rt></ruby></a></li>
         <li><a href="#gallery" data-tab-link="gallery"><ruby>FA Gallery<rt>ファンアート</rt></ruby></a></li>
         <li><a href="#guideline" data-tab-link="guideline"><ruby>Guideline<rt>規約・ルール</rt></ruby></a></li>
@@ -70,6 +71,7 @@
   <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
     <ul>
       <li><a href="#home" data-tab-link="home"><ruby>HOME<rt>ホーム</rt></ruby></a></li>
+      <li><a href="#news" data-tab-link="news"><ruby>News<rt>お知らせ</rt></ruby></a></li>
       <li><a href="#profile" data-tab-link="profile"><ruby>Profile<rt>プロフィール</rt></ruby></a></li>
       <li><a href="#gallery" data-tab-link="gallery"><ruby>FA Gallery<rt>ファンアート</rt></ruby></a></li>
       <li><a href="#guideline" data-tab-link="guideline"><ruby>Guideline<rt>規約・ルール</rt></ruby></a></li>
@@ -126,22 +128,9 @@
       </div>
     </div>
 
-    <div class="section-block">
-      <div class="board-card fade-up">
-        <div class="board-card-head">
-          <span class="board-chalk">Opening Hours</span>
-          <h2>営業時間(配信スケジュール)</h2>
-        </div>
-        <ul class="board-list">
-          <li><span class="day">月</span><span class="desc">フリー枠(雑談・ゲーム・コラボなど)</span><span class="time">21:00〜</span></li>
-          <li class="board-list-closed"><span class="day">火</span><span class="desc">定休日</span><span class="time">CLOSED</span></li>
-          <li class="board-list-closed"><span class="day">水</span><span class="desc">定休日</span><span class="time">CLOSED</span></li>
-          <li><span class="day">木</span><span class="desc">謎解き・脱出ゲーム</span><span class="time">21:00〜</span></li>
-          <li><span class="day">金</span><span class="desc">飲酒雑談</span><span class="time">21:00〜</span></li>
-          <li class="board-list-closed"><span class="day">土</span><span class="desc">定休日(不定期営業あり)</span><span class="time">CLOSED</span></li>
-          <li><span class="day">日</span><span class="desc">フリー枠(雑談・ゲーム・コラボなど)</span><span class="time">21:00〜</span></li>
-        </ul>
-      </div>
+    <div class="section-block schedule-block">
+      <h2 class="section-title fade-up">営業スケジュール</h2>
+      <img src="assets/images/weekly-schedule.jpg" alt="営業スケジュール(配信予定):月/木/金/日21:00〜、火/水/土は定休日(不定期営業あり)" class="schedule-img fade-up">
     </div>
 
     <div class="section-block menu-teasers">
@@ -177,8 +166,8 @@
       </div>
     </div>
 
-    <div class="video-marquee fade-up" aria-label="配信アーカイブ一覧">
-      <div class="video-marquee-track">
+    <div class="video-marquee fade-up" id="videoMarquee" aria-label="配信アーカイブ一覧">
+      <div class="video-marquee-track" id="videoMarqueeTrack">
         <a class="video-marquee-item" href="https://www.youtube.com/watch?v=R8Rv4BaRSTk" target="_blank" rel="noopener">
           <img src="https://i.ytimg.com/vi/R8Rv4BaRSTk/hqdefault.jpg" alt="酒飲み配信" loading="lazy">
         </a>
@@ -204,32 +193,65 @@
           <img src="https://i.ytimg.com/vi/zdiRg19ABWc/hqdefault.jpg" alt="【耐久】タンクorサポ プラチナ行くまで終わりません" loading="lazy">
         </a>
       </div>
-      <div class="video-marquee-track" aria-hidden="true">
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=R8Rv4BaRSTk" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/R8Rv4BaRSTk/hqdefault.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="section-block news-preview">
+      <h2 class="section-title fade-up">お知らせ</h2>
+      <div class="news-board fade-up">
+        <ul class="news-list" id="newsPreviewList"></ul>
+        <a href="#news" data-tab-link="news" class="btn btn-secondary news-more">もっと見る</a>
+      </div>
+    </div>
+
+    <div class="section-block links-section">
+      <h2 class="section-title fade-up">リンク</h2>
+      <div class="link-grid fade-up">
+        <a class="link-card" href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-x">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.9a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3Z"/></svg>
+          </span>
+          <span class="link-card-label">X (Twitter)</span>
         </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=oDv5Kx6GVd0" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/oDv5Kx6GVd0/hqdefault.jpg" alt="" loading="lazy">
+        <a class="link-card" href="https://www.youtube.com/@Carroty_Ninjin33" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-youtube">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
+          </span>
+          <span class="link-card-label">YouTube</span>
         </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=70fHKwi2JSY" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/70fHKwi2JSY/hqdefault.jpg" alt="" loading="lazy">
+        <a class="link-card" href="https://wick-sns.com/sns/profile/426f6413-e8da-4cc8-8722-90b6594b0499" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-wick">Wick</span>
+          <span class="link-card-label">Wick</span>
         </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=3w3yjyTuD9w" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/3w3yjyTuD9w/hqdefault.jpg" alt="" loading="lazy">
+        <a class="link-card" href="https://www.amazon.co.jp/hz/wishlist/ls/1A68DEKVWSIWI?ref_=wl_share" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-amazon">干し芋</span>
+          <span class="link-card-label">干し芋(ほしいものリスト)</span>
         </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=3GAIrUTS4Rc" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/3GAIrUTS4Rc/hqdefault.jpg" alt="" loading="lazy">
+        <a class="link-card" href="https://gi-pt.com/main/wishlist/fan-view/3a11f302-a5d0-ee90-04dd-e4a0202c4141" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-gipt">Gipt</span>
+          <span class="link-card-label">Gipt</span>
         </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=cqUqV6xcHUw" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/cqUqV6xcHUw/hqdefault.jpg" alt="" loading="lazy">
-        </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=8cA78GDZDJY" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/8cA78GDZDJY/hqdefault.jpg" alt="" loading="lazy">
-        </a>
-        <a class="video-marquee-item" tabindex="-1" href="https://www.youtube.com/watch?v=zdiRg19ABWc" target="_blank" rel="noopener">
-          <img src="https://i.ytimg.com/vi/zdiRg19ABWc/hqdefault.jpg" alt="" loading="lazy">
+        <a class="link-card" href="https://tsunagu.cloud/users/Ninjincarrot_33" target="_blank" rel="noopener">
+          <span class="link-card-badge link-card-badge-tsunagu">つなぐ</span>
+          <span class="link-card-label">つなぐ(V向け素材販売)</span>
         </a>
       </div>
+    </div>
+
+    <div class="section-block share-section">
+      <h2 class="section-title fade-up">シェアしてね</h2>
+      <div class="share-row fade-up">
+        <a class="share-btn" id="shareTwitterBtn" href="#" target="_blank" rel="noopener" aria-label="Twitterでシェア">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.9a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="tab-panel" id="news" data-panel="news">
+    <div class="section-block">
+      <h2 class="section-title fade-up">お知らせ</h2>
+      <ul class="news-list news-list-full fade-up" id="newsFullList"></ul>
     </div>
   </section>
 
