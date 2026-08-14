@@ -88,7 +88,7 @@ li { list-style: none; }
 
 .site-intro {
   --intro-wave-height: clamp(82px, 12vh, 132px);
-  --intro-duration: 3.1s;
+  --intro-duration: 3.8s;
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -108,8 +108,8 @@ li { list-style: none; }
 }
 
 @keyframes introWhiteTimeline {
-  0%, 67.8% { opacity: 1; }
-  68%, 100% { opacity: 0; }
+  0%, 73.8% { opacity: 1; }
+  74%, 100% { opacity: 0; }
 }
 
 .intro-line {
@@ -129,12 +129,12 @@ li { list-style: none; }
   0%, 2.5% { height: 0; opacity: 1; }
   2.5% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
   12% { height: 100%; opacity: 1; }
-  48% {
+  53% {
     height: 100%;
     opacity: 1;
     animation-timing-function: cubic-bezier(.42, 0, .58, 1);
   }
-  50%, 100% { height: 100%; opacity: 0; }
+  55%, 100% { height: 100%; opacity: 0; }
 }
 
 .intro-liquid {
@@ -155,15 +155,11 @@ li { list-style: none; }
   0%, 8% { transform: translate3d(0, 100%, 0); opacity: 1; }
   8% {
     transform: translate3d(0, 100%, 0);
-    animation-timing-function: cubic-bezier(.35, 0, .55, .9);
+    animation-timing-function: linear;
   }
-  18% {
-    transform: translate3d(0, 86%, 0);
-    animation-timing-function: cubic-bezier(.28, .032, .25, 1);
-  }
-  50% { transform: translate3d(0, 0, 0); opacity: 1; }
-  67.8% { transform: translate3d(0, 0, 0); opacity: 1; }
-  68%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  55% { transform: translate3d(0, 0, 0); opacity: 1; }
+  73.8% { transform: translate3d(0, 0, 0); opacity: 1; }
+  74%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
 }
 
 .intro-wave {
@@ -179,25 +175,27 @@ li { list-style: none; }
 }
 
 .intro-wave-back {
+  top: -18px;
   z-index: 1;
   fill: var(--coffee-700);
-  animation: introWaveBackDrift 2.2s ease-in-out alternate infinite;
+  animation: introWaveBackDrift 3.2s linear alternate infinite;
 }
 
 .intro-wave-front {
+  top: 14px;
   z-index: 2;
   fill: var(--coffee-900);
-  animation: introWaveFrontDrift 1.9s ease-in-out alternate infinite;
+  animation: introWaveFrontDrift 2.8s linear alternate infinite;
 }
 
 @keyframes introWaveBackDrift {
-  from { transform: translate3d(-.8%, -5%, 0); }
-  to { transform: translate3d(.8%, -5%, 0); }
+  from { transform: translate3d(-.8%, 0, 0); }
+  to { transform: translate3d(.8%, 0, 0); }
 }
 
 @keyframes introWaveFrontDrift {
-  from { transform: translate3d(.7%, 6%, 0); }
-  to { transform: translate3d(-.7%, 6%, 0); }
+  from { transform: translate3d(.7%, 0, 0); }
+  to { transform: translate3d(-.7%, 0, 0); }
 }
 
 .intro-liquid-body {
@@ -239,8 +237,8 @@ li { list-style: none; }
 }
 
 @keyframes introCurtainLeftTimeline {
-  0%, 67.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  68% {
+  0%, 73.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  74% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -249,8 +247,8 @@ li { list-style: none; }
 }
 
 @keyframes introCurtainRightTimeline {
-  0%, 67.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  68% {
+  0%, 73.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  74% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -273,18 +271,18 @@ li { list-style: none; }
 }
 
 @keyframes introLogoTimeline {
-  0%, 48% {
+  0%, 55% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% + 10px), 0) scale(.92);
   }
-  48% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
-  56% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
-  62% {
+  55% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  63% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+  68% {
     opacity: 1;
     transform: translate3d(-50%, -50%, 0) scale(1);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
-  68%, 100% {
+  74%, 100% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% - 6px), 0) scale(1.025);
   }
@@ -293,6 +291,8 @@ li { list-style: none; }
 @media (max-width: 600px) {
   .site-intro { --intro-wave-height: clamp(70px, 11vh, 105px); }
   .intro-logo { width: min(88vw, 430px); }
+  .intro-wave-back { top: -13px; }
+  .intro-wave-front { top: 11px; }
   .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 94.5% 100%, 0 100%); }
   .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 5.5% 100%); }
 }
