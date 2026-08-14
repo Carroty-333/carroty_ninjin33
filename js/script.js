@@ -221,16 +221,16 @@
       }
 
       leftCurtain?.addEventListener("animationend", (event) => {
-        if (event.animationName === "introCurtainLeft") {
+        if (event.animationName === "introCurtainLeftTimeline") {
           removeIntro();
         }
       });
 
       /*
        * animationendが発火しなかった場合の保険。
-       * 通常は約3.25秒でanimationendから削除される。
+       * 通常は約3.45秒でanimationendから削除される。
        */
-      window.setTimeout(removeIntro, 3600);
+      window.setTimeout(removeIntro, 3800);
     }
   }
 
