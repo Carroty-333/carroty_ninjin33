@@ -169,6 +169,7 @@ li { list-style: none; }
   width: 108%;
   height: var(--intro-wave-height);
   display: block;
+  overflow: visible;
   will-change: transform;
   backface-visibility: hidden;
   shape-rendering: geometricPrecision;
@@ -179,7 +180,7 @@ li { list-style: none; }
   z-index: 1;
   fill: var(--coffee-700);
   animation:
-    introWaveBackDrift 3.2s linear alternate infinite,
+    introWaveBackDrift 4.8s linear alternate infinite,
     introWaveBackLift var(--intro-duration) linear forwards;
 }
 
@@ -188,18 +189,18 @@ li { list-style: none; }
   z-index: 2;
   fill: var(--coffee-900);
   animation:
-    introWaveFrontDrift 2.8s linear alternate infinite,
+    introWaveFrontDrift 3.8s linear alternate infinite,
     introWaveFrontLift var(--intro-duration) linear forwards;
 }
 
 @keyframes introWaveBackDrift {
-  from { transform: translate3d(-.8%, 0, 0); }
-  to { transform: translate3d(.8%, 0, 0); }
+  from { transform: translate3d(-2.2%, 0, 0); }
+  to { transform: translate3d(2.2%, 0, 0); }
 }
 
 @keyframes introWaveFrontDrift {
-  from { transform: translate3d(.7%, 0, 0); }
-  to { transform: translate3d(-.7%, 0, 0); }
+  from { transform: translate3d(1.8%, 0, 0); }
+  to { transform: translate3d(-1.8%, 0, 0); }
 }
 
 @keyframes introWaveBackLift {
