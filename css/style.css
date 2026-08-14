@@ -148,7 +148,22 @@ li { list-style: none; }
 
 @keyframes introLiquidTimeline {
   0%, 8.7% { transform: translateY(100%); opacity: 1; }
-  8.7% { animation-timing-function: cubic-bezier(.35, 0, .18, 1); }
+  8.7% {
+    transform: translateY(100%);
+    animation-timing-function: cubic-bezier(.55, .05, .70, .35);
+  }
+  17% {
+    transform: translateY(94%);
+    animation-timing-function: cubic-bezier(.20, .62, .28, 1);
+  }
+  36% {
+    transform: translateY(28%);
+    animation-timing-function: cubic-bezier(.25, .68, .34, 1);
+  }
+  44% {
+    transform: translateY(5%);
+    animation-timing-function: cubic-bezier(.22, .72, .34, 1);
+  }
   48% { transform: translateY(0); opacity: 1; }
   71.8% { transform: translateY(0); opacity: 1; }
   72%, 100% { transform: translateY(0); opacity: 0; }
@@ -205,7 +220,7 @@ li { list-style: none; }
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 52.5%;
+  width: 58%;
   background: linear-gradient(90deg, var(--coffee-900) 0%, #3a2618 48%, var(--coffee-900) 100%);
   opacity: 0;
   will-change: transform, opacity;
@@ -213,13 +228,13 @@ li { list-style: none; }
 
 .intro-curtain-l {
   left: 0;
-  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 86.5% 100%, 0 100%);
   animation: introCurtainLeftTimeline var(--intro-duration) linear forwards;
 }
 
 .intro-curtain-r {
   right: 0;
-  clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 13.5% 100%);
   animation: introCurtainRightTimeline var(--intro-duration) linear forwards;
 }
 
@@ -228,9 +243,10 @@ li { list-style: none; }
   72% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(.55, .05, .18, 1);
+    animation-timing-function: cubic-bezier(.42, 0, .22, 1);
   }
-  100% { opacity: 1; transform: translate3d(-115%, 0, 0); }
+  80% { opacity: 1; transform: translate3d(-4%, 0, 0); }
+  100% { opacity: 1; transform: translate3d(-112%, 0, 0); }
 }
 
 @keyframes introCurtainRightTimeline {
@@ -238,9 +254,10 @@ li { list-style: none; }
   72% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(.55, .05, .18, 1);
+    animation-timing-function: cubic-bezier(.42, 0, .22, 1);
   }
-  100% { opacity: 1; transform: translate3d(115%, 0, 0); }
+  80% { opacity: 1; transform: translate3d(4%, 0, 0); }
+  100% { opacity: 1; transform: translate3d(112%, 0, 0); }
 }
 
 .intro-logo {
@@ -278,8 +295,8 @@ li { list-style: none; }
 @media (max-width: 600px) {
   .site-intro { --intro-wave-height: clamp(75px, 13vh, 115px); }
   .intro-logo { width: min(88vw, 430px); }
-  .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 98% 100%, 0 100%); }
-  .intro-curtain-r { clip-path: polygon(2% 0, 100% 0, 100% 100%, 0 100%); }
+  .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%); }
+  .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 11% 100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
