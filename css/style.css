@@ -87,8 +87,8 @@ li { list-style: none; }
    ========================================================================== */
 
 .site-intro {
-  --intro-wave-height: clamp(90px, 14vh, 150px);
-  --intro-duration: 4s;
+  --intro-wave-height: clamp(82px, 12vh, 132px);
+  --intro-duration: 3.1s;
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -108,8 +108,8 @@ li { list-style: none; }
 }
 
 @keyframes introWhiteTimeline {
-  0%, 75.8% { opacity: 1; }
-  76%, 100% { opacity: 0; }
+  0%, 67.8% { opacity: 1; }
+  68%, 100% { opacity: 0; }
 }
 
 .intro-line {
@@ -129,12 +129,12 @@ li { list-style: none; }
   0%, 2.5% { height: 0; opacity: 1; }
   2.5% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
   12% { height: 100%; opacity: 1; }
-  50% {
+  48% {
     height: 100%;
     opacity: 1;
     animation-timing-function: cubic-bezier(.42, 0, .58, 1);
   }
-  52%, 100% { height: 100%; opacity: 0; }
+  50%, 100% { height: 100%; opacity: 0; }
 }
 
 .intro-liquid {
@@ -157,16 +157,16 @@ li { list-style: none; }
     animation-timing-function: cubic-bezier(.42, 0, .58, 1);
   }
   18% {
+    transform: translateY(86%);
+    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+  }
+  22% {
     transform: translateY(84%);
-    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    animation-timing-function: cubic-bezier(.36, 0, .2, 1);
   }
-  26% {
-    transform: translateY(81%);
-    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
-  }
-  52% { transform: translateY(0); opacity: 1; }
-  75.8% { transform: translateY(0); opacity: 1; }
-  76%, 100% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  67.8% { transform: translateY(0); opacity: 1; }
+  68%, 100% { transform: translateY(0); opacity: 0; }
 }
 
 .intro-wave {
@@ -181,23 +181,23 @@ li { list-style: none; }
 .intro-wave-back {
   z-index: 1;
   fill: var(--coffee-700);
-  animation: introWaveBackDrift 1.5s ease-in-out alternate infinite;
+  animation: introWaveBackDrift 2.2s ease-in-out alternate infinite;
 }
 
 .intro-wave-front {
   z-index: 2;
   fill: var(--coffee-900);
-  animation: introWaveFrontDrift 1.35s ease-in-out alternate infinite;
+  animation: introWaveFrontDrift 1.9s ease-in-out alternate infinite;
 }
 
 @keyframes introWaveBackDrift {
-  from { transform: translate3d(-1.5%, -8%, 0); }
-  to { transform: translate3d(1.5%, -8%, 0); }
+  from { transform: translate3d(-.8%, -5%, 0); }
+  to { transform: translate3d(.8%, -5%, 0); }
 }
 
 @keyframes introWaveFrontDrift {
-  from { transform: translate3d(1.5%, 8%, 0); }
-  to { transform: translate3d(-1.5%, 8%, 0); }
+  from { transform: translate3d(.7%, 6%, 0); }
+  to { transform: translate3d(-.7%, 6%, 0); }
 }
 
 .intro-liquid-body {
@@ -221,39 +221,39 @@ li { list-style: none; }
   top: 0;
   bottom: 0;
   width: 58%;
-  background: linear-gradient(90deg, var(--coffee-900) 0%, #3a2618 48%, var(--coffee-900) 100%);
+  background: linear-gradient(90deg, var(--coffee-900) 0%, #3a281a 13%, var(--coffee-900) 25%, #3b291b 39%, var(--coffee-900) 53%, #3a281a 68%, var(--coffee-900) 82%, #3b291b 93%, var(--coffee-900) 100%);
   opacity: 0;
   will-change: transform, opacity;
 }
 
 .intro-curtain-l {
   left: 0;
-  clip-path: polygon(0 0, 100% 0, 86.5% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 93.5% 100%, 0 100%);
   animation: introCurtainLeftTimeline var(--intro-duration) linear forwards;
 }
 
 .intro-curtain-r {
   right: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 13.5% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 6.5% 100%);
   animation: introCurtainRightTimeline var(--intro-duration) linear forwards;
 }
 
 @keyframes introCurtainLeftTimeline {
-  0%, 75.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  76% {
+  0%, 67.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  68% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
   100% { opacity: 1; transform: translate3d(-112%, 0, 0); }
 }
 
 @keyframes introCurtainRightTimeline {
-  0%, 75.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  76% {
+  0%, 67.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  68% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
   100% { opacity: 1; transform: translate3d(112%, 0, 0); }
 }
@@ -273,28 +273,28 @@ li { list-style: none; }
 }
 
 @keyframes introLogoTimeline {
-  0%, 52% {
+  0%, 48% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% + 10px), 0) scale(.92);
   }
-  52% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
-  60% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
-  68% {
+  48% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  56% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+  62% {
     opacity: 1;
     transform: translate3d(-50%, -50%, 0) scale(1);
-    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
-  76%, 100% {
+  68%, 100% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% - 6px), 0) scale(1.025);
   }
 }
 
 @media (max-width: 600px) {
-  .site-intro { --intro-wave-height: clamp(75px, 13vh, 115px); }
+  .site-intro { --intro-wave-height: clamp(70px, 11vh, 105px); }
   .intro-logo { width: min(88vw, 430px); }
-  .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%); }
-  .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 11% 100%); }
+  .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 94.5% 100%, 0 100%); }
+  .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 5.5% 100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
