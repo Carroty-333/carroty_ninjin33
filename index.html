@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=35">
+<link rel="stylesheet" href="css/style.css?v=36">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -149,7 +149,15 @@
 
     <div class="section-block schedule-block">
       <h2 class="section-title fade-up">営業スケジュール</h2>
-      <img src="assets/images/weekly-schedule.jpg" alt="営業スケジュール(配信予定):月/木/金/日21:00〜、火/水/土は定休日(不定期営業あり)" class="schedule-img fade-up">
+      <button
+        type="button"
+        class="schedule-zoom fade-up"
+        data-lightbox-src="assets/images/weekly-schedule.jpg"
+        data-lightbox-caption="営業スケジュール"
+        aria-label="営業スケジュール画像を拡大表示"
+      >
+        <img src="assets/images/weekly-schedule.jpg" alt="営業スケジュール(配信予定):月/木/金/日21:00〜、火/水/土は定休日(不定期営業あり)" class="schedule-img">
+      </button>
     </div>
 
     <div class="section-block menu-teasers">
@@ -524,6 +532,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=35"></script>
+<script src="js/script.js?v=36"></script>
 </body>
 </html>

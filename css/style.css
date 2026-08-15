@@ -775,6 +775,26 @@ main {
 
 /* Weekly schedule image */
 .schedule-block { text-align: center; }
+.schedule-zoom {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  cursor: zoom-in;
+  transition: transform .25s var(--ease-cute), box-shadow .25s ease;
+}
+.schedule-zoom:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: var(--shadow-soft);
+}
+.schedule-zoom:focus-visible {
+  outline: 3px solid var(--carrot);
+  outline-offset: 4px;
+}
 .schedule-img {
   display: block;
   width: 100%;
