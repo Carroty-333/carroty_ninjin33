@@ -413,7 +413,7 @@
         textarea.remove();
       }
 
-      button.textContent = "済";
+      button.textContent = "コピーしました！";
       button.classList.add("is-copied");
       window.setTimeout(() => {
         button.textContent = "コピー";
