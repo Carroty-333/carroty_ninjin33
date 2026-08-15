@@ -145,10 +145,10 @@ li { list-style: none; }
   z-index: 3;
   width: 100%;
   height: calc(100% + var(--intro-wave-height));
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, calc(100% + var(--intro-wave-height)), 0);
   opacity: 1;
   animation:
-    introLiquidRise .68s cubic-bezier(.45, 0, .95, .55) var(--liquid-delay) forwards,
+    introLiquidRise 1.05s cubic-bezier(.42, 0, .82, .65) var(--liquid-delay) forwards,
     introLiquidHide .01s linear 3.65s forwards;
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -160,7 +160,7 @@ li { list-style: none; }
 }
 
 @keyframes introLiquidRise {
-  from { transform: translate3d(0, 100%, 0); }
+  from { transform: translate3d(0, calc(100% + var(--intro-wave-height)), 0); }
   to { transform: translate3d(0, 0, 0); }
 }
 
