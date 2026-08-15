@@ -1226,10 +1226,11 @@ main {
 .menu-card-title { font-size: 1.5rem; margin-bottom: .1em; }
 .profile-role { color: var(--sage-dark); font-weight: 700; margin-bottom: 1.4em; }
 
-.profile-list { display: grid; gap: 14px; margin-bottom: 1.6em; }
+.profile-list { display: grid; gap: 14px; margin-bottom: 0; }
 .profile-list > div {
   display: grid;
   grid-template-columns: 112px 1fr;
+  align-items: center;
   gap: 12px;
   padding-bottom: 12px;
   border-bottom: 1px dashed var(--camel-light);
@@ -1251,11 +1252,15 @@ main {
     align-items: start;
   }
 }
+.profile-creators-row {
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
 .profile-creators-row dt { white-space: nowrap; }
 .creator-list { display: flex; flex-wrap: wrap; gap: 14px 24px; }
 .creator-item { display: grid; justify-items: center; gap: 7px; font-weight: 700; }
 .creator-item a {
-  width: 76px;
+  width: 104px;
   aspect-ratio: 1;
   display: block;
   overflow: hidden;
@@ -1551,7 +1556,7 @@ main {
   .profile-tags { gap: 6px; }
   .profile-tags .tag { max-width: 100%; font-size: .7rem; white-space: normal; }
   .creator-list { gap: 12px 18px; }
-  .creator-item a { width: 68px; border-radius: 15px; }
+  .creator-item a { width: 88px; border-radius: 16px; }
   .profile-reference-gallery,
   .profile-photo-gallery { margin-top: 24px; padding: 16px 12px; border-width: 1.5px; border-radius: 20px; }
   .profile-reference-list { gap: 14px; }
