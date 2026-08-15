@@ -138,6 +138,7 @@ li { list-style: none; }
 }
 
 .intro-liquid {
+  --liquid-delay: .48s;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -146,20 +147,25 @@ li { list-style: none; }
   height: calc(100% + var(--intro-wave-height));
   transform: translate3d(0, 100%, 0);
   opacity: 1;
-  animation: introLiquidTimeline var(--intro-duration) linear forwards;
+  animation:
+    introLiquidRise .68s cubic-bezier(.45, 0, .95, .55) var(--liquid-delay) forwards,
+    introLiquidHide .01s linear 3.65s forwards;
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
 
-@keyframes introLiquidTimeline {
-  0%, 10% { transform: translate3d(0, 100%, 0); opacity: 1; }
-  10% {
-    transform: translate3d(0, 100%, 0);
-    animation-timing-function: cubic-bezier(.45, 0, .95, .55);
-  }
-  24% { transform: translate3d(0, 0, 0); opacity: 1; }
-  76% { transform: translate3d(0, 0, 0); opacity: 1; }
-  76.2%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+.intro-liquid-front-layer {
+  --liquid-delay: .98s;
+  z-index: 4;
+}
+
+@keyframes introLiquidRise {
+  from { transform: translate3d(0, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes introLiquidHide {
+  to { opacity: 0; }
 }
 
 .intro-wave {
@@ -180,51 +186,20 @@ li { list-style: none; }
   left: -46%;
   width: 188%;
   z-index: 1;
-  animation:
-    introWaveBackDrift var(--intro-duration) linear forwards,
-    introWaveBackLift var(--intro-duration) linear forwards;
+  animation: introWaveDrift var(--intro-duration) linear .48s forwards;
 }
 
 .intro-wave-front {
   top: -68px;
   left: -18%;
   width: 166%;
-  z-index: 2;
-  animation:
-    introWaveFrontDrift var(--intro-duration) linear forwards,
-    introWaveFrontLift var(--intro-duration) linear forwards,
-    introWaveFrontReveal var(--intro-duration) linear forwards;
+  z-index: 1;
+  animation: introWaveDrift var(--intro-duration) linear .98s forwards;
 }
 
-@keyframes introWaveBackDrift {
+@keyframes introWaveDrift {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-13%, 0, 0); }
-}
-
-@keyframes introWaveFrontDrift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-20%, 0, 0); }
-}
-
-@keyframes introWaveBackLift {
-  0%, 10% { translate: 0 45px; }
-  10% { animation-timing-function: cubic-bezier(.38, 0, .72, .58); }
-  15% { translate: 0 26px; }
-  20% { translate: 0 10px; }
-  24%, 100% { translate: 0 0; }
-}
-
-@keyframes introWaveFrontLift {
-  0%, 18% { translate: 0 92vh; }
-  18% { animation-timing-function: cubic-bezier(.46, 0, .86, .6); }
-  28% { translate: 0 76vh; }
-  38% { translate: 0 38vh; }
-  48%, 100% { translate: 0 0; }
-}
-
-@keyframes introWaveFrontReveal {
-  0%, 18% { opacity: 0; }
-  21%, 100% { opacity: 1; }
 }
 
 .intro-liquid-body {
@@ -234,13 +209,14 @@ li { list-style: none; }
   right: 0;
   top: calc(var(--intro-wave-height) + 160px);
   bottom: 0;
-  background: var(--coffee-700);
-  animation: introLiquidBodyTone var(--intro-duration) step-end forwards;
 }
 
-@keyframes introLiquidBodyTone {
-  0%, 47.9% { background: var(--coffee-700); }
-  48%, 100% { background: var(--coffee-900); }
+.intro-liquid-body-back {
+  background: var(--coffee-700);
+}
+
+.intro-liquid-body-front {
+  background: var(--coffee-900);
 }
 
 .intro-curtains {
@@ -331,7 +307,6 @@ li { list-style: none; }
   .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 94.5% 100%, 0 100%); }
   .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 5.5% 100%); }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .site-intro { display: none; }
 }

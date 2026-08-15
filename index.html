@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=24">
+<link rel="stylesheet" href="css/style.css?v=25">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -23,8 +23,8 @@
   <!-- 上から伸びる中央線 -->
   <div class="intro-line"></div>
 
-  <!-- 画面全幅で上昇する液体 -->
-  <div class="intro-liquid">
+  <!-- 画面全幅で上昇する2層の液体 -->
+  <div class="intro-liquid intro-liquid-back-layer">
     <img
       class="intro-wave intro-wave-back"
       src="assets/images/intro-wave-light.png"
@@ -32,7 +32,10 @@
       aria-hidden="true"
       fetchpriority="high"
     >
+    <div class="intro-liquid-body intro-liquid-body-back"></div>
+  </div>
 
+  <div class="intro-liquid intro-liquid-front-layer">
     <img
       class="intro-wave intro-wave-front"
       src="assets/images/intro-wave-dark.png"
@@ -40,8 +43,7 @@
       aria-hidden="true"
       fetchpriority="high"
     >
-
-    <div class="intro-liquid-body"></div>
+    <div class="intro-liquid-body intro-liquid-body-front"></div>
   </div>
 
   <!-- 液体が全面を覆った後に表示する左右カーテン -->
@@ -514,6 +516,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=24"></script>
+<script src="js/script.js?v=25"></script>
 </body>
 </html>
