@@ -137,8 +137,21 @@ li { list-style: none; }
   38.2%, 100% { height: 100%; opacity: 0; }
 }
 
+@keyframes introLineTimelineMobile {
+  0%, 2.5% { height: 0; opacity: 1; }
+  2.5% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
+  12% { height: 100%; opacity: 1; }
+  42.1% {
+    height: 100%;
+    opacity: 1;
+    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+  }
+  42.3%, 100% { height: 100%; opacity: 0; }
+}
+
 .intro-liquid {
   --liquid-delay: .48s;
+  --liquid-rise-duration: 1.05s;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -148,7 +161,7 @@ li { list-style: none; }
   transform: translate3d(0, calc(100% + var(--intro-wave-height)), 0);
   opacity: 1;
   animation:
-    introLiquidRise 1.05s cubic-bezier(.42, 0, .82, .65) var(--liquid-delay) forwards,
+    introLiquidRise var(--liquid-rise-duration) cubic-bezier(.42, 0, .82, .65) var(--liquid-delay) forwards,
     introLiquidHide .01s linear 3.65s forwards;
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -301,6 +314,12 @@ li { list-style: none; }
 
 @media (max-width: 600px) {
   .site-intro { --intro-wave-height: clamp(70px, 11vh, 105px); }
+  .intro-liquid { --liquid-rise-duration: 1.25s; }
+  .intro-line { animation-name: introLineTimelineMobile; }
+  .intro-wave {
+    height: auto;
+    object-fit: contain;
+  }
   .intro-logo { width: min(88vw, 430px); }
   .intro-wave-back { top: -82px; left: -56%; width: 208%; }
   .intro-wave-front { top: -50px; left: -26%; width: 180%; }
