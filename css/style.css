@@ -1296,17 +1296,6 @@ main {
 .profile-reference-item:hover,
 .profile-reference-item:focus-visible { border-color: var(--carrot); box-shadow: 0 5px 0 rgba(225, 119, 49, .18); transform: translateY(-2px); }
 .profile-reference-item img { width: 100%; height: auto; }
-.profile-reference-item span {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  padding: 5px 11px;
-  color: #fff;
-  background: rgba(71, 44, 30, .86);
-  border-radius: 999px;
-  font-size: .76rem;
-  font-weight: 700;
-}
 .profile-reference-note { margin-top: 12px; text-align: center; color: var(--coffee-600); font-size: .78rem; }
 .profile-photo-stage {
   width: min(100%, 920px);
@@ -1320,8 +1309,20 @@ main {
   border-radius: var(--radius-md);
 }
 .profile-photo-stage img { width: 100%; height: 100%; object-fit: contain; }
-.profile-photo-stage img.is-height-fit { width: auto; height: 100%; max-width: 100%; object-fit: contain; }
+.profile-photo-stage img.is-height-fit {
+  width: auto !important;
+  height: calc(100% - 24px) !important;
+  max-width: calc(100% - 24px) !important;
+  max-height: calc(100% - 24px) !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
 .profile-photo-thumbs { max-width: 920px; margin-inline: auto; flex-wrap: wrap; }
+.profile-swipe-hint { display: none; }
+@keyframes profileSwipeHint {
+  from { transform: translateX(-2px); }
+  to { transform: translateX(2px); }
+}
 .profile-mobile-break { display: none; }
 
 .profile-model-modal {
@@ -1562,9 +1563,27 @@ main {
   .profile-photo-gallery { margin-top: 24px; padding: 16px 12px; border-width: 1.5px; border-radius: 20px; }
   .profile-reference-list { gap: 14px; }
   .profile-reference-item { border-radius: 14px; }
-  .profile-reference-item span { right: 8px; bottom: 7px; font-size: .68rem; }
   .profile-photo-stage { border-radius: 14px; }
-  .profile-photo-thumbs { flex-wrap: nowrap; justify-content: flex-start; }
+  .profile-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0 2px;
+    color: var(--coffee-600);
+    font-size: .7rem;
+    font-weight: 700;
+  }
+  .profile-swipe-hint span { color: var(--carrot); font-size: 1rem; animation: profileSwipeHint 1.4s ease-in-out infinite alternate; }
+  .profile-photo-thumbs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    padding-right: 30px;
+    box-shadow: inset -18px 0 18px -18px rgba(71, 44, 30, .45);
+  }
+  .profile-photo-thumbs .profile-thumb { scroll-snap-align: start; }
   .profile-mobile-break { display: inline; }
   .profile-model-modal {
     inset: 0;
