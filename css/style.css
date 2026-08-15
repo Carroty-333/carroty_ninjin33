@@ -978,8 +978,10 @@ main { padding-top: var(--header-h); }
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 52px;
   width: 52px;
   height: 52px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   color: var(--ivory);
   font-weight: 700;
@@ -993,7 +995,8 @@ main { padding-top: var(--header-h); }
 .link-card-badge-wick { background: #fff; border: 2px solid #111; }
 .link-card-badge-wick img { width: 36px; height: 36px; object-fit: contain; }
 .link-card-badge-amazon { background: #ff9900; }
-.link-card-badge-gipt { background: #151425; }
+.link-card-badge-gipt { background: #fff; border: 1px solid #e7e1eb; }
+.link-card-badge-gipt img { width: 36px; height: 36px; object-fit: contain; }
 .link-card-badge-tsunagu { background: #37badd; }
 .link-card-label {
   display: flex;
