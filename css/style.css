@@ -1284,11 +1284,24 @@ main {
   border: 1px solid var(--camel-light);
   border-radius: var(--radius-md);
 }
-.profile-photo-stage img { width: 100%; height: 100%; object-fit: contain; }
-.profile-reference-stage img.is-logo-fit {
-  width: calc(100% - clamp(32px, 8vw, 96px));
-  height: calc(100% - clamp(32px, 8vw, 96px));
+.profile-photo-stage img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
+.profile-reference-stage {
+  box-sizing: border-box;
+  padding: clamp(12px, 3vw, 32px);
+  cursor: zoom-in;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.profile-reference-stage:hover,
+.profile-reference-stage:focus-visible { border-color: var(--carrot); box-shadow: 0 5px 0 rgba(225, 119, 49, .18); }
 .profile-reference-thumbs {
   max-width: 920px;
   margin-inline: auto;
@@ -1296,8 +1309,9 @@ main {
 }
 .profile-reference-thumbs .profile-thumb { background: #fff; }
 .profile-reference-thumbs .profile-thumb-brown { background: #755642; }
+.profile-reference-note { margin-top: 12px; text-align: center; color: var(--coffee-600); font-size: .78rem; }
 .profile-photo-stage img.is-height-fit {
-  width: auto !important;
+  width: calc(100% - 24px) !important;
   height: calc(100% - 24px) !important;
   max-width: calc(100% - 24px) !important;
   max-height: calc(100% - 24px) !important;

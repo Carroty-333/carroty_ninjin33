@@ -369,7 +369,10 @@
       target.classList.toggle("is-height-fit", useHeightFit);
       target.classList.toggle("is-logo-fit", useLogoFit);
       photoStage?.classList.remove("is-square-photo");
-      if (photoStage) photoStage.style.background = button.dataset.imageBackground || "#fff";
+      if (photoStage) {
+        photoStage.style.background = button.dataset.imageBackground || "#fff";
+        if (photoStage.matches("a")) photoStage.href = src;
+      }
 
       if (target.getAttribute("src") !== src) {
         target.src = src;
