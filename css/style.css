@@ -1273,20 +1273,6 @@ main {
   box-shadow: var(--shadow-soft);
 }
 .profile-gallery-title { margin-bottom: .7em; text-align: center; font-size: clamp(1.3rem, 3vw, 1.8rem); }
-.profile-reference-list { display: grid; gap: 20px; }
-.profile-reference-item {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid var(--camel-light);
-  border-radius: var(--radius-md);
-  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
-}
-.profile-reference-item:hover,
-.profile-reference-item:focus-visible { border-color: var(--carrot); box-shadow: 0 5px 0 rgba(225, 119, 49, .18); transform: translateY(-2px); }
-.profile-reference-item img { width: 100%; height: auto; }
-.profile-reference-note { margin-top: 12px; text-align: center; color: var(--coffee-600); font-size: .78rem; }
 .profile-photo-stage {
   width: min(100%, 920px);
   aspect-ratio: 16 / 9;
@@ -1299,6 +1285,17 @@ main {
   border-radius: var(--radius-md);
 }
 .profile-photo-stage img { width: 100%; height: 100%; object-fit: contain; }
+.profile-reference-stage img.is-logo-fit {
+  width: calc(100% - clamp(32px, 8vw, 96px));
+  height: calc(100% - clamp(32px, 8vw, 96px));
+}
+.profile-reference-thumbs {
+  max-width: 920px;
+  margin-inline: auto;
+  flex-wrap: wrap;
+}
+.profile-reference-thumbs .profile-thumb { background: #fff; }
+.profile-reference-thumbs .profile-thumb-brown { background: #755642; }
 .profile-photo-stage img.is-height-fit {
   width: auto !important;
   height: calc(100% - 24px) !important;
@@ -1515,8 +1512,6 @@ main {
   .creator-item a { width: 88px; border-radius: 16px; }
   .profile-reference-gallery,
   .profile-photo-gallery { margin-top: 24px; padding: 16px 12px; border-width: 1.5px; border-radius: 20px; }
-  .profile-reference-list { gap: 14px; }
-  .profile-reference-item { border-radius: 14px; }
   .profile-photo-stage { border-radius: 14px; }
   .profile-photo-stage.is-square-photo { aspect-ratio: 1 / 1; }
   .profile-photo-stage.is-square-photo img.is-height-fit {
@@ -1546,6 +1541,16 @@ main {
   .profile-photo-thumbs .profile-thumb { scroll-snap-align: start; }
   .profile-photo-thumbs .profile-thumb:last-child { padding: 6px; }
   .profile-photo-thumbs .profile-thumb:last-child img { object-fit: contain; }
+  .profile-reference-thumbs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+  .profile-reference-thumbs .profile-thumb { scroll-snap-align: start; }
   .profile-mobile-break { display: inline; }
   .guide-card li,
   .guide-fa-grid p,

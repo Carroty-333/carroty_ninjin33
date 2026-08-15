@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=47">
+<link rel="stylesheet" href="css/style.css?v=48">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -323,15 +323,18 @@
 
       <div class="profile-reference-gallery fade-up">
         <h3 class="profile-gallery-title">参考資料</h3>
-        <div class="profile-reference-list">
-          <a href="assets/images/profile/reference-twitter.jpg" target="_blank" rel="noopener" class="profile-reference-item" aria-label="Twitter用参考資料を原寸で開く">
-            <img src="assets/images/profile/reference-twitter.jpg" alt="Twitter用参考資料">
-          </a>
-          <a href="assets/images/profile/reference-activity.jpg" target="_blank" rel="noopener" class="profile-reference-item" aria-label="活動資料を原寸で開く">
-            <img src="assets/images/profile/reference-activity.jpg" alt="活動資料">
-          </a>
+        <div class="profile-photo-stage profile-reference-stage">
+          <img id="profileReferenceMain" src="assets/images/profile/reference-twitter.jpg" alt="きゃろってぃー Twitter用参考資料">
         </div>
-        <p class="profile-reference-note">画像をクリックすると原寸で表示できます。</p>
+        <p class="profile-swipe-hint" aria-hidden="true"><span>←</span> 横にスライドして資料を選べます <span>→</span></p>
+        <div class="profile-thumbs profile-reference-thumbs" role="group" aria-label="参考資料を選択">
+          <button type="button" class="profile-thumb is-active" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-twitter.jpg" data-image-alt="きゃろってぃー Twitter用参考資料" aria-label="Twitter用参考資料" aria-pressed="true"><img src="assets/images/profile/reference-twitter.jpg" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-activity.jpg" data-image-alt="きゃろってぃー 活動資料" aria-label="活動資料" aria-pressed="false"><img src="assets/images/profile/reference-activity.jpg" alt=""></button>
+          <button type="button" class="profile-thumb profile-thumb-brown" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-carrol-white.png" data-image-alt="喫茶Carrol 白ロゴ" data-image-fit="logo" data-image-background="#755642" aria-label="喫茶Carrol 白ロゴ" aria-pressed="false"><img src="assets/images/profile/reference-carrol-white.png" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-carrol-black.png" data-image-alt="喫茶Carrol 黒ロゴ" data-image-fit="logo" aria-label="喫茶Carrol 黒ロゴ" aria-pressed="false"><img src="assets/images/profile/reference-carrol-black.png" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-name-logo.png" data-image-alt="きゃろってぃー ネームロゴ" data-image-fit="logo" aria-label="きゃろってぃー ネームロゴ" aria-pressed="false"><img src="assets/images/profile/reference-name-logo.png" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profileReferenceMain" data-image-src="assets/images/profile/reference-brand-colors.jpg" data-image-alt="きゃろってぃー ブランドカラー" aria-label="ブランドカラー" aria-pressed="false"><img src="assets/images/profile/reference-brand-colors.jpg" alt=""></button>
+        </div>
       </div>
 
       <div class="profile-photo-gallery fade-up">
@@ -573,6 +576,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=44"></script>
+<script src="js/script.js?v=45"></script>
 </body>
 </html>

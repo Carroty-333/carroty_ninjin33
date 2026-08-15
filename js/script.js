@@ -364,9 +364,12 @@
       if (!target || !src) return;
 
       const useHeightFit = button.dataset.imageFit === "height";
+      const useLogoFit = button.dataset.imageFit === "logo";
       const photoStage = target.closest(".profile-photo-stage");
       target.classList.toggle("is-height-fit", useHeightFit);
+      target.classList.toggle("is-logo-fit", useLogoFit);
       photoStage?.classList.toggle("is-square-photo", useHeightFit);
+      if (photoStage) photoStage.style.background = button.dataset.imageBackground || "#fff";
 
       if (target.getAttribute("src") !== src) {
         target.src = src;
