@@ -216,11 +216,10 @@ li { list-style: none; }
 
 @keyframes introWaveFrontLift {
   0%, 18% { translate: 0 92vh; }
-  18% { animation-timing-function: cubic-bezier(.48, 0, .88, .62); }
-  30% { translate: 0 84vh; }
-  42% { translate: 0 63vh; }
-  52% { translate: 0 34vh; }
-  60%, 100% { translate: 0 0; }
+  18% { animation-timing-function: cubic-bezier(.46, 0, .86, .6); }
+  28% { translate: 0 76vh; }
+  38% { translate: 0 38vh; }
+  48%, 100% { translate: 0 0; }
 }
 
 @keyframes introWaveFrontReveal {
@@ -235,7 +234,13 @@ li { list-style: none; }
   right: 0;
   top: calc(var(--intro-wave-height) + 160px);
   bottom: 0;
-  background: var(--coffee-900);
+  background: var(--coffee-700);
+  animation: introLiquidBodyTone var(--intro-duration) step-end forwards;
+}
+
+@keyframes introLiquidBodyTone {
+  0%, 47.9% { background: var(--coffee-700); }
+  48%, 100% { background: var(--coffee-900); }
 }
 
 .intro-curtains {
@@ -301,13 +306,13 @@ li { list-style: none; }
 }
 
 @keyframes introLogoTimeline {
-  0%, 60% {
+  0%, 48% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% + 10px), 0) scale(.92);
   }
-  60% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
-  66% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
-  72% {
+  48% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  55% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+  67% {
     opacity: 1;
     transform: translate3d(-50%, -50%, 0) scale(1);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
