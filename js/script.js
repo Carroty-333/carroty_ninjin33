@@ -199,6 +199,20 @@
     });
   }
 
+  document.querySelectorAll("[data-contact-form-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (!window.matchMedia("(min-width: 900px)").matches) return;
+      event.preventDefault();
+      loadFormEmbeds("contact");
+      requestAnimationFrame(() => {
+        document.getElementById("contactFormEmbed")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
+  });
+
   /* ---------------- First-load intro ---------------- */
   const siteIntro = document.getElementById("siteIntro");
 
