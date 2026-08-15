@@ -1518,6 +1518,13 @@ main {
   .profile-reference-list { gap: 14px; }
   .profile-reference-item { border-radius: 14px; }
   .profile-photo-stage { border-radius: 14px; }
+  .profile-photo-stage.is-square-photo { aspect-ratio: 1 / 1; }
+  .profile-photo-stage.is-square-photo img.is-height-fit {
+    width: auto !important;
+    height: calc(100% - 24px) !important;
+    max-width: calc(100% - 24px) !important;
+    max-height: calc(100% - 24px) !important;
+  }
   .profile-swipe-hint {
     display: flex;
     align-items: center;
@@ -1535,9 +1542,10 @@ main {
     scroll-snap-type: x proximity;
     overscroll-behavior-inline: contain;
     padding-right: 30px;
-    box-shadow: inset -18px 0 18px -18px rgba(71, 44, 30, .45);
   }
   .profile-photo-thumbs .profile-thumb { scroll-snap-align: start; }
+  .profile-photo-thumbs .profile-thumb:last-child { padding: 6px; }
+  .profile-photo-thumbs .profile-thumb:last-child img { object-fit: contain; }
   .profile-mobile-break { display: inline; }
   .guide-card li,
   .guide-fa-grid p,

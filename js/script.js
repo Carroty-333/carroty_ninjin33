@@ -361,14 +361,20 @@
     button.addEventListener("click", () => {
       const target = document.getElementById(button.dataset.imageTarget);
       const src = button.dataset.imageSrc;
-      if (!target || !src || target.getAttribute("src") === src) return;
+      if (!target || !src) return;
 
-      target.src = src;
-      target.alt = button.dataset.imageAlt || "";
-      target.classList.toggle("is-height-fit", button.dataset.imageFit === "height");
-      target.classList.remove("profile-switch-image");
-      void target.offsetWidth;
-      target.classList.add("profile-switch-image");
+      const useHeightFit = button.dataset.imageFit === "height";
+      const photoStage = target.closest(".profile-photo-stage");
+      target.classList.toggle("is-height-fit", useHeightFit);
+      photoStage?.classList.toggle("is-square-photo", useHeightFit);
+
+      if (target.getAttribute("src") !== src) {
+        target.src = src;
+        target.alt = button.dataset.imageAlt || "";
+        target.classList.remove("profile-switch-image");
+        void target.offsetWidth;
+        target.classList.add("profile-switch-image");
+      }
 
       const group = button.closest(".profile-thumbs");
       if (group) {
