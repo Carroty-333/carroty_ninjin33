@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=41">
+<link rel="stylesheet" href="css/style.css?v=42">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -278,7 +278,9 @@
       <div class="profile-layout">
         <div class="profile-portrait profile-switcher fade-up">
           <div class="profile-model-stage">
-            <img id="profileModelMain" src="assets/images/profile/profile-model-01.webp" alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり">
+            <button type="button" class="profile-model-open" aria-label="立ち絵を拡大表示" aria-haspopup="dialog">
+              <img id="profileModelMain" src="assets/images/profile/profile-model-01.webp" alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり">
+            </button>
           </div>
           <div class="profile-thumbs" role="group" aria-label="立ち絵差分を選択">
             <button type="button" class="profile-thumb is-active" data-image-target="profileModelMain" data-image-src="assets/images/profile/profile-model-01.webp" data-image-alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり" aria-label="ウルフ・前髪・帽子あり" aria-pressed="true"><img src="assets/images/profile/profile-model-01.webp" alt=""></button>
@@ -295,10 +297,10 @@
             <div><dt>誕生日</dt><dd>2001/04/23(おうし座・へび年)</dd></div>
             <div><dt>身長・血液型</dt><dd>170cm・O型</dd></div>
             <div><dt>出身/在住</dt><dd>愛知県/福岡県</dd></div>
-            <div><dt>デビュー</dt><dd>2022/04/23(Reデビュー:2026/07/04)</dd></div>
-            <div><dt>あだ名</dt><dd>きゃろ・きゃろさん・てぃーさん・にんじん</dd></div>
+            <div><dt>デビュー</dt><dd>2026/07/04</dd></div>
+            <div><dt>あだ名</dt><dd>きゃろ・きゃろさん<br class="profile-mobile-break">てぃーさん・にんじん</dd></div>
             <div><dt>挨拶</dt><dd>ただいま・おはきゃろ・こんきゃろ・また来るね・おつきゃろ</dd></div>
-            <div><dt>営業時間</dt><dd>月/木/金/日 21:00〜(定休日:火/水/土、不定期営業あり)</dd></div>
+            <div><dt>営業時間</dt><dd>月/木/金/日 21:00〜<br class="profile-mobile-break">(定休日:火/水/土、不定期営業あり)</dd></div>
             <div><dt>好き</dt><dd>謎解き/脱出・FPS・RPG・MOBA・鬼畜ゲーム、にんじん・コーヒー・お酒(日本酒)・辛いもの・デザイン・お勉強・筋トレ</dd></div>
             <div><dt>苦手</dt><dd>ホラー・甘いもの(生クリーム系。チョコはいける)・じっとすること</dd></div>
             <div class="profile-tags-row">
@@ -353,6 +355,11 @@
           <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-09.webp" data-image-alt="うさぴ" data-image-fit="height" aria-label="うさぴ" aria-pressed="false"><img src="assets/images/profile/profile-photo-09.webp" alt=""></button>
         </div>
       </div>
+
+      <dialog class="profile-model-modal" id="profileModelModal" aria-label="立ち絵の拡大表示">
+        <button type="button" class="profile-model-modal-close" aria-label="拡大表示を閉じる">×</button>
+        <img id="profileModelModalImage" src="assets/images/profile/profile-model-01.webp" alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり">
+      </dialog>
     </div>
   </section>
 
@@ -573,6 +580,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=41"></script>
+<script src="js/script.js?v=42"></script>
 </body>
 </html>

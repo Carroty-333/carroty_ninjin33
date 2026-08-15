@@ -381,6 +381,25 @@
     });
   });
 
+  const profileModelOpen = document.querySelector(".profile-model-open");
+  const profileModelModal = document.getElementById("profileModelModal");
+  const profileModelMain = document.getElementById("profileModelMain");
+  const profileModelModalImage = document.getElementById("profileModelModalImage");
+  const profileModelModalClose = document.querySelector(".profile-model-modal-close");
+  if (profileModelOpen && profileModelModal && profileModelMain && profileModelModalImage) {
+    profileModelOpen.addEventListener("click", () => {
+      profileModelModalImage.src = profileModelMain.getAttribute("src");
+      profileModelModalImage.alt = profileModelMain.alt;
+      profileModelModal.showModal();
+    });
+    if (profileModelModalClose) {
+      profileModelModalClose.addEventListener("click", () => profileModelModal.close());
+    }
+    profileModelModal.addEventListener("click", (event) => {
+      if (event.target === profileModelModal) profileModelModal.close();
+    });
+  }
+
   /* ---------------- Twitter share button ---------------- */
   const shareBtn = document.getElementById("shareTwitterBtn");
   if (shareBtn) {
