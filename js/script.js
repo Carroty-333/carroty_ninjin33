@@ -228,9 +228,9 @@
 
       /*
        * animationendが発火しなかった場合の保険。
-       * 通常は約3.8秒でanimationendから削除される。
+       * 通常は約4.8秒でanimationendから削除される。
        */
-      window.setTimeout(removeIntro, 4200);
+      window.setTimeout(removeIntro, 5200);
     }
   }
 

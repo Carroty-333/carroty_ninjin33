@@ -88,7 +88,7 @@ li { list-style: none; }
 
 .site-intro {
   --intro-wave-height: clamp(82px, 12vh, 132px);
-  --intro-duration: 3.8s;
+  --intro-duration: 4.8s;
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -108,8 +108,8 @@ li { list-style: none; }
 }
 
 @keyframes introWhiteTimeline {
-  0%, 64% { opacity: 1; }
-  64.2%, 100% { opacity: 0; }
+  0%, 76% { opacity: 1; }
+  76.2%, 100% { opacity: 0; }
 }
 
 .intro-line {
@@ -126,15 +126,15 @@ li { list-style: none; }
 }
 
 @keyframes introLineTimeline {
-  0%, 3% { height: 0; opacity: 1; }
-  3% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
-  14% { height: 100%; opacity: 1; }
-  40% {
+  0%, 2.5% { height: 0; opacity: 1; }
+  2.5% { animation-timing-function: cubic-bezier(.42, 0, .58, 1); }
+  12% { height: 100%; opacity: 1; }
+  24% {
     height: 100%;
     opacity: 1;
     animation-timing-function: cubic-bezier(.42, 0, .58, 1);
   }
-  43%, 100% { height: 100%; opacity: 0; }
+  27%, 100% { height: 100%; opacity: 0; }
 }
 
 .intro-liquid {
@@ -152,14 +152,14 @@ li { list-style: none; }
 }
 
 @keyframes introLiquidTimeline {
-  0%, 13% { transform: translate3d(0, 100%, 0); opacity: 1; }
-  13% {
+  0%, 10% { transform: translate3d(0, 100%, 0); opacity: 1; }
+  10% {
     transform: translate3d(0, 100%, 0);
     animation-timing-function: cubic-bezier(.45, 0, .95, .55);
   }
-  30% { transform: translate3d(0, 0, 0); opacity: 1; }
-  64% { transform: translate3d(0, 0, 0); opacity: 1; }
-  64.2%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  24% { transform: translate3d(0, 0, 0); opacity: 1; }
+  76% { transform: translate3d(0, 0, 0); opacity: 1; }
+  76.2%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
 }
 
 .intro-wave {
@@ -207,24 +207,25 @@ li { list-style: none; }
 }
 
 @keyframes introWaveBackLift {
-  0%, 13% { translate: 0 45px; }
-  13% { animation-timing-function: cubic-bezier(.38, 0, .72, .58); }
-  19% { translate: 0 26px; }
-  25% { translate: 0 10px; }
-  30%, 100% { translate: 0 0; }
+  0%, 10% { translate: 0 45px; }
+  10% { animation-timing-function: cubic-bezier(.38, 0, .72, .58); }
+  15% { translate: 0 26px; }
+  20% { translate: 0 10px; }
+  24%, 100% { translate: 0 0; }
 }
 
 @keyframes introWaveFrontLift {
-  0%, 19% { translate: 0 110px; }
-  19% { animation-timing-function: cubic-bezier(.58, 0, .98, .58); }
-  26% { translate: 0 95px; }
-  34% { translate: 0 55px; }
-  43%, 100% { translate: 0 0; }
+  0%, 18% { translate: 0 92vh; }
+  18% { animation-timing-function: cubic-bezier(.48, 0, .88, .62); }
+  30% { translate: 0 84vh; }
+  42% { translate: 0 63vh; }
+  52% { translate: 0 34vh; }
+  60%, 100% { translate: 0 0; }
 }
 
 @keyframes introWaveFrontReveal {
-  0%, 19% { opacity: 0; }
-  23%, 100% { opacity: 1; }
+  0%, 18% { opacity: 0; }
+  21%, 100% { opacity: 1; }
 }
 
 .intro-liquid-body {
@@ -266,8 +267,8 @@ li { list-style: none; }
 }
 
 @keyframes introCurtainLeftTimeline {
-  0%, 63.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  64% {
+  0%, 75.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  76% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -276,8 +277,8 @@ li { list-style: none; }
 }
 
 @keyframes introCurtainRightTimeline {
-  0%, 63.8% { opacity: 0; transform: translate3d(0, 0, 0); }
-  64% {
+  0%, 75.8% { opacity: 0; transform: translate3d(0, 0, 0); }
+  76% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -300,18 +301,18 @@ li { list-style: none; }
 }
 
 @keyframes introLogoTimeline {
-  0%, 43% {
+  0%, 60% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% + 10px), 0) scale(.92);
   }
-  43% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
-  50% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
-  58% {
+  60% { animation-timing-function: cubic-bezier(.3, 0, .2, 1); }
+  66% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+  72% {
     opacity: 1;
     transform: translate3d(-50%, -50%, 0) scale(1);
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
-  64%, 100% {
+  76%, 100% {
     opacity: 0;
     transform: translate3d(-50%, calc(-50% - 6px), 0) scale(1.025);
   }
