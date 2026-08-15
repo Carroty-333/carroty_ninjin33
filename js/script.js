@@ -182,15 +182,6 @@
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
 
-  document.querySelectorAll("[data-lightbox-src]").forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      openLightbox(
-        trigger.dataset.lightboxSrc,
-        trigger.dataset.lightboxCaption || "拡大画像"
-      );
-    });
-  });
-
   /* ---------------- Contact/Commission form embed (desktop, loaded on tab open) ---------------- */
   function loadFormEmbeds(tabId) {
     if (!window.matchMedia("(min-width: 900px)").matches) return;
