@@ -1235,6 +1235,60 @@ main {
 }
 .profile-tags .tag { line-height: 1.45; }
 .profile-tags .tag b { color: #fff; }
+.profile-colors-row {
+  display: block !important;
+  align-items: start !important;
+}
+.profile-colors-row dt { margin-bottom: 9px; }
+.profile-color-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.profile-color-item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid var(--camel-light);
+  border-radius: 10px;
+}
+.profile-color-swatch {
+  width: 22px;
+  aspect-ratio: 1;
+  display: block;
+  background: var(--swatch);
+  border: 1px solid rgba(46, 29, 18, .12);
+  border-radius: 4px;
+}
+.profile-color-item code {
+  min-width: 0;
+  color: var(--coffee-800);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: .72rem;
+  white-space: nowrap;
+}
+.profile-color-copy {
+  padding: 4px 6px;
+  cursor: pointer;
+  background: var(--ivory-dim);
+  border: 1px solid var(--camel-light);
+  border-radius: 6px;
+  color: var(--coffee-800);
+  font: inherit;
+  font-size: .62rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+.profile-color-copy:focus-visible,
+.profile-color-copy.is-copied { background: var(--carrot); border-color: var(--carrot); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .profile-color-copy:hover { background: var(--carrot); border-color: var(--carrot); color: #fff; }
+}
 @media (min-width: 860px) {
   .profile-tags {
     display: grid;
@@ -1522,6 +1576,10 @@ main {
   .profile-list dd { min-width: 0; font-size: .8rem; line-height: 1.65; }
   .profile-tags { gap: 6px; }
   .profile-tags .tag { max-width: 100%; font-size: .7rem; white-space: normal; }
+  .profile-color-item { grid-template-columns: 18px minmax(0, 1fr) auto; gap: 4px; padding: 6px 5px; }
+  .profile-color-swatch { width: 18px; }
+  .profile-color-item code { font-size: .64rem; }
+  .profile-color-copy { padding: 4px; font-size: .56rem; }
   .creator-list { gap: 12px 18px; }
   .creator-item a { width: 88px; border-radius: 16px; }
   .profile-reference-gallery,

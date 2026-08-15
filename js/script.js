@@ -393,6 +393,35 @@
     });
   });
 
+  /* ---------------- Profile color copy buttons ---------------- */
+  document.querySelectorAll("[data-copy-color]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const color = button.dataset.copyColor;
+      if (!color) return;
+
+      try {
+        await navigator.clipboard.writeText(color);
+      } catch {
+        const textarea = document.createElement("textarea");
+        textarea.value = color;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      button.textContent = "済";
+      button.classList.add("is-copied");
+      window.setTimeout(() => {
+        button.textContent = "コピー";
+        button.classList.remove("is-copied");
+      }, 1200);
+    });
+  });
+
   /* ---------------- Twitter share button ---------------- */
   const shareBtn = document.getElementById("shareTwitterBtn");
   if (shareBtn) {
