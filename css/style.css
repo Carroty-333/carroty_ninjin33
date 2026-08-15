@@ -1598,11 +1598,32 @@ main {
   min-width: 180px;
   justify-content: center;
   white-space: nowrap;
+  background: #fff;
+  border-color: var(--camel-light);
+  box-shadow: 0 6px 0 var(--camel);
+}
+.contact-method-btn:focus-visible {
+  border-color: var(--carrot);
+  outline: 3px solid rgba(232, 121, 43, .2);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact-method-btn:not(.is-disabled):hover {
+    background: var(--carrot);
+    border-color: var(--carrot);
+    color: var(--ivory);
+    box-shadow: 0 9px 0 var(--carrot-dark);
+  }
 }
 .contact-method-btn.is-disabled {
-  opacity: .5;
+  opacity: 1;
   cursor: default;
   pointer-events: none;
+  background: var(--ivory-dim);
+  border-color: var(--camel-light);
+  border-style: dashed;
+  color: rgba(74, 50, 33, .55);
+  box-shadow: 0 4px 0 var(--camel-light);
 }
 .contact-card {
   background: var(--ivory);
