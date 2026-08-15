@@ -1325,6 +1325,7 @@ main {
 .profile-mobile-break { display: none; }
 
 .profile-model-modal {
+  box-sizing: border-box;
   width: min(92vw, 920px);
   height: min(92dvh, 940px);
   max-width: none;
@@ -1566,19 +1567,32 @@ main {
   .profile-photo-thumbs { flex-wrap: nowrap; justify-content: flex-start; }
   .profile-mobile-break { display: inline; }
   .profile-model-modal {
-    width: 96vw;
-    height: 94dvh;
-    padding: 8px;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: 0;
+    padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
     background: #fff;
-    border-radius: 18px;
+    border: 0;
+    border-radius: 0;
   }
   .profile-model-modal img {
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
     object-fit: contain;
-    object-position: center;
+    object-position: center center;
   }
-  .profile-model-modal-close { top: 8px; right: 8px; width: 38px; height: 38px; }
+  .profile-model-modal-close {
+    top: max(8px, env(safe-area-inset-top));
+    right: max(8px, env(safe-area-inset-right));
+    width: 38px;
+    height: 38px;
+  }
   .guide-card li,
   .guide-fa-grid p,
   .guide-fa-rules li,
