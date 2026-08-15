@@ -180,7 +180,7 @@ li { list-style: none; }
   width: 176%;
   z-index: 1;
   animation:
-    introWaveBackDrift 5.6s linear alternate infinite,
+    introWaveBackDrift 5.6s linear infinite,
     introWaveBackLift var(--intro-duration) linear forwards;
 }
 
@@ -190,18 +190,18 @@ li { list-style: none; }
   width: 164%;
   z-index: 2;
   animation:
-    introWaveFrontDrift 4.4s linear alternate infinite,
+    introWaveFrontDrift 4.4s linear infinite,
     introWaveFrontLift var(--intro-duration) linear forwards;
 }
 
 @keyframes introWaveBackDrift {
-  from { transform: translate3d(-6.5%, 0, 0); }
-  to { transform: translate3d(5.5%, 0, 0); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-12%, 0, 0); }
 }
 
 @keyframes introWaveFrontDrift {
-  from { transform: translate3d(5%, 0, 0); }
-  to { transform: translate3d(-6%, 0, 0); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-9%, 0, 0); }
 }
 
 @keyframes introWaveBackLift {
@@ -218,10 +218,10 @@ li { list-style: none; }
 
 .intro-liquid-body {
   position: absolute;
-  z-index: 2;
+  z-index: 0;
   left: 0;
   right: 0;
-  top: calc(var(--intro-wave-height) - 2px);
+  top: calc(var(--intro-wave-height) + 160px);
   bottom: 0;
   background: var(--coffee-900);
 }
