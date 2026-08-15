@@ -356,6 +356,30 @@
     marquee.addEventListener("mouseleave", startMarquee);
   }
 
+  /* ---------------- Profile image switchers ---------------- */
+  document.querySelectorAll("[data-image-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.getElementById(button.dataset.imageTarget);
+      const src = button.dataset.imageSrc;
+      if (!target || !src || target.getAttribute("src") === src) return;
+
+      target.src = src;
+      target.alt = button.dataset.imageAlt || "";
+      target.classList.remove("profile-switch-image");
+      void target.offsetWidth;
+      target.classList.add("profile-switch-image");
+
+      const group = button.closest(".profile-thumbs");
+      if (group) {
+        group.querySelectorAll("[data-image-target]").forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+    });
+  });
+
   /* ---------------- Twitter share button ---------------- */
   const shareBtn = document.getElementById("shareTwitterBtn");
   if (shareBtn) {

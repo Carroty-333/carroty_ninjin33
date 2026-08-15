@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=39">
+<link rel="stylesheet" href="css/style.css?v=40">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -276,8 +276,15 @@
     <div class="section-block">
       <h2 class="section-title fade-up">Profile</h2>
       <div class="profile-layout">
-        <div class="profile-portrait fade-up">
-          <img src="assets/images/profile-main.png" alt="きゃろってぃー 全身立ち絵">
+        <div class="profile-portrait profile-switcher fade-up">
+          <div class="profile-model-stage">
+            <img id="profileModelMain" src="assets/images/profile/profile-model-01.webp" alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり">
+          </div>
+          <div class="profile-thumbs" role="group" aria-label="立ち絵差分を選択">
+            <button type="button" class="profile-thumb is-active" data-image-target="profileModelMain" data-image-src="assets/images/profile/profile-model-01.webp" data-image-alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子・うさぎあり" aria-label="ウルフ・前髪・帽子あり" aria-pressed="true"><img src="assets/images/profile/profile-model-01.webp" alt=""></button>
+            <button type="button" class="profile-thumb" data-image-target="profileModelMain" data-image-src="assets/images/profile/profile-model-02.webp" data-image-alt="きゃろってぃー 全身立ち絵 帽子なし・うさぎあり" aria-label="帽子なし" aria-pressed="false"><img src="assets/images/profile/profile-model-02.webp" alt=""></button>
+            <button type="button" class="profile-thumb" data-image-target="profileModelMain" data-image-src="assets/images/profile/profile-model-03.webp" data-image-alt="きゃろってぃー 全身立ち絵 ウルフ・前髪・帽子なし・うさぎあり" aria-label="ウルフ・前髪・帽子なし" aria-pressed="false"><img src="assets/images/profile/profile-model-03.webp" alt=""></button>
+          </div>
         </div>
 
         <div class="profile-card fade-up delay-1">
@@ -287,36 +294,48 @@
           <dl class="profile-list">
             <div><dt>誕生日</dt><dd>2001/04/23(おうし座・へび年)</dd></div>
             <div><dt>身長・血液型</dt><dd>170cm・O型</dd></div>
-            <div><dt>出身</dt><dd>愛知県</dd></div>
+            <div><dt>出身/在住</dt><dd>愛知県/福岡県</dd></div>
             <div><dt>デビュー</dt><dd>2022/04/23(Reデビュー:2026/07/04)</dd></div>
             <div><dt>あだ名</dt><dd>きゃろ・きゃろさん・てぃーさん・にんじん</dd></div>
             <div><dt>挨拶</dt><dd>ただいま・おはきゃろ・こんきゃろ・また来るね・おつきゃろ</dd></div>
             <div><dt>営業時間</dt><dd>月/木/金/日 21:00〜(定休日:火/水/土、不定期営業あり)</dd></div>
             <div><dt>好き</dt><dd>謎解き/脱出・FPS・RPG・MOBA・鬼畜ゲーム、にんじん・コーヒー・お酒(日本酒)・辛いもの・デザイン・お勉強・筋トレ</dd></div>
             <div><dt>苦手</dt><dd>ホラー・甘いもの(生クリーム系。チョコはいける)・じっとすること</dd></div>
+            <div class="profile-tags-row">
+              <dt>Tags</dt>
+              <dd class="profile-tags">
+                <span class="tag"><b>ALL:</b> #きゃろってぃー</span>
+                <span class="tag"><b>FA:</b> #きゃろラテあーと</span>
+                <span class="tag"><b>LIVE:</b> #きゃろる営業中</span>
+                <span class="tag"><b>Schedule:</b> #きゃろる営業日</span>
+              </dd>
+            </div>
+            <div class="profile-creators-row">
+              <dt>クリエイター様</dt>
+              <dd class="creator-list">
+                <span class="creator-item">ママ<a href="https://x.com/_32miya107" target="_blank" rel="noopener" aria-label="ママのTwitterを開く" title="ママのTwitterを開く"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.8 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.6 3.7a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1c0 2.2 1.6 4.1 3.6 4.5-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 2.2 19c-.4 0-.7 0-1.1-.1A12.7 12.7 0 0 0 8 21c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.2-2.3z"/></svg></a></span>
+                <span class="creator-item">パパ<a href="https://x.com/mngn___" target="_blank" rel="noopener" aria-label="パパのTwitterを開く" title="パパのTwitterを開く"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.8 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.6 3.7a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1c0 2.2 1.6 4.1 3.6 4.5-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1a4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 2.2 19c-.4 0-.7 0-1.1-.1A12.7 12.7 0 0 0 8 21c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.2-2.3z"/></svg></a></span>
+              </dd>
+            </div>
           </dl>
+        </div>
+      </div>
 
-          <div class="tag-row">
-            <span class="tag">#きゃろってぃー</span>
-            <span class="tag">#きゃろラテあーと</span>
-            <span class="tag">#きゃろる営業中</span>
-            <span class="tag">#きゃろる営業日</span>
-          </div>
-
-          <div class="profile-people">
-            <h4>関係者</h4>
-            <ul>
-              <li>ママ:<a href="https://x.com/_32miya107" target="_blank" rel="noopener">@_32miya107</a></li>
-              <li>パパ:<a href="https://x.com/mngn___" target="_blank" rel="noopener">@mngn___</a></li>
-              <li>キャラデザ元祖:<a href="https://x.com/mo_chiru8" target="_blank" rel="noopener">@mo_chiru8</a></li>
-            </ul>
-          </div>
-
-          <div class="link-buttons">
-            <a href="https://x.com/NinjinCarrot_33" target="_blank" rel="noopener" class="btn btn-outline btn-sm">X (Twitter)</a>
-            <a href="https://lit.link/en/carrotyninjin33" target="_blank" rel="noopener" class="btn btn-outline btn-sm">lit.link</a>
-            <a href="https://carrotninjin33.booth.pm/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">BOOTH</a>
-          </div>
+      <div class="profile-photo-gallery fade-up">
+        <h3 class="profile-gallery-title">Photo</h3>
+        <div class="profile-photo-stage">
+          <img id="profilePhotoMain" src="assets/images/profile/profile-photo-01.webp" alt="きゃろってぃー 表情写真 1">
+        </div>
+        <div class="profile-thumbs profile-photo-thumbs" role="group" aria-label="写真を選択">
+          <button type="button" class="profile-thumb is-active" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-01.webp" data-image-alt="きゃろってぃー 表情写真 1" aria-label="写真1" aria-pressed="true"><img src="assets/images/profile/profile-photo-01.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-02.webp" data-image-alt="きゃろってぃー 表情写真 2" aria-label="写真2" aria-pressed="false"><img src="assets/images/profile/profile-photo-02.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-03.webp" data-image-alt="きゃろってぃー 表情写真 3" aria-label="写真3" aria-pressed="false"><img src="assets/images/profile/profile-photo-03.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-04.webp" data-image-alt="きゃろってぃー 表情写真 4" aria-label="写真4" aria-pressed="false"><img src="assets/images/profile/profile-photo-04.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-05.webp" data-image-alt="きゃろってぃー 表情写真 5" aria-label="写真5" aria-pressed="false"><img src="assets/images/profile/profile-photo-05.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-06.webp" data-image-alt="きゃろってぃー 表情写真 6" aria-label="写真6" aria-pressed="false"><img src="assets/images/profile/profile-photo-06.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-07.webp" data-image-alt="きゃろってぃー 表情写真 7" aria-label="写真7" aria-pressed="false"><img src="assets/images/profile/profile-photo-07.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-08.webp" data-image-alt="きゃろってぃー 表情写真 8" aria-label="写真8" aria-pressed="false"><img src="assets/images/profile/profile-photo-08.webp" alt=""></button>
+          <button type="button" class="profile-thumb" data-image-target="profilePhotoMain" data-image-src="assets/images/profile/profile-photo-09.webp" data-image-alt="うさぴ" aria-label="うさぴ" aria-pressed="false"><img src="assets/images/profile/profile-photo-09.webp" alt=""></button>
         </div>
       </div>
     </div>
@@ -539,6 +558,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=39"></script>
+<script src="js/script.js?v=40"></script>
 </body>
 </html>
