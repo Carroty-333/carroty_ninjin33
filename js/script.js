@@ -368,7 +368,7 @@
       const photoStage = target.closest(".profile-photo-stage");
       target.classList.toggle("is-height-fit", useHeightFit);
       target.classList.toggle("is-logo-fit", useLogoFit);
-      photoStage?.classList.toggle("is-square-photo", useHeightFit);
+      photoStage?.classList.remove("is-square-photo");
       if (photoStage) photoStage.style.background = button.dataset.imageBackground || "#fff";
 
       if (target.getAttribute("src") !== src) {

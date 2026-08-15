@@ -1513,13 +1513,6 @@ main {
   .profile-reference-gallery,
   .profile-photo-gallery { margin-top: 24px; padding: 16px 12px; border-width: 1.5px; border-radius: 20px; }
   .profile-photo-stage { border-radius: 14px; }
-  .profile-photo-stage.is-square-photo { aspect-ratio: 1 / 1; }
-  .profile-photo-stage.is-square-photo img.is-height-fit {
-    width: auto !important;
-    height: calc(100% - 24px) !important;
-    max-width: calc(100% - 24px) !important;
-    max-height: calc(100% - 24px) !important;
-  }
   .profile-swipe-hint {
     display: flex;
     align-items: center;
