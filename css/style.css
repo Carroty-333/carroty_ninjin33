@@ -165,42 +165,43 @@ li { list-style: none; }
 .intro-wave {
   position: absolute;
   top: 0;
-  left: -30%;
-  width: 160%;
-  height: var(--intro-wave-height);
+  max-width: none;
+  height: calc(var(--intro-wave-height) * 7.5);
   display: block;
-  overflow: visible;
+  object-fit: fill;
+  object-position: center top;
   will-change: transform;
   backface-visibility: hidden;
-  shape-rendering: geometricPrecision;
 }
 
 .intro-wave-back {
-  top: -42px;
+  top: -112px;
+  left: -38%;
+  width: 176%;
   z-index: 1;
-  fill: var(--coffee-700);
   animation:
-    introWaveBackDrift 4.8s linear alternate infinite,
+    introWaveBackDrift 5.6s linear alternate infinite,
     introWaveBackLift var(--intro-duration) linear forwards;
 }
 
 .intro-wave-front {
-  top: 30px;
+  top: -42px;
+  left: -24%;
+  width: 164%;
   z-index: 2;
-  fill: var(--coffee-900);
   animation:
-    introWaveFrontDrift 3.8s linear alternate infinite,
+    introWaveFrontDrift 4.4s linear alternate infinite,
     introWaveFrontLift var(--intro-duration) linear forwards;
 }
 
 @keyframes introWaveBackDrift {
-  from { transform: translate3d(-5.5%, 0, 0); }
+  from { transform: translate3d(-6.5%, 0, 0); }
   to { transform: translate3d(5.5%, 0, 0); }
 }
 
 @keyframes introWaveFrontDrift {
-  from { transform: translate3d(4.5%, 0, 0); }
-  to { transform: translate3d(-4.5%, 0, 0); }
+  from { transform: translate3d(5%, 0, 0); }
+  to { transform: translate3d(-6%, 0, 0); }
 }
 
 @keyframes introWaveBackLift {
@@ -308,8 +309,8 @@ li { list-style: none; }
 @media (max-width: 600px) {
   .site-intro { --intro-wave-height: clamp(70px, 11vh, 105px); }
   .intro-logo { width: min(88vw, 430px); }
-  .intro-wave-back { top: -30px; }
-  .intro-wave-front { top: 22px; }
+  .intro-wave-back { top: -82px; left: -48%; width: 196%; }
+  .intro-wave-front { top: -26px; left: -32%; width: 176%; }
   .intro-curtain-l { clip-path: polygon(0 0, 100% 0, 94.5% 100%, 0 100%); }
   .intro-curtain-r { clip-path: polygon(0 0, 100% 0, 100% 100%, 5.5% 100%); }
 }

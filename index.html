@@ -9,8 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=16">
+<link rel="stylesheet" href="css/style.css?v=17">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
+<link rel="preload" as="image" href="assets/images/intro-wave-light.png">
+<link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
 </head>
 <body>
 
@@ -23,45 +25,21 @@
 
   <!-- 画面全幅で上昇する液体 -->
   <div class="intro-liquid">
-    <svg
+    <img
       class="intro-wave intro-wave-back"
-      viewBox="0 0 1200 160"
-      preserveAspectRatio="none"
+      src="assets/images/intro-wave-light.png"
+      alt=""
       aria-hidden="true"
+      fetchpriority="high"
     >
-      <path d="
-        M0,76
-        C75,76 75,38 150,38
-        C225,38 225,76 300,76
-        C375,76 375,114 450,114
-        C525,114 525,76 600,76
-        C675,76 675,38 750,38
-        C825,38 825,76 900,76
-        C975,76 975,114 1050,114
-        C1125,114 1125,76 1200,76
-        L1200,360 L0,360 Z
-      " />
-    </svg>
 
-    <svg
+    <img
       class="intro-wave intro-wave-front"
-      viewBox="0 0 1200 160"
-      preserveAspectRatio="none"
+      src="assets/images/intro-wave-dark.png"
+      alt=""
       aria-hidden="true"
+      fetchpriority="high"
     >
-      <path d="
-        M0,74
-        C75,74 75,108 150,108
-        C225,108 225,74 300,74
-        C375,74 375,40 450,40
-        C525,40 525,74 600,74
-        C675,74 675,108 750,108
-        C825,108 825,74 900,74
-        C975,74 975,40 1050,40
-        C1125,40 1125,74 1200,74
-        L1200,360 L0,360 Z
-      " />
-    </svg>
 
     <div class="intro-liquid-body"></div>
   </div>
@@ -536,6 +514,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=16"></script>
+<script src="js/script.js?v=17"></script>
 </body>
 </html>
