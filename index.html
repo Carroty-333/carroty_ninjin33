@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=37">
+<link rel="stylesheet" href="css/style.css?v=38">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -493,18 +493,21 @@
   <section class="tab-panel" id="contact" data-panel="contact">
     <div class="section-block">
       <h2 class="section-title fade-up">Contact</h2>
-      <p class="section-lead fade-up">お問い合わせは、以下いずれの方法でも受け付けています。</p>
+      <p class="section-lead contact-lead fade-up">
+        <span class="only-mobile">お問い合わせは<br>以下いずれの方法でも受け付けています。</span>
+        <span class="only-pc">お問い合わせは、以下いずれの方法でも受け付けています。</span>
+      </p>
 
       <div class="contact-grid fade-up">
         <div class="contact-card contact-card-wide">
-          <h3>お問い合わせフォーム</h3>
+          <h3 class="contact-form-heading">お問い合わせフォーム</h3>
           <p class="contact-form-note">下記フォームに必要事項をご入力ください。</p>
           <div id="contactFormEmbed" class="contact-form-embed contact-form-embed-desktop"
             data-form-src="https://tangy-vegetable-884.notion.site/ebd//d09a718f35e74ba9b6d2f392e70bed14"
             data-form-title="きゃろってぃー お問い合わせフォーム">
           </div>
           <div class="contact-form-cta contact-form-cta-mobile">
-            <a href="https://tangy-vegetable-884.notion.site/ebd//d09a718f35e74ba9b6d2f392e70bed14" target="_blank" rel="noopener" class="btn btn-primary">お問い合わせフォームを開く</a>
+            <a href="https://tangy-vegetable-884.notion.site/ebd//d09a718f35e74ba9b6d2f392e70bed14" target="_blank" rel="noopener" class="btn btn-secondary">お問い合わせフォームを開く</a>
           </div>
         </div>
       </div>
@@ -524,6 +527,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=37"></script>
+<script src="js/script.js?v=38"></script>
 </body>
 </html>

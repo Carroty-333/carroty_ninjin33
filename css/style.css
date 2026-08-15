@@ -352,7 +352,11 @@ li { list-style: none; }
   color: var(--coffee-700);
 }
 .only-pc { display: none; }
-@media (min-width: 800px) { .only-pc { display: inline; } }
+.only-mobile { display: inline; }
+@media (min-width: 800px) {
+  .only-pc { display: inline; }
+  .only-mobile { display: none; }
+}
 
 .btn {
   display: inline-flex;
@@ -1418,6 +1422,11 @@ main {
 .contact-form-embed { margin-top: 18px; }
 .contact-form-embed iframe { display: block; width: 100%; border: 0; }
 .contact-form-embed-desktop { display: none; }
+@media (max-width: 899px) {
+  .contact-lead,
+  .contact-form-heading,
+  .contact-form-note { text-align: center; }
+}
 @media (min-width: 900px) {
   .contact-form-embed-desktop { display: block; }
   .contact-form-cta-mobile { display: none; }
