@@ -365,6 +365,7 @@
 
       target.src = src;
       target.alt = button.dataset.imageAlt || "";
+      target.classList.toggle("is-height-fit", button.dataset.imageFit === "height");
       target.classList.remove("profile-switch-image");
       void target.offsetWidth;
       target.classList.add("profile-switch-image");
