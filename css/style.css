@@ -155,7 +155,7 @@ li { list-style: none; }
 }
 
 .intro-liquid-front-layer {
-  --liquid-delay: .98s;
+  --liquid-delay: .78s;
   z-index: 4;
 }
 
@@ -194,7 +194,7 @@ li { list-style: none; }
   left: -18%;
   width: 166%;
   z-index: 1;
-  animation: introWaveDrift var(--intro-duration) linear .98s forwards;
+  animation: introWaveDrift var(--intro-duration) linear .78s forwards;
 }
 
 @keyframes introWaveDrift {
