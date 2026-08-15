@@ -1616,14 +1616,8 @@ main {
   }
 }
 .contact-method-btn.is-disabled {
-  opacity: 1;
   cursor: default;
   pointer-events: none;
-  background: var(--ivory-dim);
-  border-color: var(--camel-light);
-  border-style: dashed;
-  color: rgba(74, 50, 33, .55);
-  box-shadow: 0 4px 0 var(--camel-light);
 }
 .contact-card {
   background: var(--ivory);
