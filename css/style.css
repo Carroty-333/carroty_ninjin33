@@ -626,23 +626,23 @@ li { list-style: none; }
   letter-spacing: .01em;
   white-space: nowrap;
 }
+/* Membership button is on hold for now (not yet at the subscriber threshold) */
+.header-join-membership { display: none; }
 @media (max-width: 899px) {
   :root { --header-h: 118px; }
   .brand-logo { height: 40px; }
-  .header-join-membership { display: none; }
   .header-join-btn { padding: .42em .8em; font-size: .64rem; }
   .header-join-item > span:last-child { font-size: .52rem; }
 }
 @media (min-width: 900px) {
-  :root { --header-h: 122px; }
+  :root { --header-h: 78px; }
   .header-join-actions {
-    order: 1;
-    justify-content: flex-end;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 8px 20px 2px;
-    gap: 14px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    padding: 0;
+    gap: 10px;
   }
 }
 
@@ -1518,6 +1518,13 @@ main {
 }
 .gallery-sort-btn:hover { border-color: var(--carrot); }
 .gallery-sort-btn.is-active { background: var(--coffee-800); border-color: var(--coffee-800); color: var(--ivory); }
+@media (max-width: 480px) {
+  .gallery-controls { flex-wrap: nowrap; gap: 8px; }
+  .gallery-search { gap: 5px; font-size: .72rem; }
+  .gallery-search select { padding: .32em .5em; font-size: .72rem; max-width: 28vw; }
+  .gallery-sort { gap: 5px; flex-wrap: nowrap; }
+  .gallery-sort-btn { padding: .38em .68em; font-size: .72rem; white-space: nowrap; }
+}
 
 .gallery-grid {
   display: grid;
@@ -1559,7 +1566,7 @@ main {
   height: 94%;
   object-fit: contain;
   pointer-events: none;
-  opacity: .92;
+  opacity: .6;
 }
 .gallery-caption {
   display: flex;
@@ -1921,7 +1928,7 @@ main {
   height: 94%;
   object-fit: contain;
   pointer-events: none;
-  opacity: .92;
+  opacity: .6;
 }
 .lightbox-caption {
   display: flex;
