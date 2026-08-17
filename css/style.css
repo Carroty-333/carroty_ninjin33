@@ -428,20 +428,23 @@ li { list-style: none; }
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--header-h);
   background: rgba(253, 248, 240, 0.98);
   z-index: 100;
   border-bottom: 1px solid var(--camel-light);
+  display: flex;
+  flex-direction: column;
 }
 .header-inner {
   position: relative;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  height: 100%;
+  height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  order: 1;
 }
 .brand-logo { height: 58px; width: auto; transition: transform .3s var(--ease-cute); }
 .brand:hover .brand-logo { transform: rotate(-4deg) scale(1.05); }
@@ -569,18 +572,22 @@ li { list-style: none; }
 .mobile-nav-overlay.is-open { opacity: 1; pointer-events: auto; }
 
 @media (min-width: 900px) {
-  .tab-nav { display: flex; flex: 1 1 auto; justify-content: center; min-width: 0; }
+  .tab-nav { display: block; }
   .hamburger, .mobile-nav, .mobile-nav-overlay { display: none; }
-  .header-inner { justify-content: space-between; }
-  .brand { flex: 0 0 auto; }
+  .header-inner { justify-content: center; }
+  .brand { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
 }
 
-/* Header join-actions: membership / free fan club / paid fan club buttons */
+/* Header join-actions: membership / free fan club / paid fan club buttons.
+   Sits as its own row above/below .header-inner (order flips per breakpoint below)
+   so it never shares horizontal space with the tab nav and can't overlap it. */
 .header-join-actions {
+  order: 2;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 10px;
-  flex: 0 0 auto;
+  padding: 6px 16px 8px;
 }
 .header-join-item {
   display: flex;
@@ -620,26 +627,23 @@ li { list-style: none; }
   white-space: nowrap;
 }
 @media (max-width: 899px) {
-  :root { --header-h: 108px; }
-  .site-header { height: auto; min-height: var(--header-h); }
-  .header-inner {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 10px 16px 8px;
-    row-gap: 6px;
-  }
+  :root { --header-h: 118px; }
   .brand-logo { height: 40px; }
-  .hamburger { order: 2; }
-  .header-join-actions {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-  }
   .header-join-membership { display: none; }
-  .header-join-item { flex: 0 0 auto; }
   .header-join-btn { padding: .42em .8em; font-size: .64rem; }
   .header-join-item > span:last-child { font-size: .52rem; }
+}
+@media (min-width: 900px) {
+  :root { --header-h: 122px; }
+  .header-join-actions {
+    order: 1;
+    justify-content: flex-end;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 8px 20px 2px;
+    gap: 14px;
+  }
 }
 
 /* ==========================================================================
@@ -1192,6 +1196,7 @@ main {
 .site-footnote .share-section { padding-bottom: 8px; }
 .removal-notice {
   margin: 12px 0 28px;
+  text-align: center;
   font-size: .72rem;
   color: var(--coffee-700);
 }
@@ -1550,9 +1555,8 @@ main {
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 62%;
-  height: auto;
-  max-height: 62%;
+  width: 94%;
+  height: 94%;
   object-fit: contain;
   pointer-events: none;
   opacity: .92;
@@ -1909,7 +1913,16 @@ main {
 .lightbox[hidden] { display: none; }
 .lightbox-stage { position: relative; display: inline-flex; max-width: min(90vw, 720px); max-height: 75vh; }
 .lightbox img#lightboxImg { max-width: min(90vw, 720px); max-height: 75vh; border-radius: var(--radius-md); box-shadow: 0 20px 50px rgba(0,0,0,.5); background: var(--ivory-dim); }
-.lightbox-watermark { width: 45%; max-height: 45%; }
+.lightbox-watermark {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 94%;
+  height: 94%;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: .92;
+}
 .lightbox-caption {
   display: flex;
   align-items: center;
