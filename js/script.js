@@ -207,7 +207,6 @@
 
     const searchSelect = document.getElementById("gallerySearchSelect");
     const searchInput = document.getElementById("gallerySearchText");
-    const nameList = document.getElementById("galleryNameList");
     if (searchSelect) {
       const seen = new Set();
       FA_ITEMS.forEach((item) => {
@@ -217,11 +216,6 @@
         opt.value = item.name;
         opt.textContent = item.name;
         searchSelect.appendChild(opt);
-        if (nameList) {
-          const dlOpt = document.createElement("option");
-          dlOpt.value = item.name;
-          nameList.appendChild(dlOpt);
-        }
       });
       searchSelect.addEventListener("change", () => {
         galleryAuthor = searchSelect.value;

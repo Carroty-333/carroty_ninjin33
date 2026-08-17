@@ -1503,7 +1503,7 @@ main {
 }
 .gallery-search input:focus,
 .gallery-search select:focus { outline: none; border-color: var(--carrot); }
-.gallery-sort { display: flex; flex-direction: column; gap: 8px; }
+.gallery-sort { display: flex; flex-direction: row; gap: 8px; }
 .gallery-sort-btn {
   padding: .5em 1.1em;
   border-radius: 999px;
@@ -1519,13 +1519,22 @@ main {
 @media (max-width: 699px) {
   .gallery-controls { flex-direction: column; align-items: stretch; gap: 10px; }
   .gallery-controls-search { flex-direction: column; align-items: stretch; gap: 8px; }
+  /* Fixed label width so the select/input boxes on both rows line up to the same width. */
+  .gallery-search-label { min-width: 6.4em; }
+  .gallery-search select,
+  .gallery-search input {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    max-width: none;
+    /* 16px keeps iOS Safari from auto-zooming the page when the field gains focus. */
+    font-size: 16px;
+  }
   .gallery-sort { flex-direction: row; align-self: stretch; gap: 8px; }
   .gallery-sort-btn { flex: 1; text-align: center; }
 }
 @media (max-width: 480px) {
   .gallery-search { gap: 5px; font-size: .72rem; }
-  .gallery-search select,
-  .gallery-search input { padding: .32em .5em; font-size: .72rem; max-width: none; flex: 1; }
   .gallery-sort-btn { padding: .38em .68em; font-size: .72rem; white-space: nowrap; }
 }
 
