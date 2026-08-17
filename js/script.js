@@ -2,8 +2,6 @@
   "use strict";
 
   const TABS = ["home", "profile", "gallery", "news", "guideline", "commission", "contact"];
-  const GALLERY_REPO = "Carroty-333/carroty_ninjin33";
-  const GALLERY_PATH = "assets/gallery";
 
   /* ---------------- News items (edit this list to add/remove news) ---------------- */
   const NEWS_CATEGORY_LABELS = { notice: "お知らせ", activity: "活動情報", event: "イベント情報" };
@@ -38,7 +36,7 @@
     closeMobileNav();
     if (scrollTop) window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
     triggerFadeUps();
-    if (tabId === "gallery") loadGallery();
+    if (tabId === "gallery") initGallery();
     if (tabId === "contact") loadFormEmbeds(tabId);
     document.title = tabId === "home"
       ? "きゃろってぃー Official Site | 喫茶Carrol"
@@ -66,7 +64,12 @@
       if (location.hash !== `#${tabId}`) {
         history.pushState(null, "", `#${tabId}`);
       }
-      showTab(tabId);
+      showTab(tabId, { scrollTop: !link.dataset.scrollTarget });
+      if (link.dataset.scrollTarget) {
+        requestAnimationFrame(() => {
+          document.getElementById(link.dataset.scrollTarget)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
     });
   });
 
@@ -113,70 +116,163 @@
     });
   }
 
-  /* ---------------- FA Gallery (GitHub Contents API) ---------------- */
-  let galleryLoaded = false;
-  async function loadGallery() {
-    if (galleryLoaded) return;
-    const grid = document.getElementById("galleryGrid");
-    const status = document.getElementById("galleryStatus");
-    try {
-      const res = await fetch(
-        `https://api.github.com/repos/${GALLERY_REPO}/contents/${GALLERY_PATH}`
-      );
-      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-      const files = await res.json();
-      const images = files.filter((f) => /\.(png|jpe?g|webp|gif)$/i.test(f.name));
+  /* ---------------- FA Gallery ----------------
+   * 新しいFAを追加するときは、この配列の末尾に1件追加するだけでOK(コーディング不要)。
+   * name: 表示名 / src: 画像パス(assets/galleryフォルダに配置) / twitter: Xのプロフィール URL(任意)
+   * 同じnameが既に登録済みでtwitterを省略した場合、直近に登録されたそのnameのリンクを自動で引き継ぐ。
+   * 並び順はこの配列の登録順(古い順)。初期表示は新しい順(配列の逆順)。
+   */
+  const FA_ITEMS_RAW = [
+    { name: "Pameraさん", src: "assets/gallery/fa-001-pamera.png", twitter: "" },
+    { name: "ばんさん", src: "assets/gallery/fa-002-ban.png", twitter: "https://x.com/bam_boolien" },
+    { name: "コタさん", src: "assets/gallery/fa-003-kota.png", twitter: "https://x.com/harikoinukota" },
+    { name: "ちーさん", src: "assets/gallery/fa-004-chii.png", twitter: "https://x.com/chii_san_dayo" },
+    { name: "よりさん", src: "assets/gallery/fa-005-yori.jpg", twitter: "https://x.com/yamagawa_yori" },
+    { name: "ぷくぷくさん", src: "assets/gallery/fa-006-pukupuku.jpg", twitter: "" },
+    { name: "ばんさん", src: "assets/gallery/fa-007-ban.png", twitter: "" },
+    { name: "すやさん", src: "assets/gallery/fa-008-suya.png", twitter: "https://x.com/Glyzinier" },
+  ];
+  const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
+  const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
+  const TWITTER_ICON_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.9a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3Z"/></svg>';
 
-      if (images.length === 0) {
-        status.textContent = "只今準備中です。もうしばらくお待ちください…!";
-        return;
+  /** 同じnameで後から登録されたぶんも、直近のtwitterリンクを自動で引き継ぐ */
+  function resolveFaItems(rawItems) {
+    const knownTwitter = new Map();
+    return rawItems.map((item, index) => {
+      let twitter = item.twitter;
+      if (twitter) {
+        knownTwitter.set(item.name, twitter);
+      } else if (knownTwitter.has(item.name)) {
+        twitter = knownTwitter.get(item.name);
       }
+      return { ...item, twitter: twitter || "", order: index };
+    });
+  }
+  const FA_ITEMS = resolveFaItems(FA_ITEMS_RAW);
 
-      galleryLoaded = true;
-      status.remove();
-      images.forEach((file) => {
-        const { title, artist } = parseFileName(file.name);
-        const item = document.createElement("button");
-        item.type = "button";
-        item.className = "gallery-item fade-up";
-        item.innerHTML = `
-          <img src="${file.download_url}" alt="${title}" loading="lazy">
-          <span class="caption">${artist ? `by ${artist}` : title}</span>
-        `;
-        item.addEventListener("click", () => openLightbox(file.download_url, artist ? `${title} / by ${artist}` : title));
-        grid.appendChild(item);
-        fadeObserver.observe(item);
-      });
-    } catch (err) {
-      status.textContent = "ギャラリーの読み込みに失敗しました。時間をおいて再度お試しください。";
-      console.error(err);
+  /** 画像の平均輝度から、見やすいほう(白 or 黒)の転載禁止マークを選ぶ */
+  function pickWatermark(imgEl, watermarkEl) {
+    try {
+      const size = 24;
+      const canvas = document.createElement("canvas");
+      canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(imgEl, 0, 0, size, size);
+      const { data } = ctx.getImageData(0, 0, size, size);
+      let total = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        total += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+      }
+      const avg = total / (data.length / 4);
+      watermarkEl.src = avg > 150 ? WATERMARK_BLACK : WATERMARK_WHITE;
+    } catch {
+      watermarkEl.src = WATERMARK_WHITE;
     }
   }
 
-  function parseFileName(filename) {
-    const base = filename.replace(/\.[^.]+$/, "");
-    const parts = base.split("-by-");
-    if (parts.length === 2) {
-      return { title: parts[0].replace(/-/g, " "), artist: parts[1].replace(/-/g, " ") };
+  function buildTwitterLink(name, twitter, extraClass) {
+    if (!twitter) {
+      return `<span class="gallery-caption-twitter is-disabled${extraClass ? ` ${extraClass}` : ""}" aria-hidden="true">${TWITTER_ICON_SVG}</span>`;
     }
-    return { title: base.replace(/-/g, " "), artist: "" };
+    return `<a class="gallery-caption-twitter${extraClass ? ` ${extraClass}` : ""}" href="${twitter}" target="_blank" rel="noopener" aria-label="${name}のTwitterを開く">${TWITTER_ICON_SVG}</a>`;
+  }
+
+  let galleryInitialized = false;
+  let gallerySort = "new"; // "new" | "old"
+  let galleryAuthor = "";
+
+  function renderGallery() {
+    const grid = document.getElementById("galleryGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    let items = FA_ITEMS.filter((item) => !galleryAuthor || item.name === galleryAuthor);
+    items = items.slice().sort((a, b) => gallerySort === "old" ? a.order - b.order : b.order - a.order);
+
+    if (items.length === 0) {
+      const status = document.createElement("p");
+      status.className = "gallery-status";
+      status.textContent = "該当するFAがありません。";
+      grid.appendChild(status);
+      return;
+    }
+
+    items.forEach((item) => {
+      const figure = document.createElement("figure");
+      figure.className = "gallery-item fade-up";
+      figure.innerHTML = `
+        <button type="button" class="gallery-item-img-btn" aria-label="拡大表示: ${item.name}のFA">
+          <img src="${item.src}" alt="${item.name}のFA" loading="lazy">
+          <img class="gallery-watermark" src="${WATERMARK_WHITE}" alt="" aria-hidden="true">
+        </button>
+        <figcaption class="gallery-caption">
+          <span class="gallery-caption-name">${item.name}</span>
+          ${buildTwitterLink(item.name, item.twitter)}
+        </figcaption>
+      `;
+      const thumbImg = figure.querySelector(".gallery-item-img-btn img:first-child");
+      const thumbWatermark = figure.querySelector(".gallery-watermark");
+      const applyWatermark = () => pickWatermark(thumbImg, thumbWatermark);
+      if (thumbImg.complete) applyWatermark(); else thumbImg.addEventListener("load", applyWatermark);
+      figure.querySelector(".gallery-item-img-btn").addEventListener("click", () => openLightbox(item));
+      grid.appendChild(figure);
+      fadeObserver.observe(figure);
+    });
+  }
+
+  function initGallery() {
+    if (galleryInitialized) return;
+    galleryInitialized = true;
+
+    const searchSelect = document.getElementById("gallerySearch");
+    if (searchSelect) {
+      const seen = new Set();
+      FA_ITEMS.forEach((item) => {
+        if (seen.has(item.name)) return;
+        seen.add(item.name);
+        const opt = document.createElement("option");
+        opt.value = item.name;
+        opt.textContent = item.name;
+        searchSelect.appendChild(opt);
+      });
+      searchSelect.addEventListener("change", () => {
+        galleryAuthor = searchSelect.value;
+        renderGallery();
+      });
+    }
+
+    document.querySelectorAll("[data-gallery-sort]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        gallerySort = btn.dataset.gallerySort;
+        document.querySelectorAll("[data-gallery-sort]").forEach((b) => b.classList.toggle("is-active", b === btn));
+        renderGallery();
+      });
+    });
+
+    renderGallery();
   }
 
   /* ---------------- Lightbox ---------------- */
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxWatermark = document.getElementById("lightboxWatermark");
   const lightboxCaption = document.getElementById("lightboxCaption");
   const lightboxClose = document.getElementById("lightboxClose");
 
-  function openLightbox(src, caption) {
-    lightboxImg.src = src;
-    lightboxImg.alt = caption;
-    lightboxCaption.textContent = caption;
+  function openLightbox(item) {
+    lightboxImg.src = item.src;
+    lightboxImg.alt = `${item.name}のFA`;
+    lightboxWatermark.src = WATERMARK_WHITE;
+    const applyWatermark = () => pickWatermark(lightboxImg, lightboxWatermark);
+    if (lightboxImg.complete) applyWatermark(); else lightboxImg.addEventListener("load", applyWatermark, { once: true });
+    lightboxCaption.innerHTML = `<span>${item.name}</span>${buildTwitterLink(item.name, item.twitter, "lightbox-twitter")}`;
     lightbox.hidden = false;
   }
   function closeLightbox() {
     lightbox.hidden = true;
     lightboxImg.src = "";
+    lightboxCaption.innerHTML = "";
   }
   lightboxClose.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });

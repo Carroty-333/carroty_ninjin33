@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=53">
+<link rel="stylesheet" href="css/style.css?v=54">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -85,6 +85,21 @@
     <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
+
+    <div class="header-join-actions" aria-label="参加メニュー">
+      <div class="header-join-item">
+        <a class="header-join-btn" href="https://www.youtube.com/@Carroty_Ninjin33" target="_blank" rel="noopener">メンバーシップに入る</a>
+        <span>＼チャンネル登録500人で解放／</span>
+      </div>
+      <div class="header-join-item">
+        <a class="header-join-btn" href="https://pulse.horaiken.jp/app/0708c63d" target="_blank" rel="noopener">無料ファンクラブに入る</a>
+        <span>＼配信通知やメッセージが届く／</span>
+      </div>
+      <div class="header-join-item">
+        <span class="header-join-btn is-disabled" aria-disabled="true">有料ファンクラブに入る</span>
+        <span>＼Coming soon...／</span>
+      </div>
+    </div>
   </div>
 
   <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
@@ -261,14 +276,6 @@
       </div>
     </div>
 
-    <div class="section-block share-section">
-      <h2 class="section-title share-title fade-up">シェアしてね</h2>
-      <div class="share-row fade-up">
-        <a class="share-btn" id="shareTwitterBtn" href="#" target="_blank" rel="noopener" aria-label="Twitterでシェア">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.9a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3Z"/></svg>
-        </a>
-      </div>
-    </div>
   </section>
 
   <!-- ============ PROFILE ============ -->
@@ -333,7 +340,7 @@
         </div>
       </div>
 
-      <div class="profile-reference-gallery fade-up">
+      <div class="profile-reference-gallery fade-up" id="profileReferenceGallery">
         <h3 class="profile-gallery-title">参考資料</h3>
         <a id="profileReferenceLink" href="assets/images/profile/reference-twitter.jpg" target="_blank" rel="noopener" class="profile-photo-stage profile-reference-stage" aria-label="選択中の参考資料を原寸で開く">
           <img id="profileReferenceMain" src="assets/images/profile/reference-twitter.jpg" alt="きゃろってぃー Twitter用参考資料">
@@ -376,15 +383,27 @@
   <section class="tab-panel" id="gallery" data-panel="gallery">
     <div class="section-block">
       <h2 class="section-title fade-up">FA Gallery</h2>
-      <p class="section-lead fade-up">
-        いただいたファンアートを飾らせていただくコーナーです。いつもありがとうございます……!<br>
-        投稿の際は <span class="tag-inline">#きゃろラテあーと</span> をつけていただけると見つけやすいです。掲載のご相談・削除希望はX DMまでご連絡ください。
+      <p class="section-lead gallery-lead fade-up">
+        いただいたFAを飾らせていただくコーナーです。<br>
+        いつもありがとうございます……！！<br>
+        投稿の際は <span class="tag-inline">#きゃろラテあーと</span> のタグ付けとメンションをぜひお願いします！<br>
+        タグ付きのイラストは活動に使用させていただく場合があります🙇‍
       </p>
 
-      <details class="fa-reference fade-up">
-        <summary>キャラクターデザイン参考資料を見る(FA依頼を検討中の方へ)</summary>
-        <img src="assets/images/fa-reference-sheet.jpg" alt="きゃろってぃー キャラクターデザイン参考資料" class="fa-reference-img">
-      </details>
+      <a href="#profile" data-tab-link="profile" data-scroll-target="profileReferenceGallery" class="btn btn-secondary fa-reference-btn fade-up">デザイン参考資料を見る</a>
+
+      <div class="gallery-controls fade-up">
+        <label class="gallery-search">
+          <span class="gallery-search-label">名前で検索</span>
+          <select id="gallerySearch">
+            <option value="">すべて表示</option>
+          </select>
+        </label>
+        <div class="gallery-sort" role="group" aria-label="並び替え">
+          <button type="button" class="gallery-sort-btn is-active" data-gallery-sort="new">新しい順</button>
+          <button type="button" class="gallery-sort-btn" data-gallery-sort="old">古い順</button>
+        </div>
+      </div>
 
       <div class="gallery-grid" id="galleryGrid">
         <p class="gallery-status" id="galleryStatus">読み込み中です…</p>
@@ -578,6 +597,18 @@
 
 </main>
 
+<div class="site-footnote">
+  <div class="section-block share-section">
+    <h2 class="section-title share-title fade-up">シェアしてね</h2>
+    <div class="share-row fade-up">
+      <a class="share-btn" id="shareTwitterBtn" href="#" target="_blank" rel="noopener" aria-label="Twitterでシェア">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 0 0 2-2.5c-.9.5-1.8.9-2.9 1.1a4.5 4.5 0 0 0-7.7 4.1A12.8 12.8 0 0 1 2.5 3.9a4.5 4.5 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.6v.1a4.5 4.5 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2 .1 4.5 4.5 0 0 0 4.2 3.1A9 9 0 0 1 1 19.6a12.7 12.7 0 0 0 6.9 2c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.3Z"/></svg>
+      </a>
+    </div>
+  </div>
+  <p class="removal-notice">掲載の削除希望は<a href="#contact" data-tab-link="contact">お問い合わせ</a>よりご連絡ください。</p>
+</div>
+
 <footer class="site-footer">
   <img src="assets/images/logo-carrol-white.png" alt="喫茶Carrol ロゴ" class="footer-logo">
   <p>きゃろってぃー / 喫茶Carrol</p>
@@ -585,10 +616,13 @@
 
 <div class="lightbox" id="lightbox" hidden>
   <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">&times;</button>
-  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-stage">
+    <img src="" alt="" id="lightboxImg">
+    <img class="gallery-watermark lightbox-watermark" id="lightboxWatermark" src="" alt="" aria-hidden="true">
+  </div>
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=49"></script>
+<script src="js/script.js?v=50"></script>
 </body>
 </html>
