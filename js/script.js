@@ -432,7 +432,11 @@
         }, 820);
       }
     }
-    function startMarquee() { timer = window.setInterval(stepMarquee, 5000); }
+    function startMarquee() {
+      // Always clear first: repeated start calls (e.g. rapid arrow clicks) must never stack multiple intervals.
+      window.clearInterval(timer);
+      timer = window.setInterval(stepMarquee, 5000);
+    }
     function stopMarquee() { window.clearInterval(timer); }
     startMarquee();
     marquee.addEventListener("mouseenter", stopMarquee);
