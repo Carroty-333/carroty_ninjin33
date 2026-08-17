@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=61">
+<link rel="stylesheet" href="css/style.css?v=63">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -385,9 +385,11 @@
       <h2 class="section-title fade-up">FA Gallery</h2>
       <p class="section-lead gallery-lead fade-up">
         いただいたFAを飾らせていただくコーナーです。<br>
-        いつもありがとうございます……！！<br>
-        投稿の際は <span class="tag-inline">#きゃろラテあーと</span> のタグ付けとメンションをぜひお願いします！<br>
-        タグ付きのイラストは活動に使用させていただく場合があります🙇‍
+        いつもありがとうございます……！！<br><br>
+        投稿の際は <span class="tag-inline">#きゃろラテあーと</span> のタグ付けと<br class="lead-break-mobile">
+        メンションをぜひお願いします！<br>
+        タグ付きのイラストは<br class="lead-break-mobile">
+        活動に使用させていただく場合があります🙇‍
       </p>
 
       <p class="removal-notice fade-up">掲載の削除希望は<a href="#contact" data-tab-link="contact">お問い合わせ</a>よりご連絡ください</p>
@@ -397,9 +399,8 @@
       <div class="gallery-controls fade-up">
         <label class="gallery-search">
           <span class="gallery-search-label">名前で検索</span>
-          <select id="gallerySearch">
-            <option value="">すべて表示</option>
-          </select>
+          <input type="text" id="gallerySearch" list="galleryNameList" placeholder="すべて表示" autocomplete="off">
+          <datalist id="galleryNameList"></datalist>
         </label>
         <div class="gallery-sort" role="group" aria-label="並び替え">
           <button type="button" class="gallery-sort-btn is-active" data-gallery-sort="new">新しい順</button>
@@ -624,6 +625,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=51"></script>
+<script src="js/script.js?v=52"></script>
 </body>
 </html>

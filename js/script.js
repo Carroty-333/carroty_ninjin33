@@ -170,7 +170,8 @@
     if (!grid) return;
     grid.innerHTML = "";
 
-    let items = FA_ITEMS.filter((item) => !galleryAuthor || item.name === galleryAuthor);
+    const query = galleryAuthor.trim().toLowerCase();
+    let items = FA_ITEMS.filter((item) => !query || item.name.toLowerCase().includes(query));
     items = items.slice().sort((a, b) => gallerySort === "old" ? a.order - b.order : b.order - a.order);
 
     if (items.length === 0) {
@@ -204,19 +205,19 @@
     if (galleryInitialized) return;
     galleryInitialized = true;
 
-    const searchSelect = document.getElementById("gallerySearch");
-    if (searchSelect) {
+    const searchInput = document.getElementById("gallerySearch");
+    const nameList = document.getElementById("galleryNameList");
+    if (searchInput && nameList) {
       const seen = new Set();
       FA_ITEMS.forEach((item) => {
         if (seen.has(item.name)) return;
         seen.add(item.name);
         const opt = document.createElement("option");
         opt.value = item.name;
-        opt.textContent = item.name;
-        searchSelect.appendChild(opt);
+        nameList.appendChild(opt);
       });
-      searchSelect.addEventListener("change", () => {
-        galleryAuthor = searchSelect.value;
+      searchInput.addEventListener("input", () => {
+        galleryAuthor = searchInput.value;
         renderGallery();
       });
     }
