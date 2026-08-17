@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=66">
+<link rel="stylesheet" href="css/style.css?v=67">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -213,6 +213,12 @@
     </div>
 
     <div class="video-marquee fade-up" id="videoMarquee" aria-label="配信アーカイブ一覧">
+      <button type="button" class="video-marquee-arrow video-marquee-arrow-prev" id="videoMarqueePrev" aria-label="前の動画へ">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 4.5 8 12l7.5 7.5 1.4-1.4L10.8 12l6.1-6.1z"/></svg>
+      </button>
+      <button type="button" class="video-marquee-arrow video-marquee-arrow-next" id="videoMarqueeNext" aria-label="次の動画へ">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 4.5 16 12l-7.5 7.5-1.4-1.4L13.2 12 7.1 5.9z"/></svg>
+      </button>
       <div class="video-marquee-track" id="videoMarqueeTrack">
         <a class="video-marquee-item" href="https://www.youtube.com/watch?v=R8Rv4BaRSTk" target="_blank" rel="noopener">
           <img src="https://i.ytimg.com/vi/R8Rv4BaRSTk/hqdefault.jpg" alt="酒飲み配信" loading="lazy">
@@ -647,6 +653,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=55"></script>
+<script src="js/script.js?v=56"></script>
 </body>
 </html>

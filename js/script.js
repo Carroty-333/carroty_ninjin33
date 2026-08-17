@@ -457,7 +457,8 @@
     let dragStartTranslate = 0;
 
     function onPointerDown(e) {
-      if (e.pointerType === "mouse" && e.button !== 0) return;
+      // Touch/pen only: swipe on mobile. PC mouse-drag was removed (felt broken); PC uses the arrow buttons instead.
+      if (e.pointerType === "mouse") return;
       dragging = true;
       dragMoved = false;
       dragStartX = e.clientX;
@@ -499,6 +500,38 @@
         e.stopPropagation();
       }
     }, true);
+
+    /* Left/right arrow buttons: manual step, wrapping seamlessly in both directions. */
+    const prevBtn = document.getElementById("videoMarqueePrev");
+    const nextBtn = document.getElementById("videoMarqueeNext");
+    function arrowStep(delta) {
+      const total = originalItems.length;
+      const unit = itemUnit();
+      stopMarquee();
+
+      if (delta < 0 && step === 0) {
+        // Jump to the visually-identical clone position with no transition, then animate back one step.
+        marqueeTrack.style.transition = "none";
+        step = total;
+        marqueeTrack.style.transform = `translateX(-${step * unit}px)`;
+        void marqueeTrack.offsetWidth; // force reflow so the jump applies before the animated step below
+      }
+
+      step += delta;
+      marqueeTrack.style.transition = "transform .5s cubic-bezier(.45, 0, .2, 1)";
+      marqueeTrack.style.transform = `translateX(-${step * unit}px)`;
+
+      if (step >= total) {
+        window.setTimeout(() => {
+          marqueeTrack.style.transition = "none";
+          step = step % total;
+          marqueeTrack.style.transform = `translateX(-${step * unit}px)`;
+        }, 520);
+      }
+      window.setTimeout(startMarquee, 550);
+    }
+    prevBtn?.addEventListener("click", () => arrowStep(-1));
+    nextBtn?.addEventListener("click", () => arrowStep(1));
   }
 
   /* ---------------- Profile image switchers ---------------- */

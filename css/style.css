@@ -910,10 +910,34 @@ main {
   padding-inline: 16px;
   transition: transform .8s cubic-bezier(.45, 0, .2, 1);
   touch-action: pan-y;
-  cursor: grab;
   user-select: none;
 }
-.video-marquee-track.is-dragging { cursor: grabbing; }
+.video-marquee-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(253, 248, 240, .92);
+  color: var(--coffee-900);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .25);
+  transform: translateY(-50%);
+  transition: background .2s ease, transform .2s ease;
+}
+.video-marquee-arrow svg { width: 22px; height: 22px; }
+.video-marquee-arrow:hover { background: var(--ivory); transform: translateY(-50%) scale(1.08); }
+.video-marquee-arrow:active { transform: translateY(-50%) scale(.96); }
+.video-marquee-arrow-prev { left: 14px; }
+.video-marquee-arrow-next { right: 14px; }
+@media (max-width: 639px) {
+  /* Mobile already has swipe; the arrows are a PC-only affordance. */
+  .video-marquee-arrow { display: none; }
+}
 .video-marquee-item {
   position: relative;
   flex: 0 0 auto;
