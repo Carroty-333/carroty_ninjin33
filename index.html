@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Yomogi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=63">
+<link rel="stylesheet" href="css/style.css?v=64">
 <link rel="preload" as="image" href="assets/images/logo-carrol-intro-white.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-light.png">
 <link rel="preload" as="image" href="assets/images/intro-wave-dark.png">
@@ -397,11 +397,19 @@
       <a href="#profile" data-tab-link="profile" data-scroll-target="profileReferenceGallery" class="btn btn-secondary contact-method-btn fa-reference-btn fade-up">デザイン参考資料を見る</a>
 
       <div class="gallery-controls fade-up">
-        <label class="gallery-search">
-          <span class="gallery-search-label">名前で検索</span>
-          <input type="text" id="gallerySearch" list="galleryNameList" placeholder="すべて表示" autocomplete="off">
-          <datalist id="galleryNameList"></datalist>
-        </label>
+        <div class="gallery-controls-search">
+          <label class="gallery-search">
+            <span class="gallery-search-label">一覧から検索</span>
+            <select id="gallerySearchSelect">
+              <option value="">すべて表示</option>
+            </select>
+          </label>
+          <label class="gallery-search">
+            <span class="gallery-search-label">名前で検索</span>
+            <input type="text" id="gallerySearchText" list="galleryNameList" placeholder="名前を入力" autocomplete="off">
+            <datalist id="galleryNameList"></datalist>
+          </label>
+        </div>
         <div class="gallery-sort" role="group" aria-label="並び替え">
           <button type="button" class="gallery-sort-btn is-active" data-gallery-sort="new">新しい順</button>
           <button type="button" class="gallery-sort-btn" data-gallery-sort="old">古い順</button>
@@ -625,6 +633,6 @@
   <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
-<script src="js/script.js?v=52"></script>
+<script src="js/script.js?v=53"></script>
 </body>
 </html>

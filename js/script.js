@@ -205,19 +205,34 @@
     if (galleryInitialized) return;
     galleryInitialized = true;
 
-    const searchInput = document.getElementById("gallerySearch");
+    const searchSelect = document.getElementById("gallerySearchSelect");
+    const searchInput = document.getElementById("gallerySearchText");
     const nameList = document.getElementById("galleryNameList");
-    if (searchInput && nameList) {
+    if (searchSelect) {
       const seen = new Set();
       FA_ITEMS.forEach((item) => {
         if (seen.has(item.name)) return;
         seen.add(item.name);
         const opt = document.createElement("option");
         opt.value = item.name;
-        nameList.appendChild(opt);
+        opt.textContent = item.name;
+        searchSelect.appendChild(opt);
+        if (nameList) {
+          const dlOpt = document.createElement("option");
+          dlOpt.value = item.name;
+          nameList.appendChild(dlOpt);
+        }
       });
+      searchSelect.addEventListener("change", () => {
+        galleryAuthor = searchSelect.value;
+        if (searchInput) searchInput.value = searchSelect.value;
+        renderGallery();
+      });
+    }
+    if (searchInput) {
       searchInput.addEventListener("input", () => {
         galleryAuthor = searchInput.value;
+        if (searchSelect) searchSelect.value = "";
         renderGallery();
       });
     }
