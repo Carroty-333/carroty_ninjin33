@@ -569,10 +569,10 @@ li { list-style: none; }
 .mobile-nav-overlay.is-open { opacity: 1; pointer-events: auto; }
 
 @media (min-width: 900px) {
-  .tab-nav { display: block; }
+  .tab-nav { display: flex; flex: 1 1 auto; justify-content: center; min-width: 0; }
   .hamburger, .mobile-nav, .mobile-nav-overlay { display: none; }
-  .header-inner { justify-content: center; }
-  .brand { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
+  .header-inner { justify-content: space-between; }
+  .brand { flex: 0 0 auto; }
 }
 
 /* Header join-actions: membership / free fan club / paid fan club buttons */
@@ -580,6 +580,7 @@ li { list-style: none; }
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  flex: 0 0 auto;
 }
 .header-join-item {
   display: flex;
@@ -618,36 +619,27 @@ li { list-style: none; }
   letter-spacing: .01em;
   white-space: nowrap;
 }
-@media (min-width: 900px) {
-  .header-join-actions {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
 @media (max-width: 899px) {
-  :root { --header-h: 128px; }
+  :root { --header-h: 108px; }
   .site-header { height: auto; min-height: var(--header-h); }
   .header-inner {
     flex-wrap: wrap;
     height: auto;
-    padding: 12px 16px 10px;
-    row-gap: 8px;
+    padding: 10px 16px 8px;
+    row-gap: 6px;
   }
   .brand-logo { height: 40px; }
   .hamburger { order: 2; }
   .header-join-actions {
     order: 3;
     width: 100%;
-    justify-content: flex-start;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    gap: 10px;
   }
+  .header-join-membership { display: none; }
   .header-join-item { flex: 0 0 auto; }
-  .header-join-btn { padding: .5em .9em; font-size: .68rem; }
+  .header-join-btn { padding: .42em .8em; font-size: .64rem; }
+  .header-join-item > span:last-child { font-size: .52rem; }
 }
 
 /* ==========================================================================
@@ -1190,10 +1182,12 @@ main {
 
 /* Site-wide footnote area (share + removal notice), shown above the footer on every tab */
 .site-footnote {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+  flex: 0 0 auto;
 }
 .site-footnote .share-section { padding-bottom: 8px; }
 .removal-notice {
@@ -1566,7 +1560,7 @@ main {
 .gallery-caption {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   padding: 0 2px;
 }
@@ -1577,6 +1571,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 .gallery-caption-twitter {
   flex: 0 0 auto;
@@ -1586,17 +1581,12 @@ main {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #000;
+  background: var(--coffee-700);
   color: var(--ivory);
   transition: transform .2s ease;
 }
 .gallery-caption-twitter:hover { transform: translateY(-2px); }
 .gallery-caption-twitter svg { width: 13px; height: 13px; }
-.gallery-caption-twitter.is-disabled {
-  background: var(--camel-light);
-  color: var(--coffee-700);
-  pointer-events: none;
-}
 
 /* ==========================================================================
    GUIDELINE
@@ -1918,7 +1908,7 @@ main {
 }
 .lightbox[hidden] { display: none; }
 .lightbox-stage { position: relative; display: inline-flex; max-width: min(90vw, 720px); max-height: 75vh; }
-.lightbox img#lightboxImg { max-width: min(90vw, 720px); max-height: 75vh; border-radius: var(--radius-md); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+.lightbox img#lightboxImg { max-width: min(90vw, 720px); max-height: 75vh; border-radius: var(--radius-md); box-shadow: 0 20px 50px rgba(0,0,0,.5); background: var(--ivory-dim); }
 .lightbox-watermark { width: 45%; max-height: 45%; }
 .lightbox-caption {
   display: flex;

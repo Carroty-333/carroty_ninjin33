@@ -119,6 +119,7 @@
   /* ---------------- FA Gallery ----------------
    * 新しいFAを追加するときは、この配列の末尾に1件追加するだけでOK(コーディング不要)。
    * name: 表示名 / src: 画像パス(assets/galleryフォルダに配置) / twitter: Xのプロフィール URL(任意)
+   * watermark: 省略時は黒ロゴ。背景が暗い画像などで白ロゴにしたい場合だけ "white" を指定する。
    * 同じnameが既に登録済みでtwitterを省略した場合、直近に登録されたそのnameのリンクを自動で引き継ぐ。
    * 並び順はこの配列の登録順(古い順)。初期表示は新しい順(配列の逆順)。
    */
@@ -151,30 +152,12 @@
   }
   const FA_ITEMS = resolveFaItems(FA_ITEMS_RAW);
 
-  /** 画像の平均輝度から、見やすいほう(白 or 黒)の転載禁止マークを選ぶ */
-  function pickWatermark(imgEl, watermarkEl) {
-    try {
-      const size = 24;
-      const canvas = document.createElement("canvas");
-      canvas.width = size; canvas.height = size;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(imgEl, 0, 0, size, size);
-      const { data } = ctx.getImageData(0, 0, size, size);
-      let total = 0;
-      for (let i = 0; i < data.length; i += 4) {
-        total += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
-      }
-      const avg = total / (data.length / 4);
-      watermarkEl.src = avg > 150 ? WATERMARK_BLACK : WATERMARK_WHITE;
-    } catch {
-      watermarkEl.src = WATERMARK_WHITE;
-    }
+  function watermarkSrcFor(item) {
+    return item.watermark === "white" ? WATERMARK_WHITE : WATERMARK_BLACK;
   }
 
   function buildTwitterLink(name, twitter, extraClass) {
-    if (!twitter) {
-      return `<span class="gallery-caption-twitter is-disabled${extraClass ? ` ${extraClass}` : ""}" aria-hidden="true">${TWITTER_ICON_SVG}</span>`;
-    }
+    if (!twitter) return "";
     return `<a class="gallery-caption-twitter${extraClass ? ` ${extraClass}` : ""}" href="${twitter}" target="_blank" rel="noopener" aria-label="${name}のTwitterを開く">${TWITTER_ICON_SVG}</a>`;
   }
 
@@ -204,17 +187,13 @@
       figure.innerHTML = `
         <button type="button" class="gallery-item-img-btn" aria-label="拡大表示: ${item.name}のFA">
           <img src="${item.src}" alt="${item.name}のFA" loading="lazy">
-          <img class="gallery-watermark" src="${WATERMARK_WHITE}" alt="" aria-hidden="true">
+          <img class="gallery-watermark" src="${watermarkSrcFor(item)}" alt="" aria-hidden="true">
         </button>
         <figcaption class="gallery-caption">
           <span class="gallery-caption-name">${item.name}</span>
           ${buildTwitterLink(item.name, item.twitter)}
         </figcaption>
       `;
-      const thumbImg = figure.querySelector(".gallery-item-img-btn img:first-child");
-      const thumbWatermark = figure.querySelector(".gallery-watermark");
-      const applyWatermark = () => pickWatermark(thumbImg, thumbWatermark);
-      if (thumbImg.complete) applyWatermark(); else thumbImg.addEventListener("load", applyWatermark);
       figure.querySelector(".gallery-item-img-btn").addEventListener("click", () => openLightbox(item));
       grid.appendChild(figure);
       fadeObserver.observe(figure);
@@ -263,9 +242,7 @@
   function openLightbox(item) {
     lightboxImg.src = item.src;
     lightboxImg.alt = `${item.name}のFA`;
-    lightboxWatermark.src = WATERMARK_WHITE;
-    const applyWatermark = () => pickWatermark(lightboxImg, lightboxWatermark);
-    if (lightboxImg.complete) applyWatermark(); else lightboxImg.addEventListener("load", applyWatermark, { once: true });
+    lightboxWatermark.src = watermarkSrcFor(item);
     lightboxCaption.innerHTML = `<span>${item.name}</span>${buildTwitterLink(item.name, item.twitter, "lightbox-twitter")}`;
     lightbox.hidden = false;
   }
