@@ -909,7 +909,11 @@ main {
   width: max-content;
   padding-inline: 16px;
   transition: transform .8s cubic-bezier(.45, 0, .2, 1);
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
 }
+.video-marquee-track.is-dragging { cursor: grabbing; }
 .video-marquee-item {
   position: relative;
   flex: 0 0 auto;
@@ -929,7 +933,8 @@ main {
     padding-inline: 8px;
   }
   .video-marquee-item {
-    width: calc((100vw - 40px) / 3);
+    /* Sized so exactly 2 items fit the screen edge-to-edge (8px side padding + 8px gap between). */
+    width: calc((100vw - 24px) / 2);
     border-width: 1px;
     border-radius: 8px;
   }

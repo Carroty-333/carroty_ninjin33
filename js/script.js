@@ -437,6 +437,68 @@
     startMarquee();
     marquee.addEventListener("mouseenter", stopMarquee);
     marquee.addEventListener("mouseleave", startMarquee);
+
+    /* Drag (PC) / swipe (mobile) to move videos left-right; resumes the auto-scroll-left when released. */
+    function currentTrackX() {
+      const transform = getComputedStyle(marqueeTrack).transform;
+      if (transform === "none") return 0;
+      return new DOMMatrixReadOnly(transform).m41;
+    }
+    function itemUnit() {
+      const item = marqueeTrack.children[0];
+      const itemWidth = item.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(marqueeTrack).columnGap || getComputedStyle(marqueeTrack).gap || 0);
+      return itemWidth + gap;
+    }
+
+    let dragging = false;
+    let dragMoved = false;
+    let dragStartX = 0;
+    let dragStartTranslate = 0;
+
+    function onPointerDown(e) {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      dragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      dragStartTranslate = currentTrackX();
+      stopMarquee();
+      marqueeTrack.style.transition = "none";
+      marqueeTrack.classList.add("is-dragging");
+      marqueeTrack.setPointerCapture?.(e.pointerId);
+    }
+    function onPointerMove(e) {
+      if (!dragging) return;
+      const dx = e.clientX - dragStartX;
+      if (Math.abs(dx) > 4) dragMoved = true;
+      marqueeTrack.style.transform = `translateX(${dragStartTranslate + dx}px)`;
+    }
+    function onPointerUp() {
+      if (!dragging) return;
+      dragging = false;
+      marqueeTrack.classList.remove("is-dragging");
+
+      const unit = itemUnit();
+      const total = originalItems.length;
+      let nearestStep = Math.round(-currentTrackX() / unit);
+      nearestStep = ((nearestStep % total) + total) % total;
+      step = nearestStep;
+
+      marqueeTrack.style.transition = "transform .35s ease";
+      marqueeTrack.style.transform = `translateX(-${step * unit}px)`;
+      window.setTimeout(startMarquee, 360);
+    }
+
+    marqueeTrack.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    marqueeTrack.addEventListener("click", (e) => {
+      if (dragMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
   }
 
   /* ---------------- Profile image switchers ---------------- */
