@@ -1626,6 +1626,26 @@ main {
   pointer-events: none;
   opacity: .45;
 }
+.gallery-commission-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(110, 72, 47, .85);
+  color: #fff;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  pointer-events: none;
+}
+.lightbox-commission-badge {
+  top: 10px;
+  left: 10px;
+  font-size: .78rem;
+  padding: 3px 12px;
+}
 .gallery-caption {
   display: flex;
   align-items: center;

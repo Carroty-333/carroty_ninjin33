@@ -227,6 +227,12 @@
     { name: "ちーさん", src: "assets/gallery/fa-101-chii.png", twitter: "" },
     { name: "ちーさん", src: "assets/gallery/fa-102-chii.png", twitter: "" },
     { name: "しのぶさん", src: "assets/gallery/fa-103-shinobu.png", twitter: "" },
+    { name: "あかねさん", src: "assets/gallery/fa-104-akane.png", twitter: "https://x.com/aka07_vt", commission: true },
+    { name: "miyaさん", src: "assets/gallery/fa-105-miya.png", twitter: "https://x.com/_32miya107", commission: true },
+    { name: "もちもちさん", src: "assets/gallery/fa-106-mochimochi.png", twitter: "https://x.com/mocimoci001", commission: true },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-107-paipukoron.png", twitter: "", commission: true },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-108-paipukoron.png", twitter: "", commission: true },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-109-paipukoron.png", twitter: "", commission: true },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
@@ -284,6 +290,7 @@
         <button type="button" class="gallery-item-img-btn" aria-label="拡大表示: ${item.name}のFA">
           <img src="${item.src}" alt="${item.name}のFA" loading="lazy">
           <img class="gallery-watermark" src="${watermarkSrcFor(item)}" alt="" aria-hidden="true">
+          ${item.commission ? '<span class="gallery-commission-badge">Commission</span>' : ""}
         </button>
         <figcaption class="gallery-caption">
           <span class="gallery-caption-name">${item.name}</span>
@@ -343,11 +350,13 @@
   const lightboxWatermark = document.getElementById("lightboxWatermark");
   const lightboxCaption = document.getElementById("lightboxCaption");
   const lightboxClose = document.getElementById("lightboxClose");
+  const lightboxCommissionBadge = document.getElementById("lightboxCommissionBadge");
 
   function openLightbox(item) {
     lightboxImg.src = item.src;
     lightboxImg.alt = `${item.name}のFA`;
     lightboxWatermark.src = watermarkSrcFor(item);
+    lightboxCommissionBadge.hidden = !item.commission;
     lightboxCaption.innerHTML = `<span>${item.name}</span>${buildTwitterLink(item.name, item.twitter, "lightbox-twitter")}`;
     lightbox.hidden = false;
   }
