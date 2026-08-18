@@ -196,6 +196,21 @@
     { name: "ばんさん", src: "assets/gallery/fa-070-ban.png", twitter: "" },
     { name: "ゆなさん", src: "assets/gallery/fa-071-yuna.png", twitter: "https://x.com/yuna_panda1098" },
     { name: "", src: "assets/gallery/fa-072-unknown.png", twitter: "" },
+    { name: "しのぶさん", src: "assets/gallery/fa-073-shinobu.png", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-074-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-075-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-076-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-077-ku.jpg", twitter: "" },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-078-paipukoron.jpg", twitter: "https://x.com/paipukoron417" },
+    { name: "ユウコチカさん", src: "assets/gallery/fa-079-yuukochika.jpg", twitter: "https://x.com/ucchka" },
+    { name: "くーさん", src: "assets/gallery/fa-080-ku.jpg", twitter: "" },
+    { name: "よなち", src: "assets/gallery/fa-081-yonachi.jpg", twitter: "https://x.com/yonagatsuki_vvv" },
+    { name: "しのぶさん", src: "assets/gallery/fa-082-shinobu.jpg", twitter: "" },
+    { name: "", src: "assets/gallery/fa-083-unknown.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-084-ku.jpg", twitter: "" },
+    { name: "ファイナルスナックさん", src: "assets/gallery/fa-085-finalsnack.jpg", twitter: "https://x.com/jokky0227" },
+    { name: "ファイナルスナックさん", src: "assets/gallery/fa-086-finalsnack.jpg", twitter: "" },
+    { name: "ファイナルスナックさん", src: "assets/gallery/fa-087-finalsnack.jpg", twitter: "" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
