@@ -164,6 +164,20 @@
     { name: "迷い子さん", src: "assets/gallery/fa-038-mayoigo.jpg", twitter: "https://x.com/mayoigo_project" },
     { name: "カイリさん", src: "assets/gallery/fa-039-kairi.png", twitter: "https://x.com/Kairi_Vmermaid" },
     { name: "ひーさん", src: "assets/gallery/fa-040-hii.jpg", twitter: "" },
+    { name: "りあさん", src: "assets/gallery/fa-041-ria.jpg", twitter: "https://x.com/kuroi_ria" },
+    { name: "てんにてんさん", src: "assets/gallery/fa-042-tenniten.png", twitter: "https://x.com/tenniten_normal" },
+    { name: "くーさん", src: "assets/gallery/fa-043-ku.jfif", twitter: "" },
+    { name: "ちーさん", src: "assets/gallery/fa-044-chii.jpg", twitter: "" },
+    { name: "海夢さん", src: "assets/gallery/fa-045-kaimu.png", twitter: "https://x.com/shinsui_kaimu" },
+    { name: "まいねさん", src: "assets/gallery/fa-046-maine.jpg", twitter: "https://x.com/Suwa_maine" },
+    { name: "ななねこさん", src: "assets/gallery/fa-047-nananeko.jpg", twitter: "https://x.com/7na05_73" },
+    { name: "トテモニンゲンさん", src: "assets/gallery/fa-048-totemoningen.jpg", twitter: "" },
+    { name: "ばんさん", src: "assets/gallery/fa-049-ban.jpg", twitter: "https://x.com/bam_boolien" },
+    { name: "でびさん", src: "assets/gallery/fa-050-devi.webp", twitter: "https://x.com/LeenaTeufel" },
+    { name: "コタさん", src: "assets/gallery/fa-051-kota.webp", twitter: "" },
+    { name: "コタさん", src: "assets/gallery/fa-052-kota.webp", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-053-ku.webp", twitter: "" },
+    { name: "うとさん", src: "assets/gallery/fa-054-uto.webp", twitter: "https://x.com/sakiuto" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
