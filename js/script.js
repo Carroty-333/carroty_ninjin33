@@ -132,6 +132,16 @@
     { name: "ぷくぷくさん", src: "assets/gallery/fa-006-pukupuku.jpg", twitter: "" },
     { name: "ばんさん", src: "assets/gallery/fa-007-ban.png", twitter: "" },
     { name: "すやさん", src: "assets/gallery/fa-008-suya.png", twitter: "https://x.com/Glyzinier" },
+    { name: "紫音さん", src: "assets/gallery/fa-009-shion.png", twitter: "https://x.com/xion_797" },
+    { name: "みたけさん", src: "assets/gallery/fa-010-mitake.jpg", twitter: "https://x.com/smile_summers" },
+    { name: "不明", src: "assets/gallery/fa-011-unknown.jpg", twitter: "" },
+    { name: "コタさん", src: "assets/gallery/fa-012-kota.png", twitter: "" },
+    { name: "もちるさん", src: "assets/gallery/fa-013-mochiru.jpg", twitter: "https://x.com/mo_chiru8" },
+    { name: "るぅくさん", src: "assets/gallery/fa-014-rooku.png", twitter: "https://bsky.app/profile/rookyamada.bsky.social" },
+    { name: "はるばるさん", src: "assets/gallery/fa-015-harubaru.jpg", twitter: "https://x.com/hakomori_vtuber" },
+    { name: "くーさん", src: "assets/gallery/fa-016-ku.jpg", twitter: "https://x.com/96usagi_oxo" },
+    { name: "ちーさん", src: "assets/gallery/fa-017-chii.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-018-ku.jpg", twitter: "" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
