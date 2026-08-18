@@ -265,6 +265,7 @@
   let galleryInitialized = false;
   let gallerySort = "new"; // "new" | "old"
   let galleryAuthor = "";
+  let galleryCommissionOnly = false;
 
   function renderGallery() {
     const grid = document.getElementById("galleryGrid");
@@ -272,7 +273,10 @@
     grid.innerHTML = "";
 
     const query = galleryAuthor.trim().toLowerCase();
-    let items = FA_ITEMS.filter((item) => !query || item.name.toLowerCase().includes(query));
+    let items = FA_ITEMS.filter((item) => {
+      if (galleryCommissionOnly) return !!item.commission;
+      return !query || item.name.toLowerCase().includes(query);
+    });
     items = items.slice().sort((a, b) => gallerySort === "old" ? a.order - b.order : b.order - a.order);
 
     if (items.length === 0) {
@@ -310,23 +314,30 @@
     const searchSelect = document.getElementById("gallerySearchSelect");
     const searchInput = document.getElementById("gallerySearchText");
     if (searchSelect) {
-      const seen = new Set();
-      FA_ITEMS.forEach((item) => {
-        if (seen.has(item.name)) return;
-        seen.add(item.name);
+      const commissionOpt = document.createElement("option");
+      commissionOpt.value = "__commission__";
+      commissionOpt.textContent = "Commission";
+      searchSelect.appendChild(commissionOpt);
+
+      const names = Array.from(new Set(FA_ITEMS.map((item) => item.name).filter((name) => name)));
+      names.sort((a, b) => a.localeCompare(b, "ja"));
+      names.forEach((name) => {
         const opt = document.createElement("option");
-        opt.value = item.name;
-        opt.textContent = item.name;
+        opt.value = name;
+        opt.textContent = name;
         searchSelect.appendChild(opt);
       });
+
       searchSelect.addEventListener("change", () => {
-        galleryAuthor = searchSelect.value;
-        if (searchInput) searchInput.value = searchSelect.value;
+        galleryCommissionOnly = searchSelect.value === "__commission__";
+        galleryAuthor = galleryCommissionOnly ? "" : searchSelect.value;
+        if (searchInput) searchInput.value = galleryCommissionOnly ? "" : searchSelect.value;
         renderGallery();
       });
     }
     if (searchInput) {
       searchInput.addEventListener("input", () => {
+        galleryCommissionOnly = false;
         galleryAuthor = searchInput.value;
         if (searchSelect) searchSelect.value = "";
         renderGallery();
