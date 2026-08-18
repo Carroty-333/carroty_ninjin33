@@ -151,6 +151,19 @@
     { name: "くーさん", src: "assets/gallery/fa-025-ku.jpg", twitter: "" },
     { name: "アオイロさん", src: "assets/gallery/fa-026-aoiro.jpg", twitter: "https://x.com/h3kt5_WW" },
     { name: "ゆうきさん", src: "assets/gallery/fa-027-yuuki.jpg", twitter: "https://x.com/yuuki_yokozuki" },
+    { name: "ぷん太郎さん", src: "assets/gallery/fa-028-puntarou.jpg", twitter: "https://x.com/wayawayawaya" },
+    { name: "ちゃなさん", src: "assets/gallery/fa-029-chana.jpg", twitter: "https://x.com/oochan_25" },
+    { name: "ひーさん", src: "assets/gallery/fa-030-hii.jpg", twitter: "" },
+    { name: "ひーさん", src: "assets/gallery/fa-031-hii.jpg", twitter: "" },
+    { name: "ほたるさん", src: "assets/gallery/fa-032-hotaru.png", twitter: "https://x.com/haruno_hotaru" },
+    { name: "そらさめさん", src: "assets/gallery/fa-033-sorasame.jpg", twitter: "https://x.com/SkyShark1225" },
+    { name: "もちるさん", src: "assets/gallery/fa-034-mochiru.png", twitter: "" },
+    { name: "胡蝶さん", src: "assets/gallery/fa-035-kocho.png", twitter: "https://x.com/Kocho_orchid" },
+    { name: "くーさん", src: "assets/gallery/fa-036-ku.png", twitter: "" },
+    { name: "ちーさん", src: "assets/gallery/fa-037-chii.png", twitter: "" },
+    { name: "迷い子さん", src: "assets/gallery/fa-038-mayoigo.jpg", twitter: "https://x.com/mayoigo_project" },
+    { name: "カイリさん", src: "assets/gallery/fa-039-kairi.png", twitter: "https://x.com/Kairi_Vmermaid" },
+    { name: "ひーさん", src: "assets/gallery/fa-040-hii.jpg", twitter: "" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
