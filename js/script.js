@@ -211,6 +211,22 @@
     { name: "ファイナルスナックさん", src: "assets/gallery/fa-085-finalsnack.jpg", twitter: "https://x.com/jokky0227" },
     { name: "ファイナルスナックさん", src: "assets/gallery/fa-086-finalsnack.jpg", twitter: "" },
     { name: "ファイナルスナックさん", src: "assets/gallery/fa-087-finalsnack.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-088-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-089-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-090-ku.jpg", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-091-nekokino.png", twitter: "https://x.com/nekodaisukesan" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-092-nekokino.jpg", twitter: "" },
+    { name: "巴鳥なこさん", src: "assets/gallery/fa-093-hachou-nako.jpg", twitter: "https://x.com/mrrr1126" },
+    { name: "春瀬さん", src: "assets/gallery/fa-094-haruse.jpg", twitter: "https://x.com/mngn___" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-095-nekokino.jpg", twitter: "" },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-096-paipukoron.png", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-097-nekokino.jpg", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-098-nekokino.jpg", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-099-nekokino.jpg", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-100-nekokino.jpg", twitter: "" },
+    { name: "ちーさん", src: "assets/gallery/fa-101-chii.png", twitter: "" },
+    { name: "ちーさん", src: "assets/gallery/fa-102-chii.png", twitter: "" },
+    { name: "しのぶさん", src: "assets/gallery/fa-103-shinobu.png", twitter: "" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
