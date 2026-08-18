@@ -134,7 +134,7 @@
     { name: "すやさん", src: "assets/gallery/fa-008-suya.png", twitter: "https://x.com/Glyzinier" },
     { name: "紫音さん", src: "assets/gallery/fa-009-shion.png", twitter: "https://x.com/xion_797" },
     { name: "みたけさん", src: "assets/gallery/fa-010-mitake.jpg", twitter: "https://x.com/smile_summers" },
-    { name: "不明", src: "assets/gallery/fa-011-unknown.jpg", twitter: "" },
+    { name: "", src: "assets/gallery/fa-011-unknown.jpg", twitter: "" },
     { name: "コタさん", src: "assets/gallery/fa-012-kota.png", twitter: "" },
     { name: "もちるさん", src: "assets/gallery/fa-013-mochiru.jpg", twitter: "https://x.com/mo_chiru8" },
     { name: "るぅくさん", src: "assets/gallery/fa-014-rooku.png", twitter: "https://bsky.app/profile/rookyamada.bsky.social" },
@@ -142,6 +142,15 @@
     { name: "くーさん", src: "assets/gallery/fa-016-ku.jpg", twitter: "https://x.com/96usagi_oxo" },
     { name: "ちーさん", src: "assets/gallery/fa-017-chii.jpg", twitter: "" },
     { name: "くーさん", src: "assets/gallery/fa-018-ku.jpg", twitter: "" },
+    { name: "ひかるさん", src: "assets/gallery/fa-019-hikaru.jpg", twitter: "https://x.com/HKR_VCVT" },
+    { name: "テルさん", src: "assets/gallery/fa-020-teru.jpg", twitter: "https://x.com/Teru030_A" },
+    { name: "ちーさん", src: "assets/gallery/fa-021-chii.jpg", twitter: "" },
+    { name: "ちーさん", src: "assets/gallery/fa-022-chii.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-023-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-024-ku.jpg", twitter: "" },
+    { name: "くーさん", src: "assets/gallery/fa-025-ku.jpg", twitter: "" },
+    { name: "アオイロさん", src: "assets/gallery/fa-026-aoiro.jpg", twitter: "https://x.com/h3kt5_WW" },
+    { name: "ゆうきさん", src: "assets/gallery/fa-027-yuuki.jpg", twitter: "https://x.com/yuuki_yokozuki" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
