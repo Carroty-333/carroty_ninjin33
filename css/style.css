@@ -1770,6 +1770,7 @@ main {
   margin-bottom: 2.2em;
 }
 @media (min-width: 700px) { .commission-grid { grid-template-columns: 1fr 1fr; } }
+.commission-grid-single { grid-template-columns: minmax(0, 680px); justify-content: center; }
 .commission-card {
   background: var(--ivory);
   border: 2px solid var(--camel-light);
