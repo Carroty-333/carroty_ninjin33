@@ -234,6 +234,8 @@
     { name: "ぱいぷころんさん", src: "assets/gallery/fa-108-paipukoron.png", twitter: "", commission: true },
     { name: "ぱいぷころんさん", src: "assets/gallery/fa-109-paipukoron.png", twitter: "", commission: true },
     { name: "ねこきのさん", src: "assets/gallery/fa-110-nekokino.png", twitter: "" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-111-nekokino.jpg", twitter: "" },
+    { name: "ぱいぷころんさん", src: "assets/gallery/fa-112-paipukoron.jpg", twitter: "", commission: true },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
