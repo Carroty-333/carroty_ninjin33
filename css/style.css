@@ -1694,27 +1694,6 @@ main {
 /* ==========================================================================
    GUIDELINE
    ========================================================================== */
-.guide-hero {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 26px;
-  padding: clamp(34px, 6vw, 58px) clamp(24px, 6vw, 68px);
-  border: 1px solid rgba(228, 210, 172, .8);
-  border-radius: 30px;
-  background: linear-gradient(125deg, #493222, #704b2e 57%, #8a9a7e 170%);
-  box-shadow: var(--shadow-soft);
-  color: var(--ivory);
-}
-.guide-hero::before,
-.guide-hero::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(253, 248, 240, .16);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.guide-hero::before { width: 220px; height: 220px; right: -55px; top: -110px; }
-.guide-hero::after { width: 130px; height: 130px; right: 78px; bottom: -78px; }
 .guide-section-heading p,
 .fa-guide-label {
   margin: 0;
@@ -1723,8 +1702,6 @@ main {
   font-weight: 800;
   letter-spacing: .15em;
 }
-.guide-hero .section-title { position: relative; z-index: 1; margin: 0 0 .3em; color: var(--ivory); font-size: clamp(2.3rem, 6vw, 3.7rem); }
-.guide-hero > p:last-child { position: relative; z-index: 1; max-width: 620px; margin: 0; font-size: clamp(.88rem, 1.7vw, 1rem); line-height: 2; }
 
 .guide-grid { display: grid; gap: 18px; margin-bottom: 22px; }
 @media (min-width: 700px) { .guide-grid { grid-template-columns: 1fr 1fr; } }
@@ -1931,9 +1908,6 @@ main {
   .guide-rule-list li,
   .guide-alerts p,
   .commission-card li { font-size: .82rem; line-height: 1.65; }
-  .guide-hero { margin-bottom: 18px; padding: 31px 22px 34px; border-radius: 23px; }
-  .guide-hero .section-title { font-size: 2.25rem; }
-  .guide-hero > p:last-child { font-size: .82rem; line-height: 1.85; }
   .guide-card-heading { margin-bottom: 16px; }
   .guide-section { margin-top: 16px; padding: 24px 17px; border-radius: 22px; }
   .guide-section-number { flex-basis: 39px; width: 39px; height: 39px; font-size: 1rem; }
