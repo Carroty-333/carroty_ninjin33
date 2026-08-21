@@ -1089,10 +1089,16 @@ main {
   color: var(--coffee-800);
   font-size: .85rem;
   font-weight: 700;
+  white-space: nowrap;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
 .news-filter-btn:hover { border-color: var(--carrot); }
 .news-filter-btn.is-active { background: var(--coffee-800); border-color: var(--coffee-800); color: var(--ivory); }
+@media (max-width: 480px) {
+  /* Shrink just enough that all four pills (up through "イベント情報") fit on one line. */
+  .news-filter { flex-wrap: nowrap; gap: 5px; }
+  .news-filter-btn { padding: .4em .55em; font-size: .66rem; }
+}
 .news-sort { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--coffee-700); }
 .news-sort select {
   padding: .4em .8em;
@@ -1490,10 +1496,11 @@ main {
    FA GALLERY
    ========================================================================== */
 .gallery-lead { margin-bottom: 1.4em; }
-.gallery-lead .lead-break-mobile { display: none; }
+/* Reusable utility: a <br> that only breaks on narrow phones (used in FA Gallery and Guideline leads). */
+.lead-break-mobile { display: none; }
 @media (max-width: 480px) {
   .gallery-lead { font-size: .8rem; line-height: 1.85; }
-  .gallery-lead .lead-break-mobile { display: inline; }
+  .lead-break-mobile { display: inline; }
 }
 .fa-reference-btn {
   display: flex;
@@ -1553,15 +1560,16 @@ main {
 .gallery-sort-btn.is-active { background: var(--coffee-800); border-color: var(--coffee-800); color: var(--ivory); }
 @media (max-width: 699px) {
   .gallery-controls { flex-direction: column; align-items: stretch; gap: 10px; }
-  .gallery-controls-search { flex-direction: column; align-items: stretch; gap: 8px; }
+  /* center (not stretch): each search row is sized to its own content and centered,
+     instead of the input/select stretching flush to the right edge with no breathing room. */
+  .gallery-controls-search { flex-direction: column; align-items: center; gap: 8px; }
   /* Fixed label width so the select/input boxes on both rows line up to the same width. */
   .gallery-search-label { min-width: 6.4em; }
   .gallery-search select,
   .gallery-search input {
-    flex: 1;
-    min-width: 0;
+    width: 170px;
     box-sizing: border-box;
-    max-width: none;
+    max-width: 55vw;
     /* 16px keeps iOS Safari from auto-zooming the page when the field gains focus. */
     font-size: 16px;
   }
@@ -1581,7 +1589,9 @@ main {
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* flex-start (not center): with an item count not divisible by the column count,
+     centering leaves a lone item stranded in the middle of the last row. */
+  justify-content: flex-start;
   gap: 8px;
 }
 @media (min-width: 700px) {
@@ -1757,6 +1767,8 @@ main {
 .guide-alerts p::before { content: "!"; position: absolute; left: 15px; top: 13px; display: grid; width: 17px; height: 17px; place-items: center; border-radius: 50%; background: var(--carrot); color: var(--ivory); font-family: sans-serif; font-size: .7rem; font-weight: 900; }
 .guide-request-box { padding: clamp(19px, 3vw, 29px); border: 1px dashed var(--camel); border-radius: 18px; background: rgba(253, 248, 240, .78); }
 .guide-request-box h4 { margin-bottom: 15px; color: var(--coffee-800); font-size: 1rem; }
+.guide-request-lead { margin: 0 0 14px; color: var(--coffee-700); font-size: .88rem; line-height: 1.7; }
+.guide-rule-list a { color: var(--sage-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .guide-note { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid rgba(201, 166, 107, .55); color: var(--coffee-700); font-size: .85rem; line-height: 1.8; }
 .guide-note a { color: var(--sage-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
