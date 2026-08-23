@@ -236,6 +236,7 @@
     { name: "ねこきのさん", src: "assets/gallery/fa-110-nekokino.png", twitter: "" },
     { name: "ねこきのさん", src: "assets/gallery/fa-111-nekokino.jpg", twitter: "" },
     { name: "ぱいぷころんさん", src: "assets/gallery/fa-112-paipukoron.jpg", twitter: "", commission: true },
+    { name: "空瀬じゃが", src: "assets/gallery/fa-113-karase-jaga.png", twitter: "https://x.com/VT_KaraseJaga", commission: true },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
