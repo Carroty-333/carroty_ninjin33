@@ -241,6 +241,7 @@
     { name: "ねこきのさん", src: "assets/gallery/fa-115-nekokino.jpg", twitter: "" },
     { name: "くーさん", src: "assets/gallery/fa-116-ku.jpg", twitter: "" },
     { name: "EXさん", src: "assets/gallery/fa-117-ex.jpg", twitter: "https://x.com/EX72913880/status/2095134349352218646/photo/1" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-118-nekokino.jpg", twitter: "" },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
