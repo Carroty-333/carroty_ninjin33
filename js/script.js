@@ -214,7 +214,7 @@
     { name: "くーさん", src: "assets/gallery/fa-088-ku.jpg", twitter: "" },
     { name: "くーさん", src: "assets/gallery/fa-089-ku.jpg", twitter: "" },
     { name: "くーさん", src: "assets/gallery/fa-090-ku.jpg", twitter: "" },
-    { name: "ねこきのさん", src: "assets/gallery/fa-091-nekokino.png", twitter: "https://x.com/nekodaisukesan" },
+    { name: "ねこきのさん", src: "assets/gallery/fa-091-nekokino.png", twitter: "https://x.com/nekokinokodaisu" },
     { name: "ねこきのさん", src: "assets/gallery/fa-092-nekokino.jpg", twitter: "" },
     { name: "巴鳥なこさん", src: "assets/gallery/fa-093-hachou-nako.jpg", twitter: "https://x.com/mrrr1126" },
     { name: "春瀬さん", src: "assets/gallery/fa-094-haruse.jpg", twitter: "https://x.com/mngn___" },
