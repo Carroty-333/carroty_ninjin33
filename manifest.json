@@ -1,0 +1,17 @@
+{
+  "name": "きゃろってぃー Official Site | 喫茶Carrol",
+  "short_name": "きゃろHP",
+  "start_url": "/carroty_ninjin33/",
+  "scope": "/carroty_ninjin33/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/carroty_ninjin33/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
