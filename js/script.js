@@ -242,6 +242,8 @@
     { name: "くーさん", src: "assets/gallery/fa-116-ku.jpg", twitter: "" },
     { name: "EXさん", src: "assets/gallery/fa-117-ex.jpg", twitter: "https://x.com/EX72913880/status/2095134349352218646/photo/1" },
     { name: "ねこきのさん", src: "assets/gallery/fa-118-nekokino.jpg", twitter: "" },
+    { name: "野しゃるさん", src: "assets/gallery/fa-119-nosharu.jpg", twitter: "https://x.com/_lool_hello/status/2115162376446386456/photo/1", watermark: "white" },
+    { name: "ななせさく。さん", src: "assets/gallery/fa-120-nanase-saku.png", twitter: "https://x.com/nanase_saku39", commission: true },
   ];
   const WATERMARK_WHITE = "assets/images/watermark-no-repost-white.png";
   const WATERMARK_BLACK = "assets/images/watermark-no-repost-black.png";
